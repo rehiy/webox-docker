@@ -1,12 +1,15 @@
 #!/bin/sh
 #
 
-if [ -x /etc/rc.local ]; then
-    exec /etc/rc.local
-fi
+source /srv/webox/function
 
 if [ -x /srv/startup ]; then
     exec /srv/startup
 fi
 
-while true; do sleep 60; done;
+if [ ! "$1" == "ssh" ]; then
+    wbx_app_run ssh install
+    exec /usr/sbin/sshd -D
+else
+    exec "${@}"
+fi
