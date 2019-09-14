@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+
+wb_app_run() {
+
+    local WB_APP=$1
+    local WB_ACTION=$2
+    local WB_SCRIPT=/srv/share/$1
+
+    case $WB_ACTION in
+        install)
+            WB_SCRIPT=$WB_SCRIPT/install
+        ;;
+        start|stop|reload|restart)
+            WB_SCRIPT=$WB_SCRIPT/service
+        ;;
+        *)
+            WB_SCRIPT=$WB_SCRIPT/error
+        ;;
+    esac
+
+    if [ ! -f $WB_SCRIPT ]; then
+        echo "NOT FOUND: $WB_APP"
+        exit 1
+    fi
+
+    [ -x $WB_SCRIPT ] || chmod +x $WB_SCRIPT
+    $WB_SCRIPT $WB_ACTION
+
+}
+
+wb_all_install() {
+
+    local WB_SCRIPT
+
+    for WB_SCRIPT in /srv/share/*/install; do
+        [ -x $WB_SCRIPT ] || chmod +x $WB_SCRIPT
+        echo "EXEC SCRIPT: $WB_SCRIPT"
+        $WB_SCRIPT install
+    done
+
+}

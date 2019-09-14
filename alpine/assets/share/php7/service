@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+
+export APP_USER=www-data
+export APP_ETC_PATH=/srv/etc/php7
+export APP_PID_FILE=/run/php7/fpm.pid
+
+############################################################
+
+app_init() {
+
+    local poolpath poolconf
+
+    if [ -z $1 ] || [ ! -d $1 ]; then
+        return 1
+    fi
+
+    for poolconf in $1/*.conf; do
+
+        poolconf=${poolconf##*/}
+        poolpath=/var/www/${poolconf/.conf/}
+
+        mkdir -p $poolpath/log $poolpath/temp
+        mkdir -p $poolpath/session $poolpath/web
+
+        chown -R $APP_USER:www-data $poolpath
+
+    done
+
+}
+
+app_start() {
+
+    app_init $APP_ETC_PATH/fpm.d
+
+    php-fpm7 -c $APP_ETC_PATH -y $APP_ETC_PATH/fpm.conf
+
+}
+
+app_stop() {
+
+    kill -TERM `cat ${APP_PID_FILE}`
+
+}
+
+app_reload() {
+
+    kill -USR2 `cat ${APP_PID_FILE}`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+############################################################
+
+echo "${1} php7 ..."
+app_${@}
+
+if [ ${?} -ne 0 ]; then
+    echo "${1} php7 failed"
+fi

@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+
+if [ ! -x /usr/sbin/sshd ]; then
+    apk add openssh-server
+fi
+
+#####################################################################
+
+if ! grep -q 'PermitRootLogin yes' /etc/ssh/sshd_config; then
+    sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    sed -ri 's/^UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+    # echo 'root:root' | chpasswd
+fi

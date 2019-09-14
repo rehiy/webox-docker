@@ -1,0 +1,37 @@
+#
+# These groups are read by MySQL server
+#
+
+[server]
+
+[mysqld]
+
+skip-networking
+skip_external_locking
+
+#
+# * Basic Settings
+#
+
+user             = mysql
+pid_file         = /run/mysqld/mysqld.pid
+socket           = /run/mysqld/mysqld.sock
+
+port             = 3306
+bind_address     = 0.0.0.0
+
+max_connections  = 128
+
+#
+# * Logging
+#
+
+log_error        = /var/log/mysql/mysqld.err
+
+general_log      = 0
+general_log_file = /var/log/mysql/mysqld.log
+
+slow_query_log
+slow_query_log_file = /var/log/mysql/slow.log
+
+long_query_time  = 30

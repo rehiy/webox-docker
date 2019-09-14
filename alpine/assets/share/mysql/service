@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+
+export APP_USER=mysql
+export APP_PID_FILE=/run/mysqld/mysqld.pid
+
+############################################################
+
+app_start() {
+
+    mysqld_safe 2>&1 &
+
+}
+
+app_stop() {
+
+    kill -TERM `cat ${APP_PID_FILE}`
+
+}
+
+app_reload() {
+
+    kill -HUP `cat ${APP_PID_FILE}`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+############################################################
+
+echo "${1} mysql ..."
+app_${@}
+
+if [ ${?} -ne 0 ]; then
+    echo "${1} mysql failed"
+fi

@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+
+export APP_USER=ssh
+export APP_PID_FILE=/run/sshd.pid
+
+############################################################
+
+app_start() {
+
+    /usr/sbin/sshd -D
+
+}
+
+app_stop() {
+
+    kill -TERM `cat ${APP_PID_FILE}`
+
+}
+
+app_reload() {
+
+    kill -HUP `cat ${APP_PID_FILE}`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+############################################################
+
+echo "${1} sshd ..."
+app_${@}
+
+if [ ${?} -ne 0 ]; then
+    echo "${1} sshd failed"
+fi

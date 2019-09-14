@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+
+export APP_USER=redis
+export APP_PID_FILE=/run/redis/redis.pid
+
+############################################################
+
+app_start() {
+
+    su-exec $APP_USER redis-server /etc/redis.conf
+
+}
+
+app_stop() {
+
+    kill -TERM `cat ${APP_PID_FILE}`
+
+}
+
+app_reload() {
+
+    kill -HUP `cat ${APP_PID_FILE}`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+############################################################
+
+echo "${1} redis ..."
+app_${@}
+
+if [ ${?} -ne 0 ]; then
+    echo "${1} redis failed"
+fi
