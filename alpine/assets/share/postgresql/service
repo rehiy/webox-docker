@@ -1,43 +1,44 @@
 #!/bin/sh
 #
 
-export PGHOME=/var/lib/postgresql
+export APP_USER=postgres
+export APP_GROUP=postgres
 
-export PGDATA=$PGHOME/data
-export PGUSER=postgres
+#####################################################################
 
-############################################################
+export PGUSER=$APP_USER
+export PGDATA=/var/lib/postgresql/data
 
 app_start() {
 
-    su-exec $PGUSER pg_ctl -w start
+    su-exec $APP_USER pg_ctl -w start
 
-    if [ -f $PGHOME/import.sql ]; then
-        su-exec $PGUSER psql < $PGHOME/import.sql
-        mv $PGHOME/import.sql $PGHOME/import.done
+    if [ -f /var/lib/postgresql/import.sql ]; then
+        su-exec $APP_USER psql < /var/lib/postgresql/import.sql
+        mv /var/lib/postgresql/import.sql /var/lib/postgresql/import.done
     fi
 
 }
 
 app_stop() {
 
-    su-exec $PGUSER pg_ctl -w stop
+    su-exec $APP_USER pg_ctl -w stop
 
 }
 
 app_reload() {
 
-    su-exec $PGUSER pg_ctl -w reload
+    su-exec $APP_USER pg_ctl -w reload
 
 }
 
 app_restart() {
 
-    su-exec $PGUSER pg_ctl -w restart
+    su-exec $APP_USER pg_ctl -w restart
 
 }
 
-############################################################
+#####################################################################
 
 echo "${1} postgresql ..."
 app_${@}

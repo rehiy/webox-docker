@@ -1,6 +1,12 @@
 #!/bin/sh
 #
 
+export APP_USER=nginx
+
+export APP_ETC_PATH=/srv/etc/nginx
+
+#####################################################################
+
 if [ ! -x /usr/bin/nginx ]; then
     apk add nginx \
         nginx-mod-http-echo \
@@ -12,12 +18,10 @@ if [ ! -x /usr/bin/nginx ]; then
 fi
 
 if [ ! -d /run/nginx ]; then
-    mkdir /run/nginx && chown nginx /run/nginx
+    mkdir /run/nginx && chown $APP_USER /run/nginx
 fi
 
 #####################################################################
-
-export APP_ETC_PATH=/srv/etc/nginx
 
 if [ ! -e $APP_ETC_PATH ]; then
     ln -s ../share/nginx/etc $APP_ETC_PATH

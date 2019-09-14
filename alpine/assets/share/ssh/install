@@ -5,6 +5,14 @@ if [ ! -x /usr/sbin/sshd ]; then
     apk add openssh-server
 fi
 
+if [ ! -f /etc/ssh/ssh_host_dsa_key ]; then
+    ssh-keygen -q -N '' -t dsa -f /etc/ssh/ssh_host_dsa_key
+fi
+
+if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
+    ssh-keygen -q -N '' -t rsa -f /etc/ssh/ssh_host_rsa_key
+fi
+
 #####################################################################
 
 if ! grep -q 'PermitRootLogin yes' /etc/ssh/sshd_config; then

@@ -1,12 +1,12 @@
 #!/bin/sh
 #
 
-if [ ! -x /sbin/runit ]; then
-    apk add runit
+if [ -x /etc/rc.local ]; then
+    /etc/rc.local
 fi
 
 if [ -x /srv/startup ]; then
     /srv/startup
 fi
 
-exec runsvdir /etc/service
+while true; do sleep 60; done;
