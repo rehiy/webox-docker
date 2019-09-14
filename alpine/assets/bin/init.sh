@@ -4,7 +4,7 @@
 source /srv/webox/function
 
 if [ -x /srv/startup ]; then
-    exec /srv/startup
+    /srv/startup init
 fi
 
 if [ ! "$1" == "ssh" ]; then

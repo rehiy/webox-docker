@@ -6,7 +6,7 @@ if [ -x /etc/rc.local ]; then
 fi
 
 if [ -x /srv/startup ]; then
-    /srv/startup
+    /srv/startup init
 fi
 
 mkdir -p /run/sshd
