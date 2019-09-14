@@ -6,7 +6,7 @@ if [ -x /srv/startup ]; then
 fi
 
 if [ ! "$1" == "ssh" ]; then
-    /srv/bin/webox ssh install
+    /srv/bin/webox sshd install
     exec /usr/sbin/sshd -D
 else
     exec "${@}"
