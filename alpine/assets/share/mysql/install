@@ -13,8 +13,7 @@ if [ ! -x /usr/bin/mysql ]; then
 fi
 
 if [ ! -d /var/log/mysql ]; then
-    mkdir -p /var/log/mysql
-    chown -R $APP_USER:$APP_GROUP /var/log/mysql
+    mkdir /var/log/mysql && chown $APP_USER /var/log/mysql
 fi
 
 if [ ! -f /var/lib/mysql/ibdata1 ]; then

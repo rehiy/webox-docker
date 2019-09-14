@@ -3,4 +3,4 @@
 
 source /srv/webox/function
 
-wb_app_run "${@}"
+wbx_app_run "${@}"

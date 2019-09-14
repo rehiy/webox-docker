@@ -11,21 +11,21 @@ export APP_PID_FILE=/run/php7/fpm.pid
 
 app_init() {
 
-    local poolpath poolconf
+    local POOL_CONF POOL_PATH
 
     if [ -z $1 ] || [ ! -d $1 ]; then
         return 1
     fi
 
-    for poolconf in $1/*.conf; do
+    for POOL_CONF in $1/*.conf; do
 
-        poolconf=${poolconf##*/}
-        poolpath=/var/www/${poolconf/.conf/}
+        POOL_CONF=${POOL_CONF##*/}
+        POOL_PATH=/var/www/${POOL_CONF/.conf/}
 
-        mkdir -p $poolpath/log $poolpath/temp
-        mkdir -p $poolpath/session $poolpath/web
+        mkdir -p $POOL_PATH/log $POOL_PATH/temp
+        mkdir -p $POOL_PATH/session $POOL_PATH/web
 
-        chown -R $APP_USER:$APP_GROUP $poolpath
+        chown -R $APP_USER:$APP_GROUP $POOL_PATH
 
     done
 
