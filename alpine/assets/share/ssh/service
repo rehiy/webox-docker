@@ -7,7 +7,7 @@ export APP_PID_FILE=/run/sshd.pid
 
 app_start() {
 
-    /usr/sbin/sshd -D
+    /usr/sbin/sshd -D &
 
 }
 
@@ -29,7 +29,20 @@ app_restart() {
 
 }
 
+app_helper() {
+
+    local DOES="start|stop|reload|restart"
+
+    if ! echo "|$DOES|" | grep -q "|$1|"; then
+        echo "Usage: webox ssh {$DOES}"
+        exit 1
+    fi
+
+}
+
 #####################################################################
+
+app_helper $1
 
 echo "${1} sshd ..."
 app_${@}

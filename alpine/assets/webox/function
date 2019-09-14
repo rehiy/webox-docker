@@ -11,18 +11,10 @@ wbx_app_run() {
         install)
             WBX_SCRIPT=$WBX_SCRIPT/install
         ;;
-        start|stop|reload|restart)
+        *)
             WBX_SCRIPT=$WBX_SCRIPT/service
         ;;
-        *)
-            WBX_SCRIPT=$WBX_SCRIPT/error
-        ;;
     esac
-
-    if [ ! -f $WBX_SCRIPT ]; then
-        echo "NOT FOUND: $WBX_APP"
-        exit 1
-    fi
 
     [ -x $WBX_SCRIPT ] || chmod +x $WBX_SCRIPT
     $WBX_SCRIPT $WBX_ACTION

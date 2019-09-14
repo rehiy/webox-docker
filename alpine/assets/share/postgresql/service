@@ -38,7 +38,20 @@ app_restart() {
 
 }
 
+app_helper() {
+
+    local DOES="start|stop|reload|restart"
+
+    if ! echo "|$DOES|" | grep -q "|$1|"; then
+        echo "Usage: postgresql mysql {$DOES}"
+        exit 1
+    fi
+
+}
+
 #####################################################################
+
+app_helper $1
 
 echo "${1} postgresql ..."
 app_${@}
