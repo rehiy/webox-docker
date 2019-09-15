@@ -9,5 +9,5 @@ if [ ! "$1" == "ssh" ]; then
     /srv/bin/webox sshd install
     exec /usr/sbin/sshd -D
 else
-    exec "${@}"
+    exec "$@"
 fi

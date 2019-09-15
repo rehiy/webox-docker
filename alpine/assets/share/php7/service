@@ -41,13 +41,13 @@ app_start() {
 
 app_stop() {
 
-    kill -TERM `cat ${APP_PID_FILE}`
+    kill -TERM `cat $APP_PID_FILE`
 
 }
 
 app_reload() {
 
-    kill -USR2 `cat ${APP_PID_FILE}`
+    kill -USR2 `cat $APP_PID_FILE`
 
 }
 
@@ -68,13 +68,21 @@ app_helper() {
 
 }
 
+app_result() {
+
+    if [ $? -eq 0 ]; then
+        echo -e "$@ php7 \033[32mdone \033[0m"
+    else
+        echo -e "$@ php7 \033[31mfailed \033[0m"
+    fi
+
+}
+
 #####################################################################
 
 app_helper $1
 
-echo "${1} php7 ..."
-app_${@}
+echo "$1 php7 ..."
 
-if [ ${?} -ne 0 ]; then
-    echo "${1} php7 failed"
-fi
+app_$1
+app_result $1

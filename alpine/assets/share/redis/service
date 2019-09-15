@@ -15,13 +15,13 @@ app_start() {
 
 app_stop() {
 
-    kill -TERM `cat ${APP_PID_FILE}`
+    kill -TERM `cat $APP_PID_FILE`
 
 }
 
 app_reload() {
 
-    kill -HUP `cat ${APP_PID_FILE}`
+    kill -HUP `cat $APP_PID_FILE`
 
 }
 
@@ -36,8 +36,18 @@ app_helper() {
     local DOES="start|stop|reload|restart"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: redis mysql {$DOES}"
+        echo "Usage: webox redis {$DOES}"
         exit 1
+    fi
+
+}
+
+app_result() {
+
+    if [ $? -eq 0 ]; then
+        echo -e "$@ redis \033[32mdone \033[0m"
+    else
+        echo -e "$@ redis \033[31mfailed \033[0m"
     fi
 
 }
@@ -46,9 +56,7 @@ app_helper() {
 
 app_helper $1
 
-echo "${1} redis ..."
-app_${@}
+echo "$1 redis ..."
 
-if [ ${?} -ne 0 ]; then
-    echo "${1} redis failed"
-fi
+app_$1
+app_result $1

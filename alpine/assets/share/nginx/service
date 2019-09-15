@@ -34,8 +34,18 @@ app_helper() {
     local DOES="start|stop|reload|restart"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: nginx mysql {$DOES}"
+        echo "Usage: webox nginx {$DOES}"
         exit 1
+    fi
+
+}
+
+app_result() {
+
+    if [ $? -eq 0 ]; then
+        echo -e "$@ nginx \033[32mdone \033[0m"
+    else
+        echo -e "$@ nginx \033[31mfailed \033[0m"
     fi
 
 }
@@ -44,9 +54,7 @@ app_helper() {
 
 app_helper $1
 
-echo "${1} nginx ..."
-app_${@}
+echo "$1 nginx ..."
 
-if [ ${?} -ne 0 ]; then
-    echo "${1} nginx failed"
-fi
+app_$1
+app_result $1

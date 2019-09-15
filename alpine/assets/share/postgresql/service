@@ -43,8 +43,18 @@ app_helper() {
     local DOES="start|stop|reload|restart"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: postgresql mysql {$DOES}"
+        echo "Usage: webox postgresql {$DOES}"
         exit 1
+    fi
+
+}
+
+app_result() {
+
+    if [ $? -eq 0 ]; then
+        echo -e "$@ postgresql \033[32mdone \033[0m"
+    else
+        echo -e "$@ postgresql \033[31mfailed \033[0m"
     fi
 
 }
@@ -53,9 +63,7 @@ app_helper() {
 
 app_helper $1
 
-echo "${1} postgresql ..."
-app_${@}
+echo "$1 postgresql ..."
 
-if [ ${?} -ne 0 ]; then
-    echo "${1} postgresql failed"
-fi
+app_$1
+app_result $1

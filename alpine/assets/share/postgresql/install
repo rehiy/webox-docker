@@ -41,6 +41,6 @@ if [ ! -e $APP_ETC_PATH ]; then
 fi
 
 if ! grep -q $APP_ETC_PATH $PGDATA/postgresql.conf; then
-    echo -e "\ninclude = '${APP_ETC_PATH}/extra.conf'" >> $PGDATA/postgresql.conf
+    echo -e "\ninclude = '$APP_ETC_PATH/extra.conf'" >> $PGDATA/postgresql.conf
     echo -e "\nhost    all    all    0.0.0.0/0    md5" >> $PGDATA/pg_hba.conf
 fi

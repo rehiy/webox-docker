@@ -25,5 +25,5 @@ if [ ! -e $APP_ETC_PATH ]; then
 fi
 
 if ! grep -q $APP_ETC_PATH /etc/redis.conf; then
-    echo -e "\ninclude ${APP_ETC_PATH}/redis.conf" >> /etc/redis.conf
+    echo -e "\ninclude $APP_ETC_PATH/redis.conf" >> /etc/redis.conf
 fi
