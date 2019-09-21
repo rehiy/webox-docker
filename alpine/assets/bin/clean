@@ -1,5 +1,5 @@
 #!/bin/sh
 #
 
-rm -rf /var/log/*.log
 rm -rf /var/cache/apk/*
+rm -rf /var/log/*.log

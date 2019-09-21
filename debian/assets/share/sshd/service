@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+
+export APP_PID_FILE=/run/sshd.pid
+
+#####################################################################
+
+app_start() {
+
+    /usr/sbin/sshd -D &
+
+}
+
+app_stop() {
+
+    kill -TERM `cat $APP_PID_FILE`
+
+}
+
+app_reload() {
+
+    kill -HUP `cat $APP_PID_FILE`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+app_helper() {
+
+    local DOES="start|stop|reload|restart"
+
+    if ! echo "|$DOES|" | grep -q "|$1|"; then
+        echo "Usage: webox sshd {$DOES}"
+        exit 1
+    fi
+
+}
+
+app_result() {
+
+    if [ $? -eq 0 ]; then
+        echo -e "$@ sshd \033[32mdone \033[0m"
+    else
+        echo -e "$@ sshd \033[31mfailed \033[0m"
+    fi
+
+}
+
+#####################################################################
+
+app_helper $1
+
+echo "$1 sshd ..."
+
+app_$1
+app_result $1

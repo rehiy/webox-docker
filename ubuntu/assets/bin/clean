@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+
+rm -rf /var/cache/apt/*
+
+rm -rf /var/log/*.log
+rm -rf /var/log/apt/*.log
+
+rm -rf /var/lib/apt/lists/*

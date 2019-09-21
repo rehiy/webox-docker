@@ -1,13 +1,14 @@
 #!/bin/sh
 #
 
-if [ -x /etc/rc.local ]; then
-    /etc/rc.local
-fi
-
 if [ -x /srv/startup ]; then
     /srv/startup init
 fi
 
-mkdir -p /run/sshd
-exec /usr/sbin/sshd -D
+if [ "$1" != "ssh" ]; then
+    /srv/bin/webox basic install
+    /srv/bin/webox sshd install
+    exec /usr/sbin/sshd -D
+else
+    exec "$@"
+fi

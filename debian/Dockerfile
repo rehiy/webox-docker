@@ -1,16 +1,11 @@
-FROM debian:10-slim
+FROM debian:buster-slim
 
 LABEL version="1.0.0"
 LABEL maintainer="mail@anrip.com"
 
-ENV DEBIAN_FRONTEND noninteractive
+ADD assets/ /srv/
+RUN chmod +x /srv/bin/*
 
-RUN echo 'root:root' | chpasswd
+ENV PATH /srv/bin:$PATH
 
-ADD assets/ /usr/
-RUN chmod +x /usr/bin/*.sh
-RUN /usr/bin/setup.sh install
-
-EXPOSE 22/tcp
-
-ENTRYPOINT ["/usr/bin/init.sh", "start"]
+ENTRYPOINT ["/srv/bin/init.sh", "ssh"]

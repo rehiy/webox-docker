@@ -5,7 +5,8 @@ if [ -x /srv/startup ]; then
     /srv/startup init
 fi
 
-if [ ! "$1" == "ssh" ]; then
+if [ "$1" != "ssh" ]; then
+    /srv/bin/webox basic install
     /srv/bin/webox sshd install
     exec /usr/sbin/sshd -D
 else

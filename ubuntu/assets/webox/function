@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+
+wbx_app_run() {
+
+    local WBX_APP=$1
+    local WBX_ACTION=$2
+    local WBX_SCRIPT=/srv/share/$1
+
+    case $WBX_ACTION in
+        install)
+            WBX_SCRIPT=$WBX_SCRIPT/install
+        ;;
+        *)
+            WBX_SCRIPT=$WBX_SCRIPT/service
+        ;;
+    esac
+
+    [ -x $WBX_SCRIPT ] || chmod +x $WBX_SCRIPT
+    $WBX_SCRIPT $WBX_ACTION
+
+}
+
+wbx_all_install() {
+
+    local WBX_SCRIPT
+
+    for WBX_SCRIPT in /srv/share/*/install; do
+        [ -x $WBX_SCRIPT ] || chmod +x $WBX_SCRIPT
+        echo "EXEC SCRIPT: $WBX_SCRIPT"
+        $WBX_SCRIPT install
+    done
+
+}
