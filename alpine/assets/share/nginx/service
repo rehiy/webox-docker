@@ -1,11 +1,20 @@
 #!/bin/sh
 #
 
+export APP_NAME=nginx
+
 export APP_ETC_PATH=/srv/etc/nginx
 
 #####################################################################
 
 app_start() {
+
+    if app_check ; then
+        echo "$APP_NAME is already running"
+        exit 1
+    fi
+
+    echo "start $APP_NAME ..."
 
     nginx -c $APP_ETC_PATH/nginx.conf
 
@@ -13,11 +22,25 @@ app_start() {
 
 app_stop() {
 
+    if ! app_check ; then
+        echo "$APP_NAME is not running"
+        exit 1
+    fi
+
+    echo "stop $APP_NAME ..."
+
     nginx -s stop
 
 }
 
 app_reload() {
+
+    if ! app_check ; then
+        echo "$APP_NAME is not running"
+        exit 1
+    fi
+
+    echo "reload $APP_NAME ..."
 
     nginx -s reload
 
@@ -29,12 +52,32 @@ app_restart() {
 
 }
 
-app_helper() {
+app_status() {
 
-    local DOES="start|stop|reload|restart"
+    app_check
+    app_result 'status:' 'running' 'stopped'
+
+}
+
+app_check() {
+
+    if [ ! -f ${APP_PID_FILE} ] ; then
+        return 1
+    fi
+
+    if ! kill -0 `cat ${APP_PID_FILE}` 2>/dev/null ; then
+        rm -f ${APP_PID_FILE}
+        return 1
+    fi
+
+}
+
+app_usage() {
+
+    local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: webox nginx {$DOES}"
+        echo "Usage: webox $APP_NAME {$DOES}"
         exit 1
     fi
 
@@ -42,19 +85,23 @@ app_helper() {
 
 app_result() {
 
-    if [ $? -eq 0 ]; then
-        echo -e "$@ nginx \033[32mdone \033[0m"
+    local CODE=$?
+    local RIGHT=${2:-done}
+    local ERROR=${3:-failed}
+
+    if [ $CODE -eq 0 ]; then
+        echo -e "$1 $APP_NAME \033[32m$RIGHT \033[0m"
     else
-        echo -e "$@ nginx \033[31mfailed \033[0m"
+        echo -e "$1 $APP_NAME \033[31m$ERROR \033[0m"
     fi
+
+    exit $CODE
 
 }
 
 #####################################################################
 
-app_helper $1
-
-echo "$1 nginx ..."
+app_usage $1 || exit 1
 
 app_$1
 app_result $1
