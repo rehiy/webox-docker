@@ -6,9 +6,10 @@ location ~ \.php$ {
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
     if ($safedir = "") {
-        set $safedir $pooldir/log:$pooldir/temp:$pooldir/session:$sitedir/;
+        set $safedir $sitedir/;
     }
-    fastcgi_param PHP_ADMIN_VALUE "open_basedir=$safedir";
+    set $tempdir $pooldir/log:$pooldir/temp:$pooldir/session;
+    fastcgi_param PHP_ADMIN_VALUE "open_basedir=$tempdir:$safedir";
 
     fastcgi_split_path_info ^(.+\.php)(/.*)$;
     fastcgi_param PATH_INFO $fastcgi_path_info;
