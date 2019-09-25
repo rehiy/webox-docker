@@ -1,6 +1,6 @@
 #!/bin/sh
 #
 
-. /srv/share/webox/function
+. /srv/share/runtime
 
 wbx_app_run "$@"

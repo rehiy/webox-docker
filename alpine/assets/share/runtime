@@ -1,0 +1,61 @@
+#!/bin/sh
+#
+
+export WBX_VERSION=1
+
+export PATH=/srv/bin:$PATH
+
+#####################################################################
+
+if [ ! -x /srv/share/runtime ]; then
+    chmod +x /srv/share/*/prepare
+    chmod +x /srv/share/*/service
+    chmod +x /srv/share/runtime
+fi
+
+wbx_app_run() {
+
+    local WBX_APP=$1
+    local WBX_ACTION=$2
+    local WBX_SCRIPT=/srv/share/$1
+
+    case $WBX_ACTION in
+        prepare)
+            WBX_SCRIPT=$WBX_SCRIPT/prepare
+        ;;
+        *)
+            WBX_SCRIPT=$WBX_SCRIPT/service
+        ;;
+    esac
+
+    if [ ! -x $WBX_SCRIPT ]; then
+        echo "can't exec $WBX_SCRIPT"
+        exit 1
+    fi
+
+    $WBX_SCRIPT $WBX_ACTION
+
+}
+
+wbx_fix_install() {
+
+    local WBX_APP WBX_APP_EXTRA
+
+    for WBX_APP_EXTRA in /srv/share/*; do
+
+        WBX_APP=${WBX_APP_EXTRA##*/}
+
+        if [ ! -x $WBX_APP_EXTRA/prepare ]; then
+            continue
+        fi
+
+        if [ ! -e /srv/etc/$WBX_APP ] && [ -d $WBX_APP_EXTRA/etc ]; then
+            ln -s ../share/$WBX_APP/etc /srv/etc/$WBX_APP
+        fi
+
+        echo "exec $WBX_APP_EXTRA/prepare"
+        $WBX_APP_EXTRA/prepare prepare
+
+    done
+
+}

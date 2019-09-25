@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+
+export APP_USER=postgres
+export APP_GROUP=postgres
+
+#####################################################################
+
+app_prepare() {
+
+    export PGUSER=$APP_USER
+    export PGDATA=/var/lib/postgresql/data
+
+    if [ ! -x /sbin/su-exec ]; then
+        apk add su-exec
+    fi
+
+    if [ ! -x /usr/bin/postgres ]; then
+        apk add postgresql postgresql-contrib
+    fi
+
+    for dir in log run tmp; do
+        [ -d /var/${dir}/postgresql ] ||
+            mkdir -p /var/${dir}/postgresql
+    done
+
+    chown -R $APP_USER:$APP_GROUP /var/*/postgresql
+
+    if [ ! -f $PGDATA/postgresql.conf ]; then
+        date | md5sum | head -c 10 > /var/lib/postgresql/postgres.pw
+        su-exec $APP_USER initdb --pwfile=/var/lib/postgresql/postgres.pw
+    fi
+
+    if ! grep -q /srv/etc/postgresql $PGDATA/postgresql.conf; then
+        echo -e "\ninclude = '/srv/etc/postgresql/extra.conf'" >> $PGDATA/postgresql.conf
+        echo -e "\nhost    all    all    0.0.0.0/0    md5" >> $PGDATA/pg_hba.conf
+    fi
+
+}
+
+#####################################################################
+
+[ "$1" = "prepare" ] && app_prepare

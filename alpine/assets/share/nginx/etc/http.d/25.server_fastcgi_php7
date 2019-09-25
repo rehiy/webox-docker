@@ -1,3 +1,6 @@
+##
+# Server Fastcgi
+##
 
 location ~ \.php$ {
 
@@ -6,16 +9,16 @@ location ~ \.php$ {
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
     if ($safedir = "") {
-        set $safedir $sitedir/;
+        set $safedir $sitedir;
     }
-    set $tempdir $pooldir/log:$pooldir/temp:$pooldir/session;
-    fastcgi_param PHP_ADMIN_VALUE "open_basedir=$tempdir:$safedir";
+    set $safedir $pooldir/log:$pooldir/temp:$safedir/;
+    fastcgi_param PHP_ADMIN_VALUE "open_basedir=$safedir";
 
     fastcgi_split_path_info ^(.+\.php)(/.*)$;
     fastcgi_param PATH_INFO $fastcgi_path_info;
 
     fastcgi_index index.php;
-    fastcgi_pass  unix:/run/php7/$pool.sock;
+    fastcgi_pass  unix:/var/run/php7/$pool.sock;
 
     fastcgi_buffer_size 128k;
     fastcgi_buffers 4 256k;

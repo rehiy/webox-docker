@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+
+export APP_USER=mysql
+export APP_GROUP=mysql
+
+#####################################################################
+
+app_prepare() {
+
+    if [ ! -x /usr/bin/mysql ]; then
+        apk add mariadb mariadb-client
+    fi
+
+    for dir in lib log run tmp; do
+        [ -d /var/${dir}/mysql ] ||
+            mkdir -p /var/${dir}/mysql
+    done
+
+    if [ ! -f /var/log/mysql/error.log ]; then
+        touch /var/log/mysql/error.log
+    fi
+
+    chown -R $APP_USER:$APP_GROUP /var/*/mysql
+
+    if [ ! -f /var/lib/mysql/ibdata1 ]; then
+        mysql_install_db --user=$APP_USER --datadir=/var/lib/mysql
+    fi
+
+}
+
+#####################################################################
+
+[ "$1" = "prepare" ] && app_prepare

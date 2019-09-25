@@ -1,61 +1,50 @@
 #!/bin/sh
 #
 
-export APP_NAME=php7
-
 export APP_USER=www-data
 export APP_GROUP=www-data
 
-export APP_ETC_PATH=/srv/etc/php7
-export APP_PID_FILE=/run/php7/fpm.pid
+export APP_BIN_FILE=/usr/sbin/php-fpm7
+export APP_PID_FILE=/var/run/php7/fpm.pid
 
 #####################################################################
-
-app_init() {
-
-    local POOL_CONF POOL_PATH
-
-    if [ -z $1 ] || [ ! -d $1 ]; then
-        return 1
-    fi
-
-    for POOL_CONF in $1/*.conf; do
-
-        POOL_CONF=${POOL_CONF##*/}
-        POOL_PATH=/var/www/${POOL_CONF/.conf/}
-
-        mkdir -p $POOL_PATH/log $POOL_PATH/temp
-        mkdir -p $POOL_PATH/session $POOL_PATH/web
-
-        chown -R $APP_USER:$APP_GROUP $POOL_PATH
-
-    done
-
-}
 
 app_start() {
 
     if app_check ; then
-        echo "$APP_NAME is already running"
+        echo "php7 is already running"
         exit 1
     fi
 
-    echo "start $APP_NAME ..."
+    echo "start php7 ..."
 
-    app_init $APP_ETC_PATH/fpm.d
+    local POOL_CONF POOL_ROOT
 
-    php-fpm7 -c $APP_ETC_PATH -y $APP_ETC_PATH/fpm.conf
+    for POOL_CONF in /etc/php7/fpm.d/*.conf; do
+
+        POOL_CONF=${POOL_CONF##*/}
+        POOL_ROOT=/var/www/${POOL_CONF%.*}
+
+        mkdir -p $POOL_ROOT/web
+        mkdir -p $POOL_ROOT/log
+        mkdir -p $POOL_ROOT/temp/session
+
+        chown -R $APP_USER:$APP_GROUP $POOL_ROOT
+
+    done
+
+    $APP_BIN_FILE -c /srv/etc/php7 -y /srv/etc/php7/fpm.conf
 
 }
 
 app_stop() {
 
     if ! app_check ; then
-        echo "$APP_NAME is not running"
+        echo "php7 is not running"
         exit 1
     fi
 
-    echo "stop $APP_NAME ..."
+    echo "stop php7 ..."
 
     kill -TERM `cat $APP_PID_FILE`
 
@@ -64,11 +53,11 @@ app_stop() {
 app_reload() {
 
     if ! app_check ; then
-        echo "$APP_NAME is not running"
+        echo "php7 is not running"
         exit 1
     fi
 
-    echo "reload $APP_NAME ..."
+    echo "reload php7 ..."
 
     kill -USR2 `cat $APP_PID_FILE`
 
@@ -89,12 +78,12 @@ app_status() {
 
 app_check() {
 
-    if [ ! -f ${APP_PID_FILE} ] ; then
+    if [ ! -f $APP_PID_FILE ] ; then
         return 1
     fi
 
-    if ! kill -0 `cat ${APP_PID_FILE}` 2>/dev/null ; then
-        rm -f ${APP_PID_FILE}
+    if ! kill -0 `cat $APP_PID_FILE` 2>/dev/null ; then
+        rm -f $APP_PID_FILE
         return 1
     fi
 
@@ -105,7 +94,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: webox $APP_NAME {$DOES}"
+        echo "Usage: wkit php7 {$DOES}"
         exit 1
     fi
 
@@ -118,9 +107,9 @@ app_result() {
     local ERROR=${3:-failed}
 
     if [ $CODE -eq 0 ]; then
-        echo -e "$1 $APP_NAME \033[32m$RIGHT \033[0m"
+        echo -e "$1 php7 \033[32m$RIGHT \033[0m"
     else
-        echo -e "$1 $APP_NAME \033[31m$ERROR \033[0m"
+        echo -e "$1 php7 \033[31m$ERROR \033[0m"
     fi
 
     exit $CODE

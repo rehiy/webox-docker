@@ -1,0 +1,11 @@
+##
+# Server Error Page
+##
+
+location /errpage/ {
+    alias /var/www/default/miss/;
+}
+
+error_page 403 /errpage/403.htm;
+error_page 404 /errpage/404.htm;
+error_page 500 502 503 504 /errpage/50x.htm;

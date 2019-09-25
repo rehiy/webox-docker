@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+
+export APP_USER=nginx
+export APP_GROUP=nginx
+
+#####################################################################
+
+app_prepare() {
+
+    if [ ! -x /usr/bin/nginx ]; then
+        apk add nginx \
+            nginx-mod-http-echo \
+            nginx-mod-http-cache-purge \
+            nginx-mod-http-image-filter \
+            nginx-mod-http-js \
+            nginx-mod-stream \
+            nginx-mod-stream-js
+    fi
+
+    for dir in log run tmp; do
+        [ -d /var/${dir}/nginx ] ||
+            mkdir -p /var/${dir}/nginx
+    done
+
+    if [ ! -d ${wbapp}/var/tmp/nginx/proxy_cache ]; then
+        mkdir -p ${wbapp}/var/tmp/nginx/proxy_cache
+    fi
+
+    chown -R $APP_USER:$APP_GROUP /var/*/nginx
+
+}
+
+#####################################################################
+
+[ "$1" = "prepare" ] && app_prepare

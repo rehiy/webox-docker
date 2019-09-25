@@ -1,7 +1,9 @@
 
 server {
 
-    listen 80 default_server;
+    listen 80;
+
+    server_name www.anrip.net;
 
     set $pool default;
     set $pooldir /var/www/$pool;
@@ -13,15 +15,11 @@ server {
         set $sitedir $pooldir/web/$3.$2.$1;
     }
 
-    if (!-d $sitedir) {
-        set $sitedir $pooldir/miss;
-    }
-
     root  $sitedir;
     index index.php index.htm index.html;
     try_files $uri $uri/ /index.php$is_args$args;
 
     include http.d/22.server_error_page;
-    include http.d/25.server_fastcgi_php7;
+    include http.d/25.server_fastcgi_php5;
 
 }
