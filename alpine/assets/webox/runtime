@@ -7,10 +7,10 @@ export PATH=/srv/webox/bin:$PATH
 
 #####################################################################
 
-if [ ! -x /srv/webox/runtime ]; then
+if [ ! -x /srv/webox/install ]; then
     chmod +x /srv/webox/*/prepare
     chmod +x /srv/webox/*/service
-    chmod +x /srv/webox/runtime
+    chmod +x /srv/webox/install
     chmod +x /srv/webox/bin/*
 fi
 

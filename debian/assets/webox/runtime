@@ -5,12 +5,19 @@ export WBX_VERSION=1
 
 export PATH=/srv/webox/bin:$PATH
 
+export PATH=/srv/library/bin:$PATH
+
+export PATH=/srv/app/bin:$PATH
+export PATH=/srv/app/sbin:$PATH
+
+export LD_LIBRARY_PATH=/srv/library/lib:/srv/app/lib
+
 #####################################################################
 
-if [ ! -x /srv/webox/runtime ]; then
+if [ ! -x /srv/webox/install ]; then
     chmod +x /srv/webox/*/prepare
     chmod +x /srv/webox/*/service
-    chmod +x /srv/webox/runtime
+    chmod +x /srv/webox/install
     chmod +x /srv/webox/bin/*
 fi
 
