@@ -8,4 +8,4 @@ RUN chmod +x /opt/bin/*
 
 ENV PATH /opt/bin:$PATH
 
-ENTRYPOINT ["/opt/bin/init.sh", "ssh"]
+ENTRYPOINT ["/opt/bin/init.sh", "sshd"]
