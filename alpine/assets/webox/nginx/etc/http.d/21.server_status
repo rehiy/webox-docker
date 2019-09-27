@@ -1,0 +1,12 @@
+##
+# Server Status
+##
+
+location /status/nginx {
+    stub_status on;
+}
+
+location ~ ^/status/(\w+)\.(php\d)$ {
+    fastcgi_pass   unix:${wbapp}/var/run/$1/$2.sock;
+    include        fastcgi_params;
+}
