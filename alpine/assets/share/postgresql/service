@@ -86,7 +86,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: wkit postgresql {$DOES}"
+        echo "Usage: okit postgresql {$DOES}"
         exit 1
     fi
 

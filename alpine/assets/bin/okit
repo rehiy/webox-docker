@@ -3,4 +3,4 @@
 
 . /opt/share/runtime
 
-wbx_app_run "$@"
+opt_app_run "$@"

@@ -6,8 +6,8 @@ if [ -x /opt/startup ]; then
 fi
 
 if [ "$1" != "ssh" ]; then
-    /opt/bin/wkit basic prepare
-    /opt/bin/wkit sshd prepare
+    /opt/bin/okit basic prepare
+    /opt/bin/okit sshd prepare
     exec /usr/sbin/sshd -D
 else
     exec "$@"

@@ -94,7 +94,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: wkit php7 {$DOES}"
+        echo "Usage: okit php7 {$DOES}"
         exit 1
     fi
 

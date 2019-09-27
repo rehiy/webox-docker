@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-export WBX_VERSION=1
+export OPT_VERSION=1
 
 export PATH=/opt/bin:$PATH
 
@@ -13,48 +13,48 @@ if [ ! -x /opt/share/runtime ]; then
     chmod +x /opt/share/runtime
 fi
 
-wbx_app_run() {
+opt_app_run() {
 
-    local WBX_APP=$1
-    local WBX_ACTION=$2
-    local WBX_SCRIPT=/opt/share/$1
+    local OPT_APP=$1
+    local OPT_ACTION=$2
+    local OPT_SCRIPT=/opt/share/$1
 
-    case $WBX_ACTION in
+    case $OPT_ACTION in
         prepare)
-            WBX_SCRIPT=$WBX_SCRIPT/prepare
+            OPT_SCRIPT=$OPT_SCRIPT/prepare
         ;;
         *)
-            WBX_SCRIPT=$WBX_SCRIPT/service
+            OPT_SCRIPT=$OPT_SCRIPT/service
         ;;
     esac
 
-    if [ ! -x $WBX_SCRIPT ]; then
-        echo "can't exec $WBX_SCRIPT"
+    if [ ! -x $OPT_SCRIPT ]; then
+        echo "can't exec $OPT_SCRIPT"
         exit 1
     fi
 
-    $WBX_SCRIPT $WBX_ACTION
+    $OPT_SCRIPT $OPT_ACTION
 
 }
 
-wbx_fix_install() {
+opt_fix_install() {
 
-    local WBX_APP WBX_APP_EXTRA
+    local OPT_APP OPT_APP_EXTRA
 
-    for WBX_APP_EXTRA in /opt/share/*; do
+    for OPT_APP_EXTRA in /opt/share/*; do
 
-        WBX_APP=${WBX_APP_EXTRA##*/}
+        OPT_APP=${OPT_APP_EXTRA##*/}
 
-        if [ ! -x $WBX_APP_EXTRA/prepare ]; then
+        if [ ! -x $OPT_APP_EXTRA/prepare ]; then
             continue
         fi
 
-        if [ ! -e /opt/etc/$WBX_APP ] && [ -d $WBX_APP_EXTRA/etc ]; then
-            ln -s ../share/$WBX_APP/etc /opt/etc/$WBX_APP
+        if [ ! -e /opt/etc/$OPT_APP ] && [ -d $OPT_APP_EXTRA/etc ]; then
+            ln -s ../share/$OPT_APP/etc /opt/etc/$OPT_APP
         fi
 
-        echo "exec $WBX_APP_EXTRA/prepare"
-        $WBX_APP_EXTRA/prepare prepare
+        echo "exec $OPT_APP_EXTRA/prepare"
+        $OPT_APP_EXTRA/prepare prepare
 
     done
 

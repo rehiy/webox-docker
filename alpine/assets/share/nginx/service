@@ -76,7 +76,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: wkit nginx {$DOES}"
+        echo "Usage: okit nginx {$DOES}"
         exit 1
     fi
 

@@ -76,7 +76,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: wkit sshd {$DOES}"
+        echo "Usage: okit sshd {$DOES}"
         exit 1
     fi
 

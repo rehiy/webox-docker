@@ -76,7 +76,7 @@ app_usage() {
     local DOES="start|stop|reload|restart|status"
 
     if ! echo "|$DOES|" | grep -q "|$1|"; then
-        echo "Usage: wkit redis {$DOES}"
+        echo "Usage: okit redis {$DOES}"
         exit 1
     fi
 
