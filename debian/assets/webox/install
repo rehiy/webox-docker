@@ -11,3 +11,19 @@ if [ ! -x /usr/bin/apt-extracttemplates ]; then
 fi
 
 #apt install -y iputils-ping vim wget cron
+
+#####################################################################
+
+if [ -n $WBX_VERSION ]; then
+    . /srv/webox/runtime
+fi
+
+if [ ! -f /var/lib/webox/version ]; then
+    mkdir -p /var/lib/webox
+    echo 0 > /var/lib/webox/version
+fi
+
+if [ `cat /var/lib/webox/version` -lt $WBX_VERSION ]; then
+    echo $WBX_VERSION > /var/lib/webox/version
+    wbx_fix_install
+fi

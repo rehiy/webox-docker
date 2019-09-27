@@ -69,7 +69,7 @@ wbx_fix_install() {
         if [ -d $WBX_APP_EXTRA/etc ]; then
             wbx_own_perm $WBX_APP_EXTRA/etc
             if [ ! -e /srv/app/etc/$WBX_APP ]; then
-                ln -s $WBX_APP_EXTRA/etc /srv/app/etc/$WBX_APP
+                cp -a $WBX_APP_EXTRA/etc /srv/app/etc/$WBX_APP
             fi
         fi
 
@@ -79,5 +79,7 @@ wbx_fix_install() {
         fi
 
     done
+
+    echo $WBX_VERSION > /srv/app/etc/version
 
 }

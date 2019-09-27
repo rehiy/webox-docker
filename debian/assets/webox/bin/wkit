@@ -3,4 +3,10 @@
 
 . /srv/webox/runtime
 
-wbx_app_run "$@"
+if [ $# -eq 2 ]; then
+    wbx_app_run "$@"
+fi
+
+if [ "$1" = "install" ]; then
+   /srv/webox/install
+fi

@@ -1,9 +1,19 @@
 #!/bin/sh
 #
 
+apk update
+#####################################################################
+
 if [ -n $WBX_VERSION ]; then
-    . ${webox}/runtime
+    . /srv/webox/runtime
 fi
 
-apk update
+if [ ! -f /var/lib/webox/version ]; then
+    mkdir -p /var/lib/webox
+    echo 0 > /var/lib/webox/version
+fi
 
+if [ `cat /var/lib/webox/version` -lt $WBX_VERSION ]; then
+    echo $WBX_VERSION > /var/lib/webox/version
+    wbx_fix_install
+fi
