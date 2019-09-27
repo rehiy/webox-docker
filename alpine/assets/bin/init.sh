@@ -1,13 +1,13 @@
 #!/bin/sh
 #
 
-if [ -x /srv/startup ]; then
-    /srv/startup init
+if [ -x /opt/startup ]; then
+    /opt/startup init
 fi
 
 if [ "$1" != "ssh" ]; then
-    /srv/bin/wkit basic prepare
-    /srv/bin/wkit sshd prepare
+    /opt/bin/wkit basic prepare
+    /opt/bin/wkit sshd prepare
     exec /usr/sbin/sshd -D
 else
     exec "$@"

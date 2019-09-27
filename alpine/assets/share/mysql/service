@@ -15,7 +15,7 @@ app_start() {
 
     echo "start mysql ..."
 
-    $APP_BIN_FILE --defaults-file=/srv/etc/mysql/my.cnf >/dev/null &
+    $APP_BIN_FILE --defaults-file=/opt/etc/mysql/my.cnf >/dev/null &
 
 }
 

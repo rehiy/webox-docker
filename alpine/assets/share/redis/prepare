@@ -17,8 +17,8 @@ app_prepare() {
             mkdir -p /var/${dir}/redis
     done
 
-    if [ ! -f /srv/etc/redis/conf.d/useful.conf ]; then
-        touch /srv/etc/redis/conf.d/useful.conf
+    if [ ! -f /opt/etc/redis/conf.d/useful.conf ]; then
+        touch /opt/etc/redis/conf.d/useful.conf
     fi
 
     chown -R $APP_USER:$APP_GROUP /var/*/redis

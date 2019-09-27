@@ -3,21 +3,21 @@
 
 export WBX_VERSION=1
 
-export PATH=/srv/bin:$PATH
+export PATH=/opt/bin:$PATH
 
 #####################################################################
 
-if [ ! -x /srv/share/runtime ]; then
-    chmod +x /srv/share/*/prepare
-    chmod +x /srv/share/*/service
-    chmod +x /srv/share/runtime
+if [ ! -x /opt/share/runtime ]; then
+    chmod +x /opt/share/*/prepare
+    chmod +x /opt/share/*/service
+    chmod +x /opt/share/runtime
 fi
 
 wbx_app_run() {
 
     local WBX_APP=$1
     local WBX_ACTION=$2
-    local WBX_SCRIPT=/srv/share/$1
+    local WBX_SCRIPT=/opt/share/$1
 
     case $WBX_ACTION in
         prepare)
@@ -41,7 +41,7 @@ wbx_fix_install() {
 
     local WBX_APP WBX_APP_EXTRA
 
-    for WBX_APP_EXTRA in /srv/share/*; do
+    for WBX_APP_EXTRA in /opt/share/*; do
 
         WBX_APP=${WBX_APP_EXTRA##*/}
 
@@ -49,8 +49,8 @@ wbx_fix_install() {
             continue
         fi
 
-        if [ ! -e /srv/etc/$WBX_APP ] && [ -d $WBX_APP_EXTRA/etc ]; then
-            ln -s ../share/$WBX_APP/etc /srv/etc/$WBX_APP
+        if [ ! -e /opt/etc/$WBX_APP ] && [ -d $WBX_APP_EXTRA/etc ]; then
+            ln -s ../share/$WBX_APP/etc /opt/etc/$WBX_APP
         fi
 
         echo "exec $WBX_APP_EXTRA/prepare"

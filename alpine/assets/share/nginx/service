@@ -15,7 +15,7 @@ app_start() {
 
     echo "start nginx ..."
 
-    $APP_BIN_FILE -c /srv/etc/nginx/nginx.conf
+    $APP_BIN_FILE -c /opt/etc/nginx/nginx.conf
 
 }
 

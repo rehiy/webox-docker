@@ -3,9 +3,9 @@ FROM ubuntu:latest
 LABEL version="1.0.0"
 LABEL maintainer="mail@anrip.com"
 
-ADD assets/ /srv/
-RUN chmod +x /srv/bin/*
+ADD assets/ /opt/
+RUN chmod +x /opt/bin/*
 
-ENV PATH /srv/bin:$PATH
+ENV PATH /opt/bin:$PATH
 
-ENTRYPOINT ["/srv/bin/init.sh", "ssh"]
+ENTRYPOINT ["/opt/bin/init.sh", "ssh"]

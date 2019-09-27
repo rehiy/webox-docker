@@ -15,7 +15,7 @@ app_start() {
 
     echo "start redis ..."
 
-    $APP_BIN_FILE /srv/etc/redis/redis.conf
+    $APP_BIN_FILE /opt/etc/redis/redis.conf
 
 }
 

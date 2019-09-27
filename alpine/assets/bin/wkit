@@ -1,6 +1,6 @@
 #!/bin/sh
 #
 
-. /srv/share/runtime
+. /opt/share/runtime
 
 wbx_app_run "$@"
