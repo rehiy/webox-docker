@@ -11,6 +11,7 @@ if [ ! -x /opt/share/runtime ]; then
     chmod +x /opt/share/*/prepare
     chmod +x /opt/share/*/service
     chmod +x /opt/share/runtime
+    chmod +x /opt/bin/*
 fi
 
 opt_app_run() {
