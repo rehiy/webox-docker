@@ -1,0 +1,106 @@
+#!/bin/sh
+#
+
+export APP_BIN_FILE=/usr/sbin/sshd
+export APP_PID_FILE=/var/run/sshd.pid
+
+#####################################################################
+
+app_start() {
+
+    if app_check ; then
+        echo "sshd is already running"
+        exit 1
+    fi
+
+    echo "start sshd ..."
+
+    $APP_BIN_FILE -D &
+
+}
+
+app_stop() {
+
+    if ! app_check ; then
+        echo "sshd is not running"
+        exit 1
+    fi
+
+    echo "stop sshd ..."
+
+    kill -TERM `cat $APP_PID_FILE`
+
+}
+
+app_reload() {
+
+    if ! app_check ; then
+        echo "sshd is not running"
+        exit 1
+    fi
+
+    echo "reload sshd ..."
+
+    kill -HUP `cat $APP_PID_FILE`
+
+}
+
+app_restart() {
+
+    app_stop && sleep 3 && app_start
+
+}
+
+app_status() {
+
+    app_check
+    app_result 'status:' 'running' 'stopped'
+
+}
+
+app_check() {
+
+    if [ ! -f $APP_PID_FILE ] ; then
+        return 1
+    fi
+
+    if ! kill -0 `cat $APP_PID_FILE` 2>/dev/null ; then
+        rm -f $APP_PID_FILE
+        return 1
+    fi
+
+}
+
+app_usage() {
+
+    local DOES="start|stop|reload|restart|status"
+
+    if ! echo "|$DOES|" | grep -q "|$1|"; then
+        echo "Usage: wkit sshd {$DOES}"
+        exit 1
+    fi
+
+}
+
+app_result() {
+
+    local CODE=$?
+    local RIGHT=${2:-done}
+    local ERROR=${3:-failed}
+
+    if [ $CODE -eq 0 ]; then
+        echo -e "$1 sshd \033[32m$RIGHT \033[0m"
+    else
+        echo -e "$1 sshd \033[31m$ERROR \033[0m"
+    fi
+
+    exit $CODE
+
+}
+
+#####################################################################
+
+app_usage $1 || exit 1
+
+app_$1
+app_result $1

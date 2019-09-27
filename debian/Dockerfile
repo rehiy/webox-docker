@@ -3,9 +3,9 @@ FROM debian:buster-slim
 LABEL version="1.0.0"
 LABEL maintainer="mail@anrip.com"
 
-ADD assets/ /opt/
-RUN chmod +x /opt/init.sh
+ADD assets/ /srv/
+RUN chmod +x /srv/init.sh
 
-ENV PATH /opt/bin:$PATH
+ENV PATH /srv/webox/bin:$PATH
 
-ENTRYPOINT ["/opt/init.sh", "sshd"]
+ENTRYPOINT ["/srv/init.sh"]

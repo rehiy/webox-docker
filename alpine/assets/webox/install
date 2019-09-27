@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+
+if [ -n $WBX_VERSION ]; then
+    . ${webox}/runtime
+fi
+
+apk update
+

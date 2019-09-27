@@ -1,11 +1,10 @@
 #!/bin/sh
 #
 
-. /opt/share/runtime
+. /srv/webox/runtime
 
-if [ "$1" != "sshd" ]; then
-    opt_app_run basic prepare
-    opt_app_run sshd prepare
+if [ -n $1 ]; then
+    wbx_app_run sshd prepare
     exec /usr/sbin/sshd -D
 else
     exec "$@"

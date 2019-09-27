@@ -1,0 +1,83 @@
+#!/bin/sh
+#
+
+export WBX_VERSION=1
+
+export PATH=/srv/webox/bin:$PATH
+
+#####################################################################
+
+if [ ! -x /srv/webox/runtime ]; then
+    chmod +x /srv/webox/*/prepare
+    chmod +x /srv/webox/*/service
+    chmod +x /srv/webox/runtime
+    chmod +x /srv/webox/bin/*
+fi
+
+wbx_app_run() {
+
+    local WBX_APP=$1
+    local WBX_ACTION=$2
+    local WBX_SCRIPT=/srv/webox/$1
+
+    case $WBX_ACTION in
+        prepare)
+            WBX_SCRIPT=$WBX_SCRIPT/prepare
+        ;;
+        *)
+            WBX_SCRIPT=$WBX_SCRIPT/service
+        ;;
+    esac
+
+    if [ ! -x $WBX_SCRIPT ]; then
+        echo "can't exec $WBX_SCRIPT"
+        exit 1
+    fi
+
+    $WBX_SCRIPT $WBX_ACTION
+
+}
+
+wbx_own_perm() {
+
+    local WBX_UID=${2:-0}
+    local WBX_GID=${3:-0}
+
+    if [ -z $1 ] || [ ${#1} -lt 3 ] ; then
+        echo "can't apply perm to this dir $1"
+        exit 1
+    fi
+
+    find $1 \( ! -perm 0644 -type f \) -exec chmod 0644 {} \;
+    find $1 \( ! -perm 0755 -type d \) -exec chmod 0755 {} \;
+    find $1 ! \( -uid $WBX_UID -gid $WBX_GID \) -exec chown $WBX_UID:$WBX_GID {} \;
+
+}
+
+wbx_fix_install() {
+
+    local WBX_APP WBX_APP_EXTRA
+
+    if [ ! -d /srv/app/etc ]; then
+        mkdir -p /srv/app/etc
+    fi
+
+    for WBX_APP_EXTRA in /srv/webox/*; do
+
+        WBX_APP=${WBX_APP_EXTRA##*/}
+
+        if [ -d $WBX_APP_EXTRA/etc ]; then
+            wbx_own_perm $WBX_APP_EXTRA/etc
+            if [ ! -e /srv/app/etc/$WBX_APP ]; then
+                ln -s $WBX_APP_EXTRA/etc /srv/app/etc/$WBX_APP
+            fi
+        fi
+
+        if [ -x $WBX_APP_EXTRA/prepare ]; then
+            echo "exec $WBX_APP_EXTRA/prepare"
+            $WBX_APP_EXTRA/prepare prepare
+        fi
+
+    done
+
+}
