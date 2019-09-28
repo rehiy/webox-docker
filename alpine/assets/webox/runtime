@@ -48,7 +48,7 @@ wbx_own_perm() {
 
     find $1 \( ! -perm 0644 -type f \) -exec chmod 0644 {} \;
     find $1 \( ! -perm 0755 -type d \) -exec chmod 0755 {} \;
-    find $1 ! \( -uid $WBX_UID -gid $WBX_GID \) -exec chown $WBX_UID:$WBX_GID {} \;
+    chown -R $WBX_UID:$WBX_GID $1
 
 }
 
