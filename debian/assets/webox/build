@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+
+set -x
+
+apt update
+
+apt install -y ssh wget
+
+#####################################################################
+
+wget -qO- http://get.vmlu.com/webox/wb-fetch | sh
+
+if [ ! -d ~/srv/webox ]; then
+    echo "can't download webox.tgz"
+    exit 1
+fi
+
+sed -i 's/ln -s/cp -a/' ~/srv/webox/runtime
+
+cp -av ~/srv/* /srv/
+rm -rf ~/srv
+
+#####################################################################
+
+chmod +x /srv/init.sh
+chmod +x /srv/webox/bin/*
+
+/srv/webox/bin/clean
+rm -f /srv/webox/build

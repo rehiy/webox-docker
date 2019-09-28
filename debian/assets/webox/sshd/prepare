@@ -2,7 +2,7 @@
 #
 
 if [ ! -x /usr/sbin/sshd ]; then
-    apt install -y openssh-server
+    apt install -y ssh
 fi
 
 if [ ! -d /run/sshd ]; then

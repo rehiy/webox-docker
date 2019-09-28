@@ -3,8 +3,6 @@
 
 apk update
 
-#####################################################################
-
 if [ -n $WBX_VERSION ]; then
     . /srv/webox/runtime
 fi

@@ -3,9 +3,7 @@
 
 . /srv/webox/runtime
 
-if [ -n $1 ]; then
+if [ $# -eq 0 ]; then
     wbx_app_run sshd prepare
     exec /usr/sbin/sshd -D
-else
-    exec "$@"
 fi

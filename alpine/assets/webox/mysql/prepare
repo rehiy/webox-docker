@@ -25,6 +25,7 @@ app_prepare() {
 
     if [ ! -f /var/lib/mysql/ibdata1 ]; then
         mysql_install_db --user=$APP_USER --datadir=/var/lib/mysql
+        grep password /var/log/mysql/error.log
     fi
 
 }

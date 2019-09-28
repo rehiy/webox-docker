@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+
+set -x
+
+chmod +x /srv/init.sh
+chmod +x /srv/webox/bin/*
+
+chmod +x /srv/webox/install
+/srv/webox/install
+
+/srv/webox/bin/clean
+rm -f /srv/webox/build
