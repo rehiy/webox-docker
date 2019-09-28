@@ -1,11 +1,11 @@
 #!/bin/sh
 #
 
-set -x
+set -ex
 
 apt update
 
-apt install -y ssh wget
+apt install -y cron wget
 
 #####################################################################
 
