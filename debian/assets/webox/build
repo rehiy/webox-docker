@@ -5,7 +5,7 @@ set -ex
 
 apt update
 
-apt install -y cron wget
+apt install -y apt-utils wget
 
 #####################################################################
 
