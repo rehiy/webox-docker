@@ -1,4 +1,4 @@
 #!/bin/sh
 #
 
-docker build -t anrip/ubuntu .
+docker build -t anrip/webox:ubuntu .

@@ -1,4 +1,4 @@
 #!/bin/sh
 #
 
-docker build -t anrip/debian .
+docker build -t anrip/webox:debian .
