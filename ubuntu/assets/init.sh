@@ -2,5 +2,5 @@
 #
 
 if [ $# -eq 0 ]; then
-    tailf /dev/null
+    tail -f /dev/null
 fi
