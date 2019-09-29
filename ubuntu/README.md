@@ -83,5 +83,5 @@ please edit the config files in /var/webox/etc/\*, then reload the service
 # Set MySQL password
 
 ```shell
-docker exec -it webox /srv/app/bin/mysqladmin -u root password a1B2c3E4
+docker exec -it webox /srv/app/bin/mysqladmin password a1B2c3E4
 ```
