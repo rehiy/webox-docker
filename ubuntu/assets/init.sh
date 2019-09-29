@@ -1,11 +1,8 @@
 #!/bin/sh
 #
 
-if [ $# -eq 0 ]; then
-    tail -f /dev/null
+if [ "$1" = "auto"]; then
+    /srv/service start
 fi
 
-if [ "$1" = "quick"]; then
-    /srv/service start
-    exec tail -f /dev/null
-fi
+exec tail -f /dev/null

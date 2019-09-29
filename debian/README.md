@@ -27,7 +27,7 @@ docker pull anrip/webox:debian
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -p 80:80 anrip/webox:debian quick
+docker run -d -p 80:80 anrip/webox:debian auto
 ```
 
 # Simple Usage

@@ -24,7 +24,7 @@ docker pull anrip/webox:alpine
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -p 80:80 anrip/webox:alpine quick
+docker run -d -p 80:80 anrip/webox:alpine auto
 ```
 
 # Simple Usage
