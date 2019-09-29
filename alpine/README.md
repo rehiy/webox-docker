@@ -76,3 +76,9 @@ docker exec -it webox wkit php7 [start|stop|restart|reload]
 ## config module
 
 please edit the config files in /var/webox/etc/\*, then reload the service
+
+# Set MySQL password
+
+```shell
+docker exec -it webox /srv/app/bin/mysqladmin -u root password a1B2c3E4
+```
