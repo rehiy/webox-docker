@@ -1,10 +1,14 @@
 # Feature
 
 -   alpine   3.10
+
 -   nginx    1.16.x
+
 -   mariadb  10.13.x
--   php      7.3.x
+
 -   redis    5.0.x
+
+-   php      7.3.x
 
 
 # Install

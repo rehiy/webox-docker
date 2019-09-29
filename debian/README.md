@@ -1,11 +1,23 @@
 # Feature
 
--   debian   10
+-   debian   10.x
+
 -   nginx    1.16.x
+
+    -   njs
+    -   echo
+    -   cache_purge
+    -   maxmind/geoip2
+
 -   mysql    5.7.x
+
+-   redis    5.0.x
+
 -   php      5.6.x
 -   php      7.3.x
--   redis    5.0.x
+
+    -   redis
+    -   maxmind/geoip2
 
 # Install
 
@@ -44,4 +56,4 @@ docker exec -it webox wkit php7 [start|stop|restart|reload]
 
 ## config service
 
-please edit the config files in /var/webox/etc/*, then reload the service
+please edit the config files in /var/webox/etc/\*, then reload the service
