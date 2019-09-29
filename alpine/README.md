@@ -21,7 +21,7 @@
 docker pull anrip/webox:alpine
 ```
 
-## start and visit <http://localhost>
+## start and visit `http://localhost`
 
 ```shell
 docker run -d -p 80:80 anrip/webox:alpine
