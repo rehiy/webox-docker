@@ -54,8 +54,6 @@ docker exec -it vmbox /srv/service [start|stop|restart|reload]
 
 When `auto` are not used, you can manual control the services
 
-# Module Usage
-
 ## enable module
 
 ```shell
