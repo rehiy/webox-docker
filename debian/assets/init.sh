@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-if [ "$1" = "auto"]; then
+if [ "$1" = "auto" ]; then
     /srv/service start
 fi
 
