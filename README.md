@@ -28,6 +28,8 @@ docker run --name vmbox -d \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
     vmlu/webox auto
+
+echo hi~ >/var/vmbox/htdoc/default/miss/index.html
 ```
 
 ## the following commands are supported
@@ -40,7 +42,7 @@ docker exec -it vmbox /srv/service [start|stop|restart|reload]
 
 When `auto` are not used, you can manual control the services
 
-## enable one or more modules
+## enable the modules you need
 
 ```shell
 docker exec -it vmbox wkit nginx prepare
@@ -50,7 +52,7 @@ docker exec -it vmbox wkit php5 prepare
 docker exec -it vmbox wkit php7 prepare
 ```
 
-## control one or more modules
+## control the modules you need
 
 ```shell
 docker exec -it vmbox wkit nginx [start|stop|restart|reload]
@@ -60,16 +62,24 @@ docker exec -it vmbox wkit php5 [start|stop|restart|reload]
 docker exec -it vmbox wkit php7 [start|stop|restart|reload]
 ```
 
-## config one or more modules
+## configure the modules you need
 
 please edit the config files in /var/vmbox/etc/\*, then reload the service
 
-# MySQL Password
+# FAQ
+
+## Web Root Path
+
+If the host is `www.anrip.com`, the webroot will be `/var/vmbox/htdoc/defualt/com.anrip.www`
+
+Otherwise, the default webroot is `/var/vmbox/htdoc/defualt/miss`
+
+## MySQL Password
 
 ```shell
 docker exec -it vmbox /srv/app/bin/mysqladmin password a1B2c3E4
 ```
 
-# More Information
+## More Issues
 
-See <https://github.com/anrip/webox-docker> for more information.
+See https://github.com/anrip/webox-docker/issues for more issues

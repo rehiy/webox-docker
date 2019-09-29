@@ -33,4 +33,4 @@ docker run -d -P vmlu/webox auto
 
 # More Information
 
-See <https://github.com/anrip/webox-docker> for more information.
+See https://github.com/anrip/webox-docker for more information.
