@@ -69,3 +69,7 @@ please edit the config files in /var/vmbox/etc/\*, then reload the service
 ```shell
 docker exec -it vmbox /srv/app/bin/mysqladmin password a1B2c3E4
 ```
+
+# More Information
+
+See <https://github.com/anrip/webox-docker> for more information.
