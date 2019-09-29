@@ -2,6 +2,8 @@
 
 lnmp server based on docker of ubuntu, debian or alpine
 
+contains the following modules: nginx, mysql, redis, php5/php7
+
 # Quikc Start
 
 ```shell
