@@ -8,4 +8,4 @@ ADD assets/ /srv/
 ENV PATH /srv/webox/bin:$PATH
 RUN /bin/sh /srv/webox/build
 
-ENTRYPOINT ["/srv/init.sh", "$@"]
+ENTRYPOINT ["/srv/init.sh"]
