@@ -30,9 +30,11 @@ docker run --name webox -d \
     -v /var/webox/mysql:/srv/app/var/lib/mysql \
     -v /var/webox/redis:/srv/app/var/lib/redis \
     anrip/webox
+
+docker exec -it webox /srv/service start
 ```
 
-# Usage
+# Module Usage
 
 ## enable service
 
