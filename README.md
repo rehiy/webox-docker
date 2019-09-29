@@ -16,6 +16,6 @@ docker pull anrip/webox
 docker run -d -p 80:80 anrip/webox
 ```
 
-# More Documnets
+# Detail Documnets
 
 please see ubuntu/README.md, debian/README.md or alpine/README.md
