@@ -25,10 +25,10 @@
 docker pull anrip/webox:debian
 
 docker run --name webox -d \
-    -v /var/webox/www:/srv/htdoc \
     -v /var/webox/etc:/srv/app/etc \
-    -v /var/webox/var/mysql:/srv/app/var/lib/mysql \
-    -v /var/webox/var/redis:/srv/app/var/lib/redis \
+    -v /var/webox/htdoc:/srv/htdoc/default \
+    -v /var/webox/mysql:/srv/app/var/lib/mysql \
+    -v /var/webox/redis:/srv/app/var/lib/redis \
     anrip/webox:debian
 ```
 
