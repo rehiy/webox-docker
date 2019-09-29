@@ -33,25 +33,25 @@ docker run -d -p 80:80 vmlu/webox auto
 # Simple Usage
 
 ```shell
-docker run --name webox -d \
+docker run --name vmbox -d \
     -p 80:80 -p 443:443 \
-    -v /var/webox/etc:/srv/app/etc \
-    -v /var/webox/htdoc:/srv/htdoc/default \
-    -v /var/webox/mysql:/srv/app/var/lib/mysql \
-    -v /var/webox/redis:/srv/app/var/lib/redis \
+    -v /var/vmbox/etc:/srv/app/etc \
+    -v /var/vmbox/htdoc:/srv/htdoc/default \
+    -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
+    -v /var/vmbox/redis:/srv/app/var/lib/redis \
     vmlu/webox
 ```
 
 ## start nginx/mysql/redis/php7 service (auto prepare)
 
 ```shell
-docker exec -it webox /srv/service start
+docker exec -it vmbox /srv/service start
 ```
 
 ## The following commands are also supported
 
 ```shell
-docker exec -it webox /srv/service [start|stop|restart|reload]
+docker exec -it vmbox /srv/service [start|stop|restart|reload]
 ```
 
 # Module Usage
@@ -59,29 +59,29 @@ docker exec -it webox /srv/service [start|stop|restart|reload]
 ## enable module
 
 ```shell
-docker exec -it webox wkit nginx prepare
-docker exec -it webox wkit mysql prepare
-docker exec -it webox wkit redis prepare
-docker exec -it webox wkit php5 prepare
-docker exec -it webox wkit php7 prepare
+docker exec -it vmbox wkit nginx prepare
+docker exec -it vmbox wkit mysql prepare
+docker exec -it vmbox wkit redis prepare
+docker exec -it vmbox wkit php5 prepare
+docker exec -it vmbox wkit php7 prepare
 ```
 
 ## control module
 
 ```shell
-docker exec -it webox wkit nginx [start|stop|restart|reload]
-docker exec -it webox wkit mysql [start|stop|restart|reload]
-docker exec -it webox wkit redis [start|stop|restart|reload]
-docker exec -it webox wkit php5 [start|stop|restart|reload]
-docker exec -it webox wkit php7 [start|stop|restart|reload]
+docker exec -it vmbox wkit nginx [start|stop|restart|reload]
+docker exec -it vmbox wkit mysql [start|stop|restart|reload]
+docker exec -it vmbox wkit redis [start|stop|restart|reload]
+docker exec -it vmbox wkit php5 [start|stop|restart|reload]
+docker exec -it vmbox wkit php7 [start|stop|restart|reload]
 ```
 
 ## config module
 
-please edit the config files in /var/webox/etc/\*, then reload the service
+please edit the config files in /var/vmbox/etc/\*, then reload the service
 
 # Set MySQL password
 
 ```shell
-docker exec -it webox /srv/app/bin/mysqladmin password a1B2c3E4
+docker exec -it vmbox /srv/app/bin/mysqladmin password a1B2c3E4
 ```
