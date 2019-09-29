@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-set -ex
+set -xe
 
 apt update
 

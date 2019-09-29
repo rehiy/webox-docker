@@ -1,11 +1,11 @@
 FROM debian:buster-slim
 
-LABEL version="1.0.0"
+LABEL version="1.1.0"
 LABEL maintainer="mail@anrip.com"
 
 ADD assets/ /srv/
-RUN /bin/sh /srv/webox/build
 
 ENV PATH /srv/webox/bin:$PATH
+RUN /bin/sh /srv/webox/build
 
-ENTRYPOINT ["/srv/init.sh"]
+ENTRYPOINT ["/srv/init.sh", "$@"]
