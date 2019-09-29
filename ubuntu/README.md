@@ -27,7 +27,7 @@ docker pull vmlu/webox
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -p 80:80 vmlu/webox auto
+docker run -d -P vmlu/webox auto
 ```
 
 # Simple Usage

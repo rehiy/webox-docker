@@ -24,7 +24,7 @@ docker pull vmlu/webox:alpine
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -p 80:80 vmlu/webox:alpine auto
+docker run -d -P vmlu/webox:alpine auto
 ```
 
 # Simple Usage

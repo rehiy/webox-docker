@@ -8,4 +8,6 @@ ADD assets/ /srv/
 ENV PATH /srv/webox/bin:$PATH
 RUN /bin/sh /srv/webox/build
 
+EXPOSE 80 443
+
 ENTRYPOINT ["/srv/init.sh"]
