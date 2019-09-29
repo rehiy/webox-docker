@@ -21,13 +21,13 @@
 # Quikc Start
 
 ```shell
-docker pull anrip/webox
+docker pull vmlu/webox
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -p 80:80 anrip/webox auto
+docker run -d -p 80:80 vmlu/webox auto
 ```
 
 # Simple Usage
@@ -39,7 +39,7 @@ docker run --name webox -d \
     -v /var/webox/htdoc:/srv/htdoc/default \
     -v /var/webox/mysql:/srv/app/var/lib/mysql \
     -v /var/webox/redis:/srv/app/var/lib/redis \
-    anrip/webox
+    vmlu/webox
 ```
 
 ## start nginx/mysql/redis/php7 service (auto prepare)
