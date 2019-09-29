@@ -32,6 +32,8 @@ docker run -d -P vmlu/webox:debian auto
 
 # Simple Usage
 
+## auto prepare and start nginx/mysql/redis/php7
+
 ```shell
 docker run --name vmbox -d \
     -p 80:80 -p 443:443 \
@@ -39,22 +41,18 @@ docker run --name vmbox -d \
     -v /var/vmbox/htdoc:/srv/htdoc/default \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
-    vmlu/webox:debian
+    vmlu/webox:debian auto
 ```
 
-## start nginx/mysql/redis/php7 service (auto prepare)
-
-```shell
-docker exec -it vmbox /srv/service start
-```
-
-## The following commands are also supported
+## The following commands are supported
 
 ```shell
 docker exec -it vmbox /srv/service [start|stop|restart|reload]
 ```
 
-# Module Usage
+# Manual Control Services
+
+When `auto` are not used, you can manual control the services
 
 ## enable module
 
