@@ -21,9 +21,7 @@ docker run -d -P vmlu/webox auto
 ## auto prepare and start nginx/mysql/redis/php7
 
 ```shell
-docker run --name vmbox -d \
-    -p 80:80 -p 443:443 \
-    -v /var/vmbox/etc:/srv/app/etc \
+docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
     -v /var/vmbox/webroot:/srv/htdoc/default/web \
@@ -42,31 +40,20 @@ If the host is `www.anrip.com`, the webroot will be `/var/vmbox/webroot/com.anri
 
 # Manual Control Services
 
-When `auto` are not used, you can manual control the services
-
-## enable the modules you need
+## set `WBX_APPS`, you can start some modules you need
 
 ```shell
-docker exec -it vmbox wkit nginx prepare
-docker exec -it vmbox wkit mysql prepare
-docker exec -it vmbox wkit redis prepare
-docker exec -it vmbox wkit php5 prepare
-docker exec -it vmbox wkit php7 prepare
-```
-
-## control the modules you need
-
-```shell
-docker exec -it vmbox wkit nginx [start|stop|restart|reload]
-docker exec -it vmbox wkit mysql [start|stop|restart|reload]
-docker exec -it vmbox wkit redis [start|stop|restart|reload]
-docker exec -it vmbox wkit php5 [start|stop|restart|reload]
-docker exec -it vmbox wkit php7 [start|stop|restart|reload]
+docker run --name vmbox -d -P \
+    -v /var/vmbox/etc:/srv/app/etc \
+    -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
+    -v /var/vmbox/webroot:/srv/htdoc/default/web \
+    --env 'WBX_APPS=nginx mysql php5' \
+    vmlu/webox auto
 ```
 
 ## configure the modules you need
 
-please edit the config files in /var/vmbox/etc/\*, then reload the service
+please edit the config files in `/var/vmbox/etc/*`, then reload the service
 
 # Important Notice
 
