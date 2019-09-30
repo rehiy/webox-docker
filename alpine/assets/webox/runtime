@@ -5,6 +5,10 @@ export WBX_VERSION=1
 
 export PATH=/srv/webox/bin:$PATH
 
+if [ -z "$WBX_APPS" ]; then
+    export WBX_APPS='nginx mysql redis php7'
+fi
+
 #####################################################################
 
 if [ ! -x /srv/webox/runtime ]; then
@@ -14,70 +18,68 @@ fi
 
 wbx_app_run() {
 
-    local WBX_APP=$1
-    local WBX_ACTION=$2
-    local WBX_SCRIPT=/srv/webox/$1
+    local APP_NAME=$1
+    local APP_ACTION=$2
 
-    case $WBX_ACTION in
-        prepare)
-            WBX_SCRIPT=$WBX_SCRIPT/prepare
-        ;;
-        *)
-            WBX_SCRIPT=$WBX_SCRIPT/service
-        ;;
-    esac
+    local APP_SCRIPT=/srv/webox/$1/service
 
-    if [ ! -x $WBX_SCRIPT ]; then
-        echo "can't exec $WBX_SCRIPT"
+    if [ ! -x $APP_SCRIPT ]; then
+        echo "can't exec $APP_SCRIPT"
         exit 1
     fi
 
-    $WBX_SCRIPT $WBX_ACTION
+    $APP_SCRIPT $APP_ACTION
 
 }
 
 wbx_own_perm() {
 
-    local WBX_UID=${2:-0}
-    local WBX_GID=${3:-0}
+    local APP_UID=${2:-0}
+    local APP_GID=${3:-0}
 
     if [ -z $1 ] || [ ${#1} -lt 3 ] ; then
         echo "can't apply perm to this dir $1"
         exit 1
     fi
 
+    chown -R $APP_UID:$APP_GID $1
     find $1 \( ! -perm 0644 -type f \) -exec chmod 0644 {} \;
     find $1 \( ! -perm 0755 -type d \) -exec chmod 0755 {} \;
-    chown -R $WBX_UID:$WBX_GID $1
 
 }
 
 wbx_fix_install() {
 
-    local WBX_APP WBX_APP_EXTRA
+    local APP_NAME APP_EXDIR
 
-    if [ ! -d /srv/app/etc ]; then
-        mkdir -p /srv/app/etc
+    local APP_LIST="$@"
+    if [ $# -eq 0 ]; then
+        APP_LIST=`ls /srv/webox/`
     fi
 
-    for WBX_APP_EXTRA in /srv/webox/*; do
+    local ETC_TARGET=/srv/app/etc
+    if [ ! -d $ETC_TARGET ]; then
+        mkdir -p $ETC_TARGET
+    fi
 
-        WBX_APP=${WBX_APP_EXTRA##*/}
+    for APP_NAME in $APP_LIST; do
 
-        if [ -d $WBX_APP_EXTRA/etc ]; then
-            wbx_own_perm $WBX_APP_EXTRA/etc
-            if [ ! -e /srv/app/etc/$WBX_APP ]; then
-                cp -a $WBX_APP_EXTRA/etc /srv/app/etc/$WBX_APP
+        APP_EXDIR=/srv/webox/$APP_NAME
+
+        if [ -d $APP_EXDIR/etc ]; then
+            wbx_own_perm $APP_EXDIR/etc
+            if [ ! -e $ETC_TARGET/$APP_NAME ]; then
+                ln -s $APP_EXDIR/etc $ETC_TARGET/$APP_NAME
             fi
         fi
 
-        if [ -x $WBX_APP_EXTRA/prepare ]; then
-            echo "exec $WBX_APP_EXTRA/prepare"
-            $WBX_APP_EXTRA/prepare prepare
+        if [ -x $APP_EXDIR/prepare ]; then
+            echo "exec $APP_EXDIR/prepare"
+            $APP_EXDIR/prepare prepare
         fi
 
     done
 
-    echo $WBX_VERSION > /srv/app/etc/version
+    echo $WBX_VERSION > $ETC_TARGET/version
 
 }

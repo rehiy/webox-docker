@@ -4,10 +4,9 @@
 . /srv/webox/runtime
 
 if [ ! -e /var/lib/webox ]; then
-    wkit install
+    /srv/webox/install
 fi
 
-wkit php7  $1
-wkit redis $1
-wkit mysql $1
-wkit nginx $1
+for APP in $WBX_APPS; do
+    wkit $APP $1
+done

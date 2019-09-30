@@ -1,8 +1,6 @@
 #!/bin/sh
 #
 
-apk update
-
 if [ -n $WBX_VERSION ]; then
     . /srv/webox/runtime
 fi
@@ -14,5 +12,5 @@ fi
 
 if [ `cat /var/lib/webox/version` -lt $WBX_VERSION ]; then
     echo $WBX_VERSION > /var/lib/webox/version
-    wbx_fix_install
+    wbx_fix_install "$WBX_APPS"
 fi

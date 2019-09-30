@@ -3,11 +3,18 @@
 
 set -xe
 
-chmod +x /srv/init.sh
-chmod +x /srv/webox/bin/*
+apk update
+
+#####################################################################
+
 chmod +x /srv/webox/install
 
 /srv/webox/install
+
+#####################################################################
+
+chmod +x /srv/init.sh
+chmod +x /srv/webox/bin/*
 
 /srv/webox/bin/clean
 rm -f /srv/webox/build
