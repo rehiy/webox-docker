@@ -68,14 +68,14 @@ docker exec -it vmbox wkit php7 [start|stop|restart|reload]
 
 please edit the config files in /var/vmbox/etc/\*, then reload the service
 
-# FAQ
+# Important Notice
 
-## MySQL Password
+## don't forget change mysql password
 
 ```shell
 docker exec -it vmbox /srv/app/bin/mysqladmin password a1B2c3E4
 ```
 
-## More Issues
+# More Issues
 
 See https://github.com/anrip/webox-docker/issues for more issues
