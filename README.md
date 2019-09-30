@@ -24,12 +24,10 @@ docker run -d -P vmlu/webox auto
 docker run --name vmbox -d \
     -p 80:80 -p 443:443 \
     -v /var/vmbox/etc:/srv/app/etc \
-    -v /var/vmbox/htdoc:/srv/htdoc/default \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
+    -v /var/vmbox/webroot:/srv/htdoc/default/web \
     vmlu/webox auto
-
-echo hi~ >/var/vmbox/htdoc/default/miss/index.html
 ```
 
 ## the following commands are supported
@@ -37,6 +35,10 @@ echo hi~ >/var/vmbox/htdoc/default/miss/index.html
 ```shell
 docker exec -it vmbox /srv/service [start|stop|restart|reload]
 ```
+
+## put your files to host's webroot path
+
+If the host is `www.anrip.com`, the webroot will be `/var/vmbox/webroot/com.anrip.www/`
 
 # Manual Control Services
 
@@ -67,12 +69,6 @@ docker exec -it vmbox wkit php7 [start|stop|restart|reload]
 please edit the config files in /var/vmbox/etc/\*, then reload the service
 
 # FAQ
-
-## Web Root Path
-
-If the host is `www.anrip.com`, the webroot will be `/var/vmbox/htdoc/defualt/com.anrip.www`
-
-Otherwise, the default webroot is `/var/vmbox/htdoc/defualt/miss`
 
 ## MySQL Password
 
