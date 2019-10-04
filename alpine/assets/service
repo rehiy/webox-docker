@@ -3,9 +3,7 @@
 
 . /srv/webox/runtime
 
-if [ ! -e /var/lib/webox ]; then
-    /srv/webox/install
-fi
+wkit install
 
 for APP in $WBX_APPS; do
     wkit $APP $1

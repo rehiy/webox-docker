@@ -3,18 +3,20 @@
 
 export WBX_VERSION=1
 
-export PATH=/srv/webox/bin:$PATH
-
 if [ -z "$WBX_APPS" ]; then
     export WBX_APPS='nginx mysql redis php7'
 fi
 
-#####################################################################
+if ! echo $PATH | grep -q ${webox}; then
+    export PATH=${webox}/bin:$PATH
+fi
 
 if [ ! -x /srv/webox/runtime ]; then
     chmod +x /srv/webox/*/*
     chmod +x /srv/webox/*
 fi
+
+#####################################################################
 
 wbx_app_run() {
 
@@ -43,6 +45,7 @@ wbx_own_perm() {
     fi
 
     chown -R $APP_UID:$APP_GID $1
+
     find $1 \( ! -perm 0644 -type f \) -exec chmod 0644 {} \;
     find $1 \( ! -perm 0755 -type d \) -exec chmod 0755 {} \;
 
