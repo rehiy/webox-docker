@@ -33,7 +33,7 @@ app_start() {
 
     done
 
-    $APP_BIN_FILE -c /srv/app/etc/php7 -y /srv/app/etc/php7/fpm.conf
+    $APP_BIN_FILE -c /srv/app/etc/php7 -y /srv/app/etc/php7/php-fpm.conf
 
 }
 
