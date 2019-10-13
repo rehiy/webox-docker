@@ -1,8 +1,8 @@
 #!/bin/sh
 #
 
-if [ -x /srv/bin/rc.webox ]; then
-    /srv/bin/rc.webox
+if [ -x /srv/app/etc/rc.webox ]; then
+    /srv/app/etc/rc.webox
 fi
 
 if [ "$1" = "auto" ]; then
