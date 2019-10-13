@@ -30,9 +30,11 @@ app_prepare() {
         adduser -S -D -h /var/www -s /sbin/nologin -G $APP_GROUP $APP_USER
     fi
 
-    for dir in log run tmp; do
-        [ -d /var/${dir}/php7 ] ||
-            mkdir -p /var/${dir}/php7
+    local DIR
+
+    for DIR in log run tmp; do
+        [ -d /var/$DIR/php7 ] ||
+            mkdir -p /var/$DIR/php7
     done
 
     chown -R $APP_USER:$APP_GROUP /var/*/php7

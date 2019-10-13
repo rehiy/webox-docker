@@ -12,9 +12,11 @@ app_prepare() {
         apk add redis
     fi
 
-    for dir in lib log run tmp; do
-        [ -d /var/${dir}/redis ] ||
-            mkdir -p /var/${dir}/redis
+    local DIR
+
+    for DIR in lib log run tmp; do
+        [ -d /var/$DIR/redis ] ||
+            mkdir -p /var/$DIR/redis
     done
 
     if [ ! -f /srv/app/etc/redis/conf.d/useful.conf ]; then

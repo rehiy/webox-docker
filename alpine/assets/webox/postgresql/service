@@ -71,12 +71,12 @@ app_status() {
 
 app_check() {
 
-    if [ ! -f ${APP_PID_FILE} ] ; then
+    if [ ! -f $APP_PID_FILE ] ; then
         return 1
     fi
 
-    if ! kill -0 `cat ${APP_PID_FILE}` 2>/dev/null ; then
-        rm -f ${APP_PID_FILE}
+    if ! kill -0 `cat $APP_PID_FILE` 2>/dev/null ; then
+        rm -f $APP_PID_FILE
         return 1
     fi
 

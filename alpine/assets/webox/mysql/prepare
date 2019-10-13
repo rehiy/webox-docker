@@ -12,9 +12,11 @@ app_prepare() {
         apk add mariadb mariadb-client
     fi
 
-    for dir in lib log run tmp; do
-        [ -d /var/${dir}/mysql ] ||
-            mkdir -p /var/${dir}/mysql
+    local DIR
+
+    for DIR in lib log run tmp; do
+        [ -d /var/$DIR/mysql ] ||
+            mkdir -p /var/$DIR/mysql
     done
 
     if [ ! -f /var/log/mysql/error.log ]; then

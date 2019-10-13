@@ -18,9 +18,11 @@ app_prepare() {
             nginx-mod-stream-js
     fi
 
-    for dir in log run tmp; do
-        [ -d /var/${dir}/nginx ] ||
-            mkdir -p /var/${dir}/nginx
+    local DIR
+
+    for DIR in log run tmp; do
+        [ -d /var/$DIR/nginx ] ||
+            mkdir -p /var/$DIR/nginx
     done
 
     if [ ! -d /var/tmp/nginx/proxy_cache ]; then

@@ -19,9 +19,11 @@ app_prepare() {
         apk add postgresql postgresql-contrib
     fi
 
-    for dir in log run tmp; do
-        [ -d /var/${dir}/postgresql ] ||
-            mkdir -p /var/${dir}/postgresql
+    local DIR
+
+    for DIR in log run tmp; do
+        [ -d /var/$DIR/postgresql ] ||
+            mkdir -p /var/$DIR/postgresql
     done
 
     chown -R $APP_USER:$APP_GROUP /var/*/postgresql
