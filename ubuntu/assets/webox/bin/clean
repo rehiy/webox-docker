@@ -7,3 +7,4 @@ rm -rf /var/log/*.log
 rm -rf /var/log/apt/*.log
 
 rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/webox
