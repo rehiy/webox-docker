@@ -20,7 +20,7 @@ app_start() {
 
     local POOL_CONF POOL_ROOT
 
-    for POOL_CONF in /srv/app/etc/php7/fpm.d/*.conf; do
+    for POOL_CONF in /srv/app/etc/php7/pool.d/*.conf; do
 
         POOL_CONF=${POOL_CONF##*/}
         POOL_ROOT=/var/www/${POOL_CONF%.*}
