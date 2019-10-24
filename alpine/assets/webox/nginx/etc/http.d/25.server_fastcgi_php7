@@ -14,9 +14,6 @@ location ~ \.php$ {
     set $safedir $pooldir/log:$pooldir/temp:$safedir/;
     fastcgi_param PHP_ADMIN_VALUE "open_basedir=$safedir";
 
-    fastcgi_split_path_info ^(.+\.php)(/.*)$;
-    fastcgi_param PATH_INFO $fastcgi_path_info;
-
     fastcgi_index index.php;
     fastcgi_pass  unix:/var/run/php7/$pool.sock;
 
