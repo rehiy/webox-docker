@@ -12,7 +12,7 @@ wget -qO- http://get.vmlu.com/webox/wb-fetch | sh
 
 sed -i 's/ln -s/cp -a/' ~/srv/webox/runtime
 
-cp -a ~/srv/* /srv/
+mv -f ~/srv/* /srv/
 rm -r ~/srv
 
 #####################################################################
