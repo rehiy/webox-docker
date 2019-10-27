@@ -1,13 +1,13 @@
 FROM debian:buster-slim
 
-LABEL version="1.1.0"
-LABEL maintainer="mail@anrip.com"
+LABEL version="1.1.0" \
+      maintainer="mail@anrip.com"
 
 ADD assets/ /srv/
-
-ENV PATH /srv/webox/bin:$PATH
 RUN /bin/sh /srv/webox/build
 
-EXPOSE 80 443
+ENV PATH /srv/webox/bin:$PATH
 
 ENTRYPOINT ["/srv/init.sh"]
+
+EXPOSE 80 443

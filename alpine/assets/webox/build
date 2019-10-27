@@ -16,5 +16,8 @@ chmod +x /srv/webox/install
 chmod +x /srv/init.sh
 chmod +x /srv/webox/bin/*
 
-/srv/webox/bin/clean
+rm -rf /var/cache/apk/*
+rm -rf /var/log/*.log
+rm -rf /var/lib/webox
+
 rm -f /srv/webox/build

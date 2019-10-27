@@ -4,27 +4,26 @@
 set -xe
 
 apt update
-
 apt install -y wget
 
 #####################################################################
 
 wget -qO- http://get.vmlu.com/webox/wb-fetch | sh
 
-if [ ! -d ~/srv/webox ]; then
-    echo "can't download webox.tgz"
-    exit 1
-fi
-
 sed -i 's/ln -s/cp -a/' ~/srv/webox/runtime
 
-cp -av ~/srv/* /srv/
-rm -rf ~/srv
+cp -a ~/srv/* /srv/
+rm -r ~/srv
 
 #####################################################################
 
 chmod +x /srv/init.sh
 chmod +x /srv/webox/bin/*
 
-/srv/webox/bin/clean
+rm -rf /var/cache/apt/*
+rm -rf /var/log/*.log
+rm -rf /var/log/apt/*.log
+rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/webox
+
 rm -f /srv/webox/build
