@@ -24,7 +24,7 @@ docker run -d -P vmlu/webox auto
 docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
-    -v /var/vmbox/webroot:/srv/htdoc/default/web \
+    -v /var/vmbox/web:/srv/htdoc/default/web \
     vmlu/webox auto
 ```
 
@@ -36,7 +36,7 @@ docker exec -it vmbox /srv/service [start|stop|restart|reload]
 
 ## put your files to host's webroot path
 
-If the host is `www.anrip.com`, the webroot will be `/var/vmbox/webroot/com.anrip.www/`
+If the host is `www.anrip.com`, the webroot will be `/var/vmbox/web/com.anrip.www/`
 
 # Manual Control Services
 
@@ -46,7 +46,7 @@ If the host is `www.anrip.com`, the webroot will be `/var/vmbox/webroot/com.anri
 docker run --name vmbox -d -P \
     -v /var/vmbox/etc:/srv/app/etc \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
-    -v /var/vmbox/webroot:/srv/htdoc/default/web \
+    -v /var/vmbox/web:/srv/htdoc/default/web \
     --env 'WBX_APPS=nginx mysql php5' \
     vmlu/webox auto
 ```
