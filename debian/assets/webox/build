@@ -8,7 +8,7 @@ apt install -y wget
 
 #####################################################################
 
-name=Webox-$(uname -s)-$(uname -m).tgz
+name=Webox-$(uname -s)-$(uname -m)-v10.tgz
 
 wget -c http://get.vmlu.com/webox/${name}
 tar -xf ${name} && rm ${name}

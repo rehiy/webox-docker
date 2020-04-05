@@ -7,13 +7,13 @@ For all module information, see ubuntu/readme.md or debian/readme.md.
 # Quikc Start
 
 ```shell
-docker pull vmlu/webox
+docker pull vmlu/webox:ubuntu-v10
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -P vmlu/webox auto
+docker run -d -P vmlu/webox:ubuntu-v10 auto
 ```
 
 # Simple Usage
@@ -25,7 +25,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    vmlu/webox auto
+    vmlu/webox:ubuntu-v10 auto
 ```
 
 ## the following commands are supported
@@ -47,8 +47,8 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/etc:/srv/app/etc \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    --env 'WBX_APPS=nginx mysql php7' \
-    vmlu/webox auto
+    --env 'WBX_APPS=nginx mysql php5' \
+    vmlu/webox:ubuntu-v10 auto
 ```
 
 ## configure the modules you need

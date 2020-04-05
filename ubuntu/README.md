@@ -12,9 +12,8 @@
 
 -   redis    5.0.x
 
--   node     12.16.x
-
--   php      7.4.x
+-   php      5.6.x
+-   php      7.3.x
 
     -   redis
     -   imagick
@@ -23,15 +22,15 @@
 # Quikc Start
 
 ```shell
-docker pull vmlu/webox
+docker pull vmlu/webox:ubuntu-v10
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -P vmlu/webox auto
+docker run -d -P vmlu/webox:ubuntu-v10 auto
 ```
 
 # More Information
 
-See <https://github.com/anrip/webox-docker> for more information.
+See https://github.com/anrip/webox-docker for more information.
