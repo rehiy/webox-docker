@@ -12,8 +12,6 @@
 
 -   redis    5.0.x
 
--   node     12.16.x
-
 -   php      7.4.x
 
     -   redis
