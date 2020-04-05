@@ -1,6 +1,6 @@
 # Feature
 
-WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the following modules: nginx, mysql, redis, php5/php7. And some popular plug-ins have been added, such as redis, geoip2, imagick ...
+WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the following modules: nginx, mysql, redis, php. And some popular plug-ins have been added, such as redis, geoip2, imagick ...
 
 For all module information, see ubuntu/readme.md or debian/readme.md.
 
@@ -47,7 +47,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/etc:/srv/app/etc \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    --env 'WBX_APPS=nginx mysql php5' \
+    --env 'WBX_APPS=nginx mysql php7' \
     vmlu/webox auto
 ```
 
