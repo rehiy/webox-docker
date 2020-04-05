@@ -1,6 +1,6 @@
 # Feature
 
--   nginx    1.16.x
+-   nginx    1.17.x
 
     -   njs
     -   echo
@@ -12,8 +12,9 @@
 
 -   redis    5.0.x
 
--   php      5.6.x
--   php      7.3.x
+-   node     12.16.x
+
+-   php      7.4.x
 
     -   redis
     -   imagick
@@ -33,4 +34,4 @@ docker run -d -P vmlu/webox auto
 
 # More Information
 
-See https://github.com/anrip/webox-docker for more information.
+See <https://github.com/anrip/webox-docker> for more information.

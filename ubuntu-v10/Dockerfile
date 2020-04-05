@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM ubuntu:latest
 
 LABEL version="1.1.0" \
       maintainer="mail@anrip.com"

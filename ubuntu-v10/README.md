@@ -1,31 +1,34 @@
 # Feature
 
--   nginx    1.16.x
+-   nginx    1.17.x
 
     -   njs
     -   echo
     -   cache-purge
     -   image-filter
+    -   maxmind/geoip2
 
--   mariadb  10.13.x
+-   mysql    5.7.x
 
 -   redis    5.0.x
 
+-   php      5.6.x
 -   php      7.3.x
 
     -   redis
     -   imagick
+    -   maxmind/geoip2
 
 # Quikc Start
 
 ```shell
-docker pull vmlu/webox:alpine
+docker pull vmlu/webox
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -P vmlu/webox:alpine auto
+docker run -d -P vmlu/webox auto
 ```
 
 # More Information

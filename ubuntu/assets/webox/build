@@ -8,9 +8,12 @@ apt install -y wget
 
 #####################################################################
 
-wget -qO- http://get.vmlu.com/webox/wb-fetch | sh
+name=Webox-$(uname -s)-$(uname -m).tgz
 
-sed -i 's/ln -s/cp -a/' ~/srv/webox/runtime
+wget -c http://get.vmlu.com/webox/${name}
+tar -xf ${name} && rm ${name}
+
+sed -i 's/ln -s/cp -a/' ~/srv/webox/wbx_install
 
 cp -a ~/srv/* /srv/
 rm -r ~/srv
