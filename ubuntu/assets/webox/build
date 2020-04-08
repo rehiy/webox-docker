@@ -25,6 +25,8 @@ ln -s /srv/webox/bin/wkit /sbin/wkit
 
 chmod +x /srv/init.sh
 
+#####################################################################
+
 rm -rf /var/cache/apt/*
 rm -rf /var/log/*.log
 rm -rf /var/log/apt/*.log
