@@ -13,7 +13,6 @@
 -   redis    5.0.x
 
 -   php      5.6.x
--   php      7.3.x
 
     -   redis
     -   imagick
