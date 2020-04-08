@@ -15,16 +15,17 @@ name=Webox-$(uname -s)-$(uname -m).tgz
 wget -c -O ${name} http://get.vmlu.com/webox/${name}?v11.1
 tar -xf ${name} && rm ${name}
 
-sed -i 's/ln -s/cp -a/' ~/srv/webox/wbx_install
-ln -s /srv/webox/bin/wkit /sbin/wkit
-
 cp -a ~/srv/* /srv/
 rm -r ~/srv
 
 #####################################################################
 
+sed -i 's/ln -s/cp -a/' ~/srv/webox/wbx_install
+ln -s /srv/webox/bin/wkit /sbin/wkit
+
 chmod +x /srv/init.sh
-chmod +x /srv/webox/bin/*
+
+#####################################################################
 
 rm -rf /var/cache/apt/*
 rm -rf /var/log/*.log
