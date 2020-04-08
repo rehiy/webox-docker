@@ -12,7 +12,7 @@ cd ~
 
 name=Webox-$(uname -s)-$(uname -m)-v10.tgz
 
-wget -c http://get.vmlu.com/webox/${name}?v10.2
+wget -c -O ${name} http://get.vmlu.com/webox/${name}?v10.2
 tar -xf ${name} && rm ${name}
 
 sed -i 's/ln -s/cp -a/' ~/srv/webox/wbx_install
