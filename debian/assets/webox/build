@@ -20,7 +20,7 @@ rm -r ~/srv
 
 #####################################################################
 
-sed -i 's/ln -s/cp -a/' ~/srv/webox/wbx_install
+sed -i 's/ln -s/cp -a/' /srv/webox/wbx_install
 ln -s /srv/webox/bin/wkit /sbin/wkit
 
 chmod +x /srv/init.sh
