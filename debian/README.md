@@ -3,8 +3,6 @@
 -   nginx    1.17.x
 
     -   njs
-    -   echo
-    -   cache-purge
     -   image-filter
     -   maxmind/geoip2
 
