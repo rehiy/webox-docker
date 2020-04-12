@@ -18,7 +18,7 @@ docker run -d -P vmlu/webox:ubuntu-v10 auto
 
 # Simple Usage
 
-## auto prepare and start nginx/mysql/redis/php7
+## auto prepare and start nginx/mysql/redis/php
 
 ```shell
 docker run --name vmbox -d -P \
@@ -47,7 +47,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/etc:/srv/app/etc \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    --env 'WBX_APPS=nginx mysql php5' \
+    --env 'WBX_APPS=nginx mysql php' \
     vmlu/webox:ubuntu-v10 auto
 ```
 
