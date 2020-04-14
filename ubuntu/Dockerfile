@@ -6,6 +6,6 @@ LABEL version="1.2.0" \
 ADD assets/ /srv/
 RUN /bin/sh /srv/webox/build
 
-ENTRYPOINT ["/srv/init.sh"]
+ENTRYPOINT ["/bin/tini", "--", "/srv/init.sh"]
 
 EXPOSE 80 443
