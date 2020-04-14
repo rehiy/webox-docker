@@ -8,6 +8,12 @@ apt install -y wget
 
 #####################################################################
 
+tini=https://github.com/krallin/tini/releases/download/v0.18.0/tini
+
+wget -O /bin/tini ${tini} && chmod +x /bin/tini
+
+#####################################################################
+
 cd ~
 
 name=Webox-$(uname -s)-$(uname -m)-v10.tgz
