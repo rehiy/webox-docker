@@ -26,6 +26,8 @@ rm -r ~/srv
 
 #####################################################################
 
+echo ". /srv/webox/runtime" > /root/.profile
+
 sed -i 's/ln -s/cp -a/' /srv/webox/wbx_install
 ln -s /srv/webox/bin/wkit /sbin/wkit
 
