@@ -6,8 +6,15 @@ if [ ! -d /var/lib/webox/ready ]; then
     rm -f /srv/app/etc/version
 fi
 
-if [ -x /srv/app/etc/rc.local ]; then
-    /srv/app/etc/rc.local
+if [ -d /srv/app/etc/rc.local ]; then
+    for rc in /srv/app/etc/rc.local/*; do
+        [ -x $rc ] && $rc
+    done
+fi
+
+if [ -f /srv/app/etc/rc.local ]; then
+    rc=/srv/app/etc/rc.local
+    echo $rc
 fi
 
 if [ "$1" = "auto" ]; then
