@@ -21,13 +21,13 @@ WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the fo
 # Quikc Start
 
 ```shell
-docker pull vmlu/webox-v11
+docker pull vmlu/webox:v11
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -P vmlu/webox-v11 auto
+docker run -d -P vmlu/webox:v11 auto
 ```
 
 # Simple Usage
@@ -39,7 +39,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    vmlu/webox-v11 auto
+    vmlu/webox:v11 auto
 ```
 
 ## the following commands are supported
@@ -62,7 +62,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/web:/srv/htdoc/default/web \
     --env 'WBX_APPS=nginx mysql php' \
-    vmlu/webox-v11 auto
+    vmlu/webox:v11 auto
 ```
 
 ## configure the modules you need
