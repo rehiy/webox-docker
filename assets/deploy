@@ -16,9 +16,9 @@ wget -O /bin/tini ${tini} && chmod +x /bin/tini
 
 cd ~
 
-name=Webox-$(uname -s)-$(uname -m).tgz
+name=webox-linux-v12.tgz
 
-wget -c -O ${name} http://get.vmlu.com/webox/${name}?v11.1.2
+wget -c -O ${name} http://get.vmlu.com/webox/${name}
 tar -xf ${name} && rm ${name}
 
 cp -a ~/srv/* /srv/
@@ -26,10 +26,12 @@ rm -r ~/srv
 
 #####################################################################
 
-echo ". /srv/webox/runtime" >> /root/.bashrc
+sed -i 's/ln -s/cp -a/' /srv/app/mysql/prepare
+sed -i 's/ln -s/cp -a/' /srv/app/nginx/prepare
+sed -i 's/ln -s/cp -a/' /srv/app/php/prepare
+sed -i 's/ln -s/cp -a/' /srv/app/redis/prepare
 
-sed -i 's/ln -s/cp -a/' /srv/webox/wbx_install
-ln -s /srv/webox/bin/wkit /sbin/wkit
+ln -s /srv/app/srvkit /sbin/wkit
 
 chmod +x /srv/init.sh
 
@@ -39,6 +41,5 @@ rm -rf /var/cache/apt/*
 rm -rf /var/log/*.log
 rm -rf /var/log/apt/*.log
 rm -rf /var/lib/apt/lists/*
-rm -rf /var/lib/webox
 
 rm -f /srv/deploy
