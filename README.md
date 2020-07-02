@@ -1,19 +1,33 @@
 # Feature
 
-WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the following modules: nginx, mysql, redis, php. And some popular plug-ins have been added, such as redis, geoip2, imagick ...
+WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the following modules: nginx, mysql, redis, php. And some popular plug-ins have been added, such as geoip2, imagick ...
 
-For all module information, see ubuntu/readme.md or debian/readme.md.
+- mysql 5.7.x
+
+- nginx 1.17.x
+
+  - njs
+  - image-filter
+  - maxminddb(geoip2)
+
+- php 7.4.x
+
+  - redis
+  - imagick
+  - maxminddb(geoip2)
+
+- redis 5.0.x
 
 # Quikc Start
 
 ```shell
-docker pull vmlu/webox
+docker pull vmlu/webox-v11
 ```
 
 ## start and visit `http://localhost`
 
 ```shell
-docker run -d -P vmlu/webox auto
+docker run -d -P vmlu/webox-v11 auto
 ```
 
 # Simple Usage
@@ -25,7 +39,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/redis:/srv/app/var/lib/redis \
     -v /var/vmbox/web:/srv/htdoc/default/web \
-    vmlu/webox auto
+    vmlu/webox-v11 auto
 ```
 
 ## the following commands are supported
@@ -48,7 +62,7 @@ docker run --name vmbox -d -P \
     -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
     -v /var/vmbox/web:/srv/htdoc/default/web \
     --env 'WBX_APPS=nginx mysql php' \
-    vmlu/webox auto
+    vmlu/webox-v11 auto
 ```
 
 ## configure the modules you need
