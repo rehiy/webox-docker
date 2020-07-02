@@ -61,7 +61,6 @@ If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/web/net.anrip.ww
 docker run --name vmbox -d -P \
     -v /mnt/vmbox/var:/srv/webox/var \
     -v /mnt/vmbox/web:/srv/htdoc/default \
-    -v /mnt/vmbox/etc/mysql:/srv/webox/etc/mysql \
     -v /mnt/vmbox/etc/nginx:/srv/webox/etc/nginx \
     -v /mnt/vmbox/etc/php:/srv/webox/etc/php \
     --env 'WBX_APPS=mysql nginx php' \
