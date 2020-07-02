@@ -1,6 +1,6 @@
-FROM debian:buster-slim
+FROM ubuntu:latest
 
-LABEL version="1.2.0" \
+LABEL version="v10.2.2" \
       maintainer="mail@anrip.com"
 
 ADD assets/ /srv/

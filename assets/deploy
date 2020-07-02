@@ -16,7 +16,7 @@ wget -O /bin/tini ${tini} && chmod +x /bin/tini
 
 cd ~
 
-name=Webox-$(uname -s)-$(uname -m)-v10.tgz
+name=webox-linux-v10.tgz
 
 wget -c -O ${name} http://get.vmlu.com/webox/${name}?v10.2.2
 tar -xf ${name} && rm ${name}
