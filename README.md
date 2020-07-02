@@ -10,6 +10,8 @@ WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the fo
   - maxminddb(geoip2)
   - njs
 
+- node 14.4.x
+
 - php 7.4.x
 
   - imagick
