@@ -38,8 +38,8 @@ docker run -d -P vmlu/webox auto
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /mnt/vmbox/var:/srv/webox/var \
     -v /mnt/vmbox/web:/srv/htdoc/default \
+    -v /mnt/vmbox/var:/srv/webox/var \
     vmlu/webox auto
 ```
 
@@ -59,10 +59,9 @@ If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/web/net.anrip.ww
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /mnt/vmbox/var:/srv/webox/var \
+    -v /mnt/vmbox/etc:/srv/webox/etc \
     -v /mnt/vmbox/web:/srv/htdoc/default \
-    -v /mnt/vmbox/etc/nginx:/srv/webox/etc/nginx \
-    -v /mnt/vmbox/etc/php:/srv/webox/etc/php \
+    -v /mnt/vmbox/var:/srv/webox/var \
     --env 'WBX_APPS=mysql nginx php' \
     vmlu/webox auto
 ```
