@@ -4,42 +4,39 @@ WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the fo
 
 - mysql 5.7.x
 
-- nginx 1.17.x
+- nginx 1.19.x
 
-  - njs
   - image-filter
   - maxminddb(geoip2)
+  - njs
 
-- php 7.4.x
+- node 14.4.x
 
-  - redis
+- php 7.3.x
+
   - imagick
   - maxminddb(geoip2)
+  - redis
 
-- redis 5.0.x
+- redis 6.0.x
 
 # Quikc Start
 
-```shell
-docker pull vmlu/webox:v11
-```
-
-## start and visit `http://localhost`
+## the web server is listening on `your-ip:8100`
 
 ```shell
-docker run -d -P vmlu/webox:v11 auto
+docker run -d -P vmlu/webox auto
 ```
 
 # Simple Usage
 
-## auto prepare and start nginx/mysql/redis/php
+## auto prepare and start mysql/nginx/php/redis
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
-    -v /var/vmbox/redis:/srv/app/var/lib/redis \
-    -v /var/vmbox/web:/srv/htdoc/default/web \
-    vmlu/webox:v11 auto
+    -v /mnt/vmbox/htdoc:/srv/var/www/default \
+    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
+    vmlu/webox auto
 ```
 
 ## the following commands are supported
@@ -50,7 +47,7 @@ docker exec -it vmbox /srv/service [start|stop|restart|reload]
 
 ## put your files to host's webroot path
 
-If the host is `www.anrip.com`, the webroot will be `/var/vmbox/web/com.anrip.www/`
+If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/htdoc/net.anrip.www/`
 
 # Manual Control Services
 
@@ -58,23 +55,23 @@ If the host is `www.anrip.com`, the webroot will be `/var/vmbox/web/com.anrip.ww
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /var/vmbox/etc:/srv/app/etc \
-    -v /var/vmbox/mysql:/srv/app/var/lib/mysql \
-    -v /var/vmbox/web:/srv/htdoc/default/web \
-    --env 'WBX_APPS=nginx mysql php' \
-    vmlu/webox:v11 auto
+    -v /mnt/vmbox/etc:/srv/etc \
+    -v /mnt/vmbox/htdoc:/srv/var/www/default \
+    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
+    --env 'WBX_APPS=mysql nginx php' \
+    vmlu/webox auto
 ```
 
 ## configure the modules you need
 
-please edit the config files in `/var/vmbox/etc/*`, then reload the service
+please edit the config files in `/mnt/vmbox/etc/*`, then reload the service
 
 # Important Notice
 
 ## don't forget change mysql password
 
 ```shell
-docker exec -it vmbox /srv/app/bin/mysqladmin password a1B2c3E4
+docker exec -it vmbox /srv/bin/mysqladmin password a1B2c3E4
 ```
 
 # More Issues
