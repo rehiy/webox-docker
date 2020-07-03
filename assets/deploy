@@ -18,7 +18,7 @@ cd ~
 
 name=webox-linux-v12.tgz
 
-wget -c -O ${name} http://get.vmlu.com/webox/${name}
+wget -c -O ${name} http://get.vmlu.com/webox/${name}?v12.0.1
 tar -xf ${name} && rm ${name}
 
 cp -a ~/srv/* /srv/
@@ -26,12 +26,10 @@ rm -r ~/srv
 
 #####################################################################
 
-sed -i 's/ln -s/cp -a/' /srv/app/mysql/prepare
-sed -i 's/ln -s/cp -a/' /srv/app/nginx/prepare
-sed -i 's/ln -s/cp -a/' /srv/app/php/prepare
-sed -i 's/ln -s/cp -a/' /srv/app/redis/prepare
+mkdir -p /mnt/backup
 
-ln -s /srv/app/srvkit /sbin/wkit
+mv /srv/etc /srv/var /mnt/backup
+mkdir -p /srv/etc /srv/var
 
 chmod +x /srv/init.sh
 

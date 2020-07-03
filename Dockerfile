@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-LABEL version="12.0.0" \
+LABEL version="12.0.1" \
       maintainer="mail@anrip.com"
 
 ADD assets/ /srv/
