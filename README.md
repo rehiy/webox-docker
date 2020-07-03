@@ -22,11 +22,7 @@ WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the fo
 
 # Quikc Start
 
-```shell
-docker pull vmlu/webox
-```
-
-## start and visit `http://localhost`
+## the web server is listening on `your-ip:8100`
 
 ```shell
 docker run -d -P vmlu/webox auto
@@ -34,12 +30,12 @@ docker run -d -P vmlu/webox auto
 
 # Simple Usage
 
-## auto prepare and start nginx/mysql/redis/php
+## auto prepare and start mysql/nginx/php/redis
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /mnt/vmbox/web:/srv/htdoc/default \
-    -v /mnt/vmbox/var:/srv/webox/var \
+    -v /mnt/vmbox/htdoc:/srv/var/www/default \
+    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
     vmlu/webox auto
 ```
 
@@ -51,7 +47,7 @@ docker exec -it vmbox /srv/service [start|stop|restart|reload]
 
 ## put your files to host's webroot path
 
-If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/web/net.anrip.www/`
+If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/htdoc/net.anrip.www/`
 
 # Manual Control Services
 
@@ -59,9 +55,9 @@ If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/web/net.anrip.ww
 
 ```shell
 docker run --name vmbox -d -P \
-    -v /mnt/vmbox/etc:/srv/webox/etc \
-    -v /mnt/vmbox/web:/srv/htdoc/default \
-    -v /mnt/vmbox/var:/srv/webox/var \
+    -v /mnt/vmbox/etc:/srv/etc \
+    -v /mnt/vmbox/htdoc:/srv/var/www/default \
+    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
     --env 'WBX_APPS=mysql nginx php' \
     vmlu/webox auto
 ```
@@ -75,7 +71,7 @@ please edit the config files in `/mnt/vmbox/etc/*`, then reload the service
 ## don't forget change mysql password
 
 ```shell
-docker exec -it vmbox /srv/webox/bin/mysqladmin password a1B2c3E4
+docker exec -it vmbox /srv/bin/mysqladmin password a1B2c3E4
 ```
 
 # More Issues
