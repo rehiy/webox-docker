@@ -8,7 +8,7 @@ apt install -y wget
 
 #####################################################################
 
-tini=https://github.com/krallin/tini/releases/download/v0.18.0/tini
+tini=https://github.com/krallin/tini/releases/download/v0.19.0/tini
 
 wget -O /bin/tini ${tini} && chmod +x /bin/tini
 
@@ -18,16 +18,20 @@ cd ~
 
 name=webox-linux-v10.tgz
 
-wget -c -O ${name} http://get.vmlu.com/webox/${name}?v10.2.2
+wget -c -O ${name} http://get.vmlu.com/webox/${name}?v10.3.0
 tar -xf ${name} && rm ${name}
 
+rm -r ~/srv/etc/nginx/vhost.d/sample-host
+rm -r ~/srv/var/www/default/*
 cp -a ~/srv/* /srv/
 rm -r ~/srv
 
 #####################################################################
 
-sed -i 's/ln -s/cp -a/' /srv/webox/wbx_install
-ln -s /srv/webox/bin/wkit /sbin/wkit
+mkdir -p /mnt/backup
+
+mv /srv/etc /srv/var /mnt/backup
+mkdir -p /srv/etc /srv/var
 
 chmod +x /srv/init.sh
 
@@ -37,6 +41,5 @@ rm -rf /var/cache/apt/*
 rm -rf /var/log/*.log
 rm -rf /var/log/apt/*.log
 rm -rf /var/lib/apt/lists/*
-rm -rf /var/lib/webox
 
 rm -f /srv/deploy

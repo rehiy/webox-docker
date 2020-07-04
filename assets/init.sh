@@ -1,20 +1,18 @@
 #!/bin/sh
 #
 
-if [ ! -d /var/lib/webox/ready ]; then
-    mkdir -p /var/lib/webox/ready
-    rm -f /srv/app/etc/version
+if [ ! -f /srv/etc/version ]; then
+    cp -au /mnt/backup/* /srv/
 fi
 
-if [ -d /srv/app/etc/rc.local ]; then
-    for rc in /srv/app/etc/rc.local/*; do
+if [ -d /srv/etc/rc.local ]; then
+    for rc in /srv/etc/rc.local/*; do
         [ -x $rc ] && $rc
     done
 fi
 
-if [ -f /srv/app/etc/rc.local ]; then
-    rc=/srv/app/etc/rc.local
-    [ -x $rc ] && $rc
+if [ -f /srv/etc/rc.local ]; then
+    sh /srv/etc/rc.local
 fi
 
 if [ "$1" = "auto" ]; then
