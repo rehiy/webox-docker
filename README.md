@@ -22,7 +22,7 @@ WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the fo
 
 # Quikc Start
 
-## the web server is listening on `your-ip:8100`
+## the web server is listening on `your-ip:80`
 
 ```shell
 docker run -d -P vmlu/webox auto

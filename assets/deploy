@@ -18,7 +18,7 @@ cd ~
 
 name=webox-linux-v12.tgz
 
-wget -c -O ${name} http://get.vmlu.com/webox/${name}?v12.0.1
+wget -c -O ${name} http://get.vmlu.com/webox/${name}?v12.1.0
 tar -xf ${name} && rm ${name}
 
 rm -r ~/srv/etc/nginx/vhost.d/sample-host
