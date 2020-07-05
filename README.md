@@ -42,7 +42,7 @@ docker run --name vbox -d -P \
 
 ## put your files to host's webroot
 
-If the host is `www.anrip.net`, the webroot will be `/mnt/vbox/www/default/net.anrip.www/`
+If the domain is `www.anrip.net`, the webroot will be `/mnt/vbox/www/default/net.anrip.www/`
 
 # Manual Control Services
 
