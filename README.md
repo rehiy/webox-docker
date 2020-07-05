@@ -1,10 +1,10 @@
 # Supported tags
 
-[v12](https://github.com/anrip/webox-docker) -- with php-7.4.x
+[v12](https://github.com/anrip/webox:v11-docker) -- with php-7.4.x
 
-[v11](https://github.com/anrip/webox-docker/tree/v11.x) -- with php-7.3.x
+[v11](https://github.com/anrip/webox:v11-docker/tree/v11.x) -- with php-7.3.x
 
-[v10](https://github.com/anrip/webox-docker/tree/v10.x) -- with php-5.6.x
+[v10](https://github.com/anrip/webox:v11-docker/tree/v10.x) -- with php-5.6.x
 
 # What is Webox?
 
@@ -35,43 +35,43 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 ## the web server is listening on `your-ip:80`
 
 ```shell
-docker run --name vbox -d -P \
-    -v /mnt/vbox:/srv/var \
-    vmlu/webox auto
+docker run --name mybox -d -P \
+    -v /mnt/mybox:/srv/var \
+    vmlu/webox:v11 auto
 ```
 
 ## put your files to host's webroot
 
-If the domain is `www.anrip.net`, the webroot will be `/mnt/vbox/www/default/net.anrip.www/`
+If the domain is `www.anrip.net`, the webroot will be `/mnt/mybox/www/default/net.anrip.www/`
 
 # Manual Control Services
 
 ## set `WBX_APPS`, you can start some modules you need
 
 ```shell
-docker run --name vbox -d -P \
-    -v /mnt/vbox/etc:/srv/etc \
-    -v /mnt/vbox/var:/srv/var \
+docker run --name mybox -d -P \
+    -v /mnt/mybox/etc:/srv/etc \
+    -v /mnt/mybox/var:/srv/var \
     --env 'WBX_APPS=nginx php' \
-    vmlu/webox auto
+    vmlu/webox:v11 auto
 ```
 
 ## service management command
 
 ```shell
-docker exec -it vbox /srv/service [start|stop|restart|reload]
+docker exec -it mybox /srv/service [start|stop|restart|reload]
 ```
 
 ## configure the modules you need
 
-please edit the config files in `/mnt/vbox/etc/*`, then reload the service
+please edit the config files in `/mnt/mybox/etc/*`, then reload the service
 
 # Important Notice
 
 ## don't forget change mysql password
 
 ```shell
-docker exec -it vbox /srv/bin/mysqladmin password a1B2c3E4
+docker exec -it mybox /srv/bin/mysqladmin password a1B2c3E4
 ```
 
 # More Issues
