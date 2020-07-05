@@ -3,14 +3,13 @@
 
 set -xe
 
-apt update
-apt install -y wget
-
 #####################################################################
 
-tini=https://github.com/krallin/tini/releases/download/v0.19.0/tini
+tpre=https://github.com/krallin/tini/releases/download
 
-wget -O /bin/tini ${tini} && chmod +x /bin/tini
+wget -O /sbin/tini $tpre/v0.19.0/tini-muslc-amd64
+
+chmod +x /sbin/tini /init.sh
 
 #####################################################################
 
@@ -33,13 +32,6 @@ mkdir -p /mnt/backup
 mv /srv/etc /srv/var /mnt/backup
 mkdir -p /srv/etc /srv/var
 
-chmod +x /srv/init.sh
-
 #####################################################################
 
-rm -rf /var/cache/apt/*
-rm -rf /var/log/*.log
-rm -rf /var/log/apt/*.log
-rm -rf /var/lib/apt/lists/*
-
-rm -f /srv/deploy
+rm -f /deploy
