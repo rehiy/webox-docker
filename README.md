@@ -1,4 +1,4 @@
-# Supported tags and respective Dockerfile links
+# Supported tags
 
 [v12, latest](https://github.com/anrip/webox-docker) -- with php-7.4.x
 
