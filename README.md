@@ -1,22 +1,16 @@
-# Feature
+# Supported tags and respective Dockerfile links
 
-WeBox-docker is a lnmp server based on docker of ubuntu, debian. contains the following modules: nginx, mysql, redis, php. And some popular plug-ins have been added, such as geoip2, imagick ...
+[v13](https://github.com/anrip/webox-docker) -- with php-7.4.x
 
-- mysql 5.7.x
+[v11](https://github.com/anrip/webox-docker/tree/v11.x) -- with php-7.3.x
 
-- nginx 1.19.x
+[v10](https://github.com/anrip/webox-docker/tree/v10.x) -- with php-5.6.x
 
-  - image-filter
-  - maxminddb(geoip2)
-  - njs
+# What is Webox?
 
-- node 14.4.x
+Webox (`abbreviation for web-box`) is a customized lnmp server. It supports running on most linux distributions, such as alpine, CentOS, Debian, and Ubuntu.
 
-- php 5.6.x
-
-  - redis
-
-- redis 6.0.x
+`v13` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
 
 # Quikc Start
 
