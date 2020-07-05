@@ -37,7 +37,7 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 ```shell
 docker run --name mybox -d -P \
     -v /mnt/mybox:/srv/var \
-    vmlu/webox auto
+    vmlu/webox
 ```
 
 ## put your files to host's webroot
@@ -53,7 +53,7 @@ docker run --name mybox -d -P \
     -v /mnt/mybox/etc:/srv/etc \
     -v /mnt/mybox/var:/srv/var \
     --env 'WBX_APPS=nginx php' \
-    vmlu/webox auto
+    vmlu/webox
 ```
 
 ## service management command

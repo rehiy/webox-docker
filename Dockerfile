@@ -1,11 +1,11 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
-LABEL version="12.1.0" \
+LABEL version="12.2.0" \
       maintainer="mail@anrip.com"
 
-ADD assets/ /srv/
-RUN /bin/sh /srv/deploy
+ADD rootfs/ /
+RUN /bin/sh /deploy
 
-ENTRYPOINT ["/bin/tini", "--", "/srv/init.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/init.sh"]
 
 EXPOSE 80 443
