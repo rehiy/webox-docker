@@ -30,58 +30,48 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 
 - redis 6.0.x
 
-# Quikc Start
+# Simple Usage
 
 ## the web server is listening on `your-ip:80`
 
 ```shell
-docker run -d -P vmlu/webox auto
-```
-
-# Simple Usage
-
-## auto prepare and start mysql/nginx/php/redis
-
-```shell
-docker run --name vmbox -d -P \
-    -v /mnt/vmbox/htdoc:/srv/var/www/default \
-    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
+docker run --name vbox -d -P \
+    -v /mnt/vbox:/srv/var \
     vmlu/webox auto
 ```
 
-## the following commands are supported
+## put your files to host's webroot
 
-```shell
-docker exec -it vmbox /srv/service [start|stop|restart|reload]
-```
-
-## put your files to host's webroot path
-
-If the host is `www.anrip.net`, the webroot will be `/mnt/vmbox/htdoc/net.anrip.www/`
+If the host is `www.anrip.net`, the webroot will be `/mnt/vbox/www/default/net.anrip.www/`
 
 # Manual Control Services
 
 ## set `WBX_APPS`, you can start some modules you need
 
 ```shell
-docker run --name vmbox -d -P \
-    -v /mnt/vmbox/etc:/srv/etc \
-    -v /mnt/vmbox/htdoc:/srv/var/www/default \
-    -v /mnt/vmbox/mysql:/srv/var/lib/mysql \
-    --env 'WBX_APPS=mysql nginx php' \
+docker run --name vbox -d -P \
+    -v /mnt/vbox/etc:/srv/etc \
+    -v /mnt/vbox/var:/srv/var \
+    --env 'WBX_APPS=nginx php' \
     vmlu/webox auto
+```
+
+## service management command
+
+```shell
+docker exec -it vbox /srv/service [start|stop|restart|reload]
 ```
 
 ## configure the modules you need
 
-please edit the config files in `/mnt/vmbox/etc/*`, then reload the service
+please edit the config files in `/mnt/vbox/etc/*`, then reload the service
 
 # Important Notice
 
 ## don't forget change mysql password
 
 ```shell
-docker exec -it vmbox /srv/bin/mysqladmin password a1B2c3E4
+docker exec -it vbox /srv/bin/mysqladmin password a1B2c3E4
 ```
 
 # More Issues
