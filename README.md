@@ -1,10 +1,10 @@
 # Supported tags
 
-[v12](https://github.com/anrip/webox:v11-docker) -- with php-7.4.x
+[v12](https://github.com/anrip/webox-docker) -- with php-7.4.x
 
-[v11](https://github.com/anrip/webox:v11-docker/tree/v11.x) -- with php-7.3.x
+[v11](https://github.com/anrip/webox-docker/tree/v11.x) -- with php-7.3.x
 
-[v10](https://github.com/anrip/webox:v11-docker/tree/v10.x) -- with php-5.6.x
+[v10](https://github.com/anrip/webox-docker/tree/v10.x) -- with php-5.6.x
 
 # What is Webox?
 
@@ -37,7 +37,7 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 ```shell
 docker run --name mybox -d -P \
     -v /mnt/mybox:/srv/var \
-    vmlu/webox:v11 auto
+    vmlu/webox:v11
 ```
 
 ## put your files to host's webroot
@@ -53,7 +53,7 @@ docker run --name mybox -d -P \
     -v /mnt/mybox/etc:/srv/etc \
     -v /mnt/mybox/var:/srv/var \
     --env 'WBX_APPS=nginx php' \
-    vmlu/webox:v11 auto
+    vmlu/webox:v11
 ```
 
 ## service management command
