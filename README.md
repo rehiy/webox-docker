@@ -12,6 +12,22 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 
 `v13` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
 
+- mysql 5.7.x
+
+- nginx 1.19.x
+
+  - image-filter
+  - maxminddb(geoip2)
+  - njs
+
+- node 14.4.x
+
+- php 5.6.x
+
+  - redis
+
+- redis 6.0.x
+
 # Quikc Start
 
 ## the web server is listening on `your-ip:80`
