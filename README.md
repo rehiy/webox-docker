@@ -1,3 +1,5 @@
+add tag description
+
 # Supported tags and respective Dockerfile links
 
 [v13](https://github.com/anrip/webox-docker) -- with php-7.4.x
@@ -10,7 +12,7 @@
 
 Webox (`abbreviation for web-box`) is a customized lnmp server. It supports running on most linux distributions, such as alpine, CentOS, Debian, and Ubuntu.
 
-`v13` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
+`v10` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
 
 - mysql 5.7.x
 
