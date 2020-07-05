@@ -1,5 +1,3 @@
-add tag description
-
 # Supported tags and respective Dockerfile links
 
 [v13](https://github.com/anrip/webox-docker) -- with php-7.4.x
