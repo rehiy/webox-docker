@@ -1,0 +1,5 @@
+# /etc/inittab init(8) configuration for BusyBox
+# https://github.com/mirror/busybox/blob/master/examples/inittab
+#
+
+::sysinit:/etc/webox/sys-init

@@ -1,0 +1,8 @@
+# do daily/weekly/monthly maintenance
+# min	hour	day	month	weekday	command
+
+*/15	*	*	*	*	/etc/webox/run-cron 15min
+0	*	*	*	*	/etc/webox/run-cron hourly
+0	2	*	*	*	/etc/webox/run-cron daily
+0	3	*	*	6	/etc/webox/run-cron weekly
+0	5	1	*	*	/etc/webox/run-cron monthly
