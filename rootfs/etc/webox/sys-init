@@ -8,17 +8,13 @@ fi
 #####################################################################
 
 if [ -d /srv/etc/init.d ]; then
-    for rc in /srv/etc/init.d/*; do
-        [ -x $rc ] && $rc start
-    done
+    run-parts /srv/etc/init.d
 fi
 
-if [ -x /srv/etc/rc.local ]; then
-    /srv/etc/rc.local start
+if [ -x /srv/service ]; then
+    /srv/service start
 fi
 
 #####################################################################
 
-/srv/service start
-
-exec tail -f /dev/null
+exec crond -f -c /etc/crontabs

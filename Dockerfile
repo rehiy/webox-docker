@@ -6,6 +6,6 @@ LABEL version="10.3.0" \
 ADD rootfs/ /
 RUN /bin/sh /deploy
 
-ENTRYPOINT ["/sbin/tini", "--", "/init.sh"]
+ENTRYPOINT /sbin/init
 
 EXPOSE 80 443

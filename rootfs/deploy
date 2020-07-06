@@ -5,14 +5,6 @@ set -xe
 
 #####################################################################
 
-tpre=https://github.com/krallin/tini/releases/download
-
-wget -O /sbin/tini $tpre/v0.19.0/tini-muslc-amd64
-
-chmod +x /sbin/tini /init.sh
-
-#####################################################################
-
 cd ~
 
 name=webox-linux-v10.tgz
@@ -33,5 +25,7 @@ mv /srv/etc /srv/var /mnt/backup
 mkdir -p /srv/etc /srv/var
 
 #####################################################################
+
+chmod +x /etc/webox/*
 
 rm -f /deploy
