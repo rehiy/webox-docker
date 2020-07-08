@@ -9,8 +9,8 @@ cd ~
 
 name=webox-linux-v10.tgz
 
-wget -c -O ${name} http://get.vmlu.com/webox/${name}?v10.3.0
-tar -xf ${name} && rm ${name}
+wget -O ${name} http://get.vmlu.com/webox/${name}?v10.3.1
+tar -xf ${name} && rm -f ${name}
 
 rm -r ~/srv/etc/nginx/vhost.d/sample-host
 rm -r ~/srv/var/www/default/*
@@ -19,13 +19,16 @@ rm -r ~/srv
 
 #####################################################################
 
-mkdir -p /mnt/backup
+rm -rf /srv/var/run
+ln -sf /run /srv/var/run
 
-mv /srv/etc /srv/var /mnt/backup
-mkdir -p /srv/etc /srv/var
+cp -a /srv/etc /srv/var /opt/
 
 #####################################################################
 
-chmod +x /etc/webox/*
+sed -i 's#usr/local#srv#g' /etc/profile
+
+chmod +x /srv/sbin/run-cron
+chmod +x /srv/sbin/sys-init
 
 rm -f /deploy

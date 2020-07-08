@@ -2,5 +2,5 @@
 #
 
 if [ -d /srv/etc/cron.$1 ]; then
-    exec run-parts /srv/etc/cron.$1
+    run-parts /srv/etc/cron.$1
 fi

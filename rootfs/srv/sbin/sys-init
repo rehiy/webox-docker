@@ -2,7 +2,7 @@
 #
 
 if [ ! -f /srv/etc/version ]; then
-    cp -au /mnt/backup/* /srv/
+    cp -au /opt/* /srv/
 fi
 
 #####################################################################
@@ -12,9 +12,9 @@ if [ -d /srv/etc/init.d ]; then
 fi
 
 if [ -x /srv/service ]; then
-    /srv/service start
+    /srv/service start &
 fi
 
 #####################################################################
 
-exec crond -f -c /etc/crontabs
+exec crond -f
