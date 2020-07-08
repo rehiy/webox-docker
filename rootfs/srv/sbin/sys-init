@@ -1,8 +1,21 @@
 #!/bin/sh
 #
 
-if [ ! -f /srv/etc/version ]; then
-    cp -au /opt/* /srv/
+if [ -f /opt/etc/overlay ]; then
+    cp -a /opt/etc/* /srv/etc/
+    date >/srv/etc/aulock
+fi
+
+#####################################################################
+
+if [ ! -f /srv/etc/aulock ]; then
+    cp -au /opt/etc/* /srv/etc/
+    date >/srv/etc/aulock
+fi
+
+if [ ! -f /srv/var/aulock ]; then
+    cp -au /opt/var/* /srv/var/
+    date >/srv/var/aulock
 fi
 
 #####################################################################
