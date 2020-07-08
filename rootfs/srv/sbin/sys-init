@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-if [ -f /srv/etc/overlay ]; then
+if [ -f /opt/etc/overlay ]; then
     cp -a /opt/etc/* /srv/etc/
     date >/srv/etc/aulock
 fi
