@@ -9,7 +9,7 @@ cd ~
 
 name=webox-linux-v11.tgz
 
-wget -O ${name} http://get.vmlu.com/webox/${name}?v11.2.1
+wget -O ${name} http://get.vmlu.com/webox/${name}?v11.2.2
 tar -xf ${name} && rm -f ${name}
 
 rm -r ~/srv/etc/nginx/vhost.d/sample-host
@@ -25,8 +25,6 @@ ln -sf /run /srv/var/run
 cp -a /srv/etc /srv/var /opt/
 
 #####################################################################
-
-sed -i 's#usr/local#srv#g' /etc/profile
 
 chmod +x /srv/sbin/run-cron
 chmod +x /srv/sbin/sys-init
