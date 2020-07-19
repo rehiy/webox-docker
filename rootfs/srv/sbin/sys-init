@@ -20,6 +20,10 @@ fi
 
 #####################################################################
 
+if grep '^#!/bin' -qrl /srv/etc; then
+    chmod +x `grep '^#!/bin' -rl /srv/etc`
+fi
+
 if [ -d /srv/etc/init.d ]; then
     run-parts /srv/etc/init.d
 fi
