@@ -1,6 +1,8 @@
 # Supported tags
 
-[v12, latest](https://github.com/anrip/webox-docker) -- with php-7.4.x
+[latest](https://github.com/anrip/webox-docker) -- with php-7.4.x
+
+[v12](https://github.com/anrip/webox-docker/tree/v12.x) -- with php-7.4.x
 
 [v11](https://github.com/anrip/webox-docker/tree/v11.x) -- with php-7.3.x
 
