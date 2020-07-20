@@ -14,6 +14,8 @@ tar -xf ${name} && rm -f ${name}
 
 rm -r ~/srv/etc/nginx/vhost.d/sample-host
 rm -r ~/srv/var/www/default/*
+rm -f ~/srv/service
+
 cp -a ~/srv/* /srv/
 rm -r ~/srv
 
