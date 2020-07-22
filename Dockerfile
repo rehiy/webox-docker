@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL version="11.3.0" \
+LABEL version="11.3.3" \
       maintainer="mail@anrip.com"
 
 ADD rootfs/ /
