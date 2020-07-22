@@ -6,4 +6,4 @@ if mount | grep -q /opt/etc; then
     date >/srv/etc/aulock
 fi
 
-/srv/share/wkit/service "$@"
+/srv/cell/wkit/service "$@"
