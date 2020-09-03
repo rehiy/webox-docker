@@ -30,6 +30,7 @@ cp -a /srv/etc /srv/var /opt/
 
 chmod +x /srv/sbin/run-cron
 chmod +x /srv/sbin/sys-init
+chmod +x /srv/etc/init.d/*
 chmod +x /srv/service
 
 rm -f /deploy

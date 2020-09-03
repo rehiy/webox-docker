@@ -28,10 +28,6 @@ if [ -d /srv/etc/init.d ]; then
     run-parts /srv/etc/init.d
 fi
 
-if [ -x /srv/service ]; then
-    /srv/service start
-fi
-
 #####################################################################
 
 exec crond -f
