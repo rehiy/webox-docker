@@ -5,6 +5,16 @@ set -xe
 
 #####################################################################
 
+apt-get update
+apt-get install -y busybox
+
+busybox --install /usr/local/bin
+
+rm -rf /var/lib/apt/lists/*
+rm -rf `find /var -name *.log*`
+
+#####################################################################
+
 cd ~
 
 name=webox-linux-v12.tgz
