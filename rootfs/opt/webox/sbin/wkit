@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+
+webox=/opt/webox
+
+if mount | grep -q /mnt/etc; then
+    cp -a /mnt/etc/* $webox/etc/
+    date >$webox/etc/aulock
+fi
+
+#####################################################################
+
+$webox/cell/wkit/service "$@"

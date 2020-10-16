@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+
+webox=/opt/webox
+
+if mount | grep -q /mnt/etc; then
+    cp -a /mnt/etc/* $webox/etc/
+    date >$webox/etc/aulock
+fi
+
+#####################################################################
+
+if [ ! -f $webox/etc/aulock ]; then
+    cp -au /mnt/etc/* $webox/etc/
+    date >$webox/etc/aulock
+fi
+
+if [ ! -f $webox/var/aulock ]; then
+    cp -au /mnt/var/* $webox/var/
+    date >$webox/var/aulock
+fi
+
+#####################################################################
+
+if grep '^#!/bin' -qrl $webox/etc; then
+    chmod +x `grep '^#!/bin' -rl $webox/etc`
+fi
+
+if [ -d $webox/etc/init.d ]; then
+    run-parts $webox/etc/init.d
+fi
+
+#####################################################################
+
+exec crond -f

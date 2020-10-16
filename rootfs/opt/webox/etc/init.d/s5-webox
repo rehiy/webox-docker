@@ -1,0 +1,4 @@
+#!/bin/sh
+#
+
+/opt/webox/cell/wkit/service start

@@ -3,12 +3,15 @@
 
 set -xe
 
+webox=/opt/webox
+
 #####################################################################
 
 apt-get update
 apt-get install -y busybox
 
 busybox --install /usr/local/bin
+rm -rf /usr/local/bin/tar
 
 rm -rf /var/lib/apt/lists/*
 rm -rf `find /var -name *.log*`
@@ -17,30 +20,28 @@ rm -rf `find /var -name *.log*`
 
 cd ~
 
-name=webox-linux-v12.tgz
+name=webox-linux-v13.tgz
 
-wget -O ${name} http://get.vmlu.com/webox/${name}?v12.3.3
+wget -O ${name} http://get.vmlu.com/webox/${name}?v13.0
 tar -xf ${name} && rm -f ${name}
 
-rm -r ~/srv/etc/nginx/*/sample-*
-rm -r ~/srv/var/www/default/*
-rm -f ~/srv/service
+rm -rf ~/webox/etc/nginx/*/sample-*
+rm -rf ~/webox/var/www/default/*
 
-cp -a ~/srv/* /srv/
-rm -r ~/srv
-
-#####################################################################
-
-rm -rf /srv/var/run
-ln -sf /run /srv/var/run
-
-cp -a /srv/etc /srv/var /opt/
+cp -af ~/webox/* $webox/
+rm -rf ~/webox
 
 #####################################################################
 
-chmod +x /srv/sbin/run-cron
-chmod +x /srv/sbin/sys-init
-chmod +x /srv/etc/init.d/*
-chmod +x /srv/service
+rm -rf $webox/var/run
+ln -sf /run $webox/var/run
+
+ln -sf $webox/sbin/wkit $webox/service
+ln -sf $webox/sbin/wkit /sbin/wkit
+
+chmod +x $webox/etc/init.d/*
+chmod +x $webox/sbin/run-cron
+chmod +x $webox/sbin/sys-init
+chmod +x $webox/sbin/wkit
 
 rm -f /deploy

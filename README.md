@@ -38,7 +38,7 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 
 ```shell
 docker run --name mybox -d -P \
-    -v /mnt/mybox:/srv/var \
+    -v /mnt/mybox:/opt/webox/var \
     vmlu/webox
 ```
 
@@ -52,8 +52,8 @@ If the domain is `www.anrip.net`, the webroot will be `/mnt/mybox/www/default/ne
 
 ```shell
 docker run --name mybox -d -P \
-    -v /mnt/mybox/etc:/srv/etc \
-    -v /mnt/mybox/var:/srv/var \
+    -v /mnt/mybox/etc:/opt/webox/etc \
+    -v /mnt/mybox/var:/opt/webox/var \
     --env 'WBX_APPS=nginx php' \
     vmlu/webox
 ```
@@ -61,7 +61,7 @@ docker run --name mybox -d -P \
 ## service management command
 
 ```shell
-docker exec -it mybox /srv/service [start|stop|restart|reload]
+docker exec -it mybox wkit [start|stop|restart|reload]
 ```
 
 ## configure the modules you need
@@ -73,7 +73,7 @@ please edit the config files in `/mnt/mybox/etc/*`, then reload the service
 ## don't forget change mysql password
 
 ```shell
-docker exec -it mybox /srv/bin/mysqladmin password a1B2c3E4
+docker exec -it mybox /opt/webox/bin/mysqladmin password a1B2c3E4
 ```
 
 # More Issues
