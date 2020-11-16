@@ -3,8 +3,8 @@
 
 webox=/opt/webox
 
-if mount | grep -q /mnt/etc; then
-    cp -a /mnt/etc/* $webox/etc/
+if mount | grep -q $webox/etc-overlay; then
+    cp -a $webox/etc-overlay/* $webox/etc/
     date >$webox/etc/aulock
 fi
 
