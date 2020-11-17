@@ -1,7 +1,10 @@
 #!/bin/sh
 #
 
-[ -x /usr/bin/dos2unix ] || apt install -y dos2unix
-find assets/ -type f -exec dos2unix {} \;
+if [ ! -x /usr/bin/dos2unix ]; then
+    apt install -y dos2unix
+fi
+
+find rootfs/ -type f -exec dos2unix {} \;
 
 docker build -t test/webox .
