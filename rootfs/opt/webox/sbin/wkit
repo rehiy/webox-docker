@@ -3,9 +3,11 @@
 
 webox=/opt/webox
 
-if mount | grep -q $webox/etc-overlay; then
-    cp -a $webox/etc-overlay/* $webox/etc/
+#####################################################################
+
+if [ -d /overlay/etc ]; then
     date >$webox/etc/aulock
+    cp -a /overlay/etc/* $webox/etc/
 fi
 
 #####################################################################

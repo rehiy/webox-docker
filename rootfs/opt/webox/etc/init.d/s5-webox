@@ -1,4 +1,4 @@
 #!/bin/sh
 #
 
-/opt/webox/cell/wkit/service start
+/opt/webox/cell/wkit/service "$@"

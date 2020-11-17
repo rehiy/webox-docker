@@ -3,21 +3,20 @@
 
 webox=/opt/webox
 
-if mount | grep -q $webox/etc-overlay; then
-    cp -a $webox/etc-overlay/* $webox/etc/
-    date >$webox/etc/aulock
-fi
-
 #####################################################################
 
 if [ ! -f $webox/etc/aulock ]; then
-    cp -au $webox/etc-overlay/* $webox/etc/
     date >$webox/etc/aulock
+    if [ -d /overlay/etc ]; then
+        cp -av /overlay/etc/* $webox/etc/
+    fi
 fi
 
 if [ ! -f $webox/var/aulock ]; then
-    cp -au /mnt/var/* $webox/var/
     date >$webox/var/aulock
+    if [ -d /overlay/var ]; then
+        cp -av /overlay/var/* $webox/var/
+    fi
 fi
 
 #####################################################################
@@ -27,9 +26,5 @@ if grep '^#!/bin' -qrl $webox/etc; then
 fi
 
 if [ -d $webox/etc/init.d ]; then
-    run-parts $webox/etc/init.d
+    run-parts -a start $webox/etc/init.d
 fi
-
-#####################################################################
-
-exec crond -f

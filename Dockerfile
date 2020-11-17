@@ -6,6 +6,6 @@ LABEL version="12.3.4" \
 ADD rootfs/ /
 RUN /bin/sh /deploy
 
-ENTRYPOINT /usr/local/bin/init
+ENTRYPOINT ["/sbin/init"]
 
 EXPOSE 80 443

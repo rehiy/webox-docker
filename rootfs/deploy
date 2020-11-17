@@ -8,10 +8,9 @@ webox=/opt/webox
 #####################################################################
 
 apt-get update
-apt-get install -y busybox
+apt-get install -y busybox-static
 
-busybox --install /usr/local/bin
-rm -rf /usr/local/bin/tar
+busybox --install -s
 
 rm -rf /var/lib/apt/lists/*
 rm -rf `find /var -name *.log*`
@@ -27,17 +26,19 @@ tar -xf ${name} && rm -f ${name}
 
 rm -rf ~/webox/etc/nginx/*/sample-*
 rm -rf ~/webox/var/www/default/*
+rm -rf ~/webox/var/run
+rm -rf ~/webox/var/tmp
 
 cp -af ~/webox/* $webox/
 rm -rf ~/webox
 
 #####################################################################
 
-rm -rf $webox/var/run
-ln -sf /run $webox/var/run
+rm -rf /usr/local
+ln -sf $webox /usr/local
 
-ln -sf $webox/sbin/wkit $webox/service
-ln -sf $webox/sbin/wkit /sbin/wkit
+ln -sf /run $webox/var/run
+ln -sf /tmp $webox/var/tmp
 
 chmod +x $webox/etc/init.d/*
 chmod +x $webox/sbin/run-cron
