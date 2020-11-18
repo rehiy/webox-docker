@@ -28,11 +28,11 @@ mv -f ~/webox $webox
 
 #####################################################################
 
+rm -rf $webox/var/log
+ln -sf /var/log $webox/var/log
+
 rm -rf $webox/var/run
 ln -sf /var/run $webox/var/run
-
-rm -rf $webox/var/tmp
-ln -sf /var/tmp $webox/var/tmp
 
 rm -rf $webox/var/www/default/*
 
