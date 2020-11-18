@@ -3,7 +3,7 @@
 
 set -xe
 
-webox=/opt/webox
+export webox=/opt/webox
 
 #####################################################################
 
@@ -21,28 +21,32 @@ cd ~
 
 name=webox-linux-v13.tgz
 
-wget -O ${name} http://get.vmlu.com/webox/${name}?v13.0
+wget -O ${name} http://get.vmlu.com/webox/${name}
 tar -xf ${name} && rm -f ${name}
 
-rm -rf ~/webox/etc/nginx/*/sample-*
-rm -rf ~/webox/var/www/default/*
-rm -rf ~/webox/var/run
-rm -rf ~/webox/var/tmp
-
-cp -af ~/webox/* $webox/
-rm -rf ~/webox
+mv -f ~/webox $webox
 
 #####################################################################
 
-rm -rf /usr/local
-ln -sf $webox /usr/local
+rm -rf $webox/var/run
+ln -sf /var/run $webox/var/run
 
-ln -sf /run $webox/var/run
-ln -sf /tmp $webox/var/tmp
+rm -rf $webox/var/tmp
+ln -sf /var/tmp $webox/var/tmp
 
-chmod +x $webox/etc/init.d/*
-chmod +x $webox/sbin/run-cron
-chmod +x $webox/sbin/sys-init
-chmod +x $webox/sbin/wkit
+rm -rf $webox/var/www/default/*
 
-rm -f /deploy
+rm -rf $webox/etc/nginx/*/sample-*
+
+#####################################################################
+
+mkdir -p $webox/etc/init.d
+
+ln -sf /sbin/wkit $webox/etc/init.d/s5-wkit
+
+#####################################################################
+
+chmod +x /sbin/wkit-*
+chmod +x /sbin/wkit
+
+rm -rf /deploy

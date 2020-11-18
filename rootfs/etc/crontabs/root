@@ -1,8 +1,8 @@
 # do daily/weekly/monthly maintenance
 # min	hour	day	month	weekday	command
 
-*/15	*	*	*	*	/opt/webox/sbin/run-cron 15min
-0	*	*	*	*	/opt/webox/sbin/run-cron hourly
-0	2	*	*	*	/opt/webox/sbin/run-cron daily
-0	3	*	*	6	/opt/webox/sbin/run-cron weekly
-0	5	1	*	*	/opt/webox/sbin/run-cron monthly
+*/15	*	*	*	*	/sbin/wkit-cron 15min
+0	*	*	*	*	/sbin/wkit-cron hourly
+0	2	*	*	*	/sbin/wkit-cron daily
+0	3	*	*	6	/sbin/wkit-cron weekly
+0	5	1	*	*	/sbin/wkit-cron monthly

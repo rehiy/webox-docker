@@ -1,15 +1,12 @@
 #!/bin/sh
 #
 
-webox=/opt/webox
+export webox=/opt/webox
 
 #####################################################################
 
 if [ -d /overlay/etc ]; then
-    date >$webox/etc/aulock
     cp -a /overlay/etc/* $webox/etc/
 fi
-
-#####################################################################
 
 $webox/cell/wkit/service "$@"

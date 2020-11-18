@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-
-if [ -d /opt/webox/etc/cron.$1 ]; then
-    run-parts /opt/webox/etc/cron.$1
-fi

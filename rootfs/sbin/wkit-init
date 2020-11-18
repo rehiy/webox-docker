@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+
+export webox=/opt/webox
+
+#####################################################################
+
+if grep '^#!/bin' -qrl $webox/etc; then
+    chmod +x `grep '^#!/bin' -rl $webox/etc`
+fi
+
+if [ -d $webox/etc/init.d ]; then
+    run-parts -a start $webox/etc/init.d
+fi
+
+if [ -d /etc/crontabs ]; then
+    crond -c /etc/crontabs
+fi
