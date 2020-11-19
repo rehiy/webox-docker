@@ -12,9 +12,9 @@
 
 Webox (`abbreviation for web-box`) is a customized lnmp server. It supports running on most linux distributions, such as alpine, CentOS, Debian, and Ubuntu.
 
-`v13` tag contains the following modules: mariadb, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
+`v13` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
 
-- mariadb 10.5.x
+- mysql 8.0.x
 
 - nginx 1.19.x
 
