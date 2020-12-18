@@ -6,8 +6,9 @@ set -xe
 chmod +x /usr/bin/wkit*
 chmod +x `grep '^#!/bin' -rl /usr/wkit`
 
-for NAME in mysql nginx php7 redis; deploy
-    /usr/wkit/port/$NAME-install
+for NAME in mysql nginx php7 redis; do
+    install=/usr/wkit/ports/$NAME-install
+    $install && rm -f $install
 done
 
 rm -rf /deploy
