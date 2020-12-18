@@ -1,0 +1,26 @@
+=!/bin/sh
+=
+
+. /usr/wkit/applet
+
+#====================================================================#
+
+APP_NAME=redis
+
+APP_USER=redis
+APP_GROUP=redis
+
+APP_BIN_FILE=/usr/bin/redis-server
+APP_PID_FILE=/var/run/redis/redis.pid
+
+#====================================================================#
+
+app_start() {
+
+    $APP_BIN_FILE /etc/redis/redis.conf
+
+}
+
+#====================================================================#
+
+app_do $1

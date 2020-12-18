@@ -3,50 +3,11 @@
 
 set -xe
 
-export webox=/opt/webox
+chmod +x `grep '^#!/bin' -rl /usr/wkit`
+chmod +x /usr/bin/wkit*
 
-#####################################################################
-
-apt-get update
-apt-get install -y busybox-static
-
-busybox --install -s
-
-rm -rf /var/lib/apt/lists/*
-rm -rf `find /var -name *.log*`
-
-#####################################################################
-
-cd ~
-
-name=webox-linux-v13.tgz
-
-wget -O ${name} http://get.vmlu.com/webox/${name}
-tar -xf ${name} && rm -f ${name}
-
-mv -f ~/webox $webox
-
-#####################################################################
-
-rm -rf $webox/var/log
-ln -sf /var/log $webox/var/log
-
-rm -rf $webox/var/run
-ln -sf /var/run $webox/var/run
-
-rm -rf $webox/var/www/default/*
-
-rm -rf $webox/etc/nginx/*/sample-*
-
-#####################################################################
-
-mkdir -p $webox/etc/init.d
-
-ln -sf /sbin/wkit $webox/etc/init.d/s5-wkit
-
-#####################################################################
-
-chmod +x /sbin/wkit-*
-chmod +x /sbin/wkit
+for NAME in mysql nginx php7 redis; deploy
+    /usr/wkit/port/$NAME-install
+done
 
 rm -rf /deploy

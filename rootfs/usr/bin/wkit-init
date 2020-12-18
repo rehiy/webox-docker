@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+
+if grep '^#!/bin' -qrl /migrate/etc; then
+    chmod +x `grep '^#!/bin' -rl /migrate/etc`
+fi
+
+if [ -d /etc/init.d ]; then
+    rm -f `grep openrc -rl /etc/init.d`
+    run-parts -a start /etc/init.d
+fi
+
+if [ -d /etc/crontabs ]; then
+    crond -c /etc/crontabs
+fi

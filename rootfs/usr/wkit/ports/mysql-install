@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+
+apk add --no-cache mariadb mariadb-client
+
+rm -rf /etc/my.conf /etc/my.conf.d

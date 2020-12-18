@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+
+apk add --no-cache redis
+
+rm -rf /etc/redis.conf

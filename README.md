@@ -1,36 +1,27 @@
-# Supported tags
-
-[latest](https://github.com/anrip/webox-docker) -- with php-7.4.x
-
-[v12](https://github.com/anrip/webox-docker/tree/v12.x) -- with php-7.4.x
-
-[v11](https://github.com/anrip/webox-docker/tree/v11.x) -- with php-7.3.x
-
-[v10](https://github.com/anrip/webox-docker/tree/v10.x) -- with php-5.6.x
-
 # What is Webox?
 
-Webox (`abbreviation for web-box`) is a customized lnmp server. It supports running on most linux distributions, such as alpine, CentOS, Debian, and Ubuntu.
+Re sail from alpine !
 
-`v13` tag contains the following modules: mysql, nginx, nodejs, php, redis. And some popular plug-ins have been added, such as geoip2, imagick ...
+Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, NodeJS, PHP, Redis. And add some popular plug-ins, such as geoip2, imagick ...
 
-- mysql 8.0.x
+- mariadb 10.4.x
 
-- nginx 1.19.x
+- nginx 1.18.x
 
   - image-filter
-  - maxminddb(geoip2)
-  - njs
 
-- node 14.4.x
+- node 12.18.x
 
-- php 7.4.x
+  - npm
+
+- php 7.3.x
 
   - imagick
   - maxminddb(geoip2)
+  - memcache
   - redis
 
-- redis 6.0.x
+- redis 5.0.x
 
 # Simple Usage
 
@@ -38,13 +29,13 @@ Webox (`abbreviation for web-box`) is a customized lnmp server. It supports runn
 
 ```shell
 docker run --name mybox -d -P \
-    -v /mnt/mybox:/opt/webox/var \
+    -v /mnt/htdoc:/var/www/default \
     vmlu/webox
 ```
 
 ## put your files to host's webroot
 
-If the domain is `www.anrip.net`, the webroot will be `/mnt/mybox/www/default/net.anrip.www/`
+If the domain is `www.anrip.net`, the webroot will be `/mnt/htdoc/net.anrip.www/`
 
 # Manual Control Services
 
@@ -52,8 +43,9 @@ If the domain is `www.anrip.net`, the webroot will be `/mnt/mybox/www/default/ne
 
 ```shell
 docker run --name mybox -d -P \
-    -v /mnt/mybox/etc:/opt/webox/etc \
-    -v /mnt/mybox/var:/opt/webox/var \
+    -v /mnt/etc:/overlay/etc \
+    -v /mnt/mysql:/var/lib/mysql \
+    -v /mnt/htdoc:/var/www/default \
     --env 'WBX_APPS=nginx php' \
     vmlu/webox
 ```
@@ -66,14 +58,14 @@ docker exec -it mybox wkit [start|stop|restart|reload]
 
 ## configure the modules you need
 
-please edit the config files in `/mnt/mybox/etc/*`, then reload the service
+please edit the config files in `/mnt/etc/*`, then reload the service
 
 # Important Notice
 
-## don't forget change mysql password
+## show mysql default password
 
 ```shell
-docker exec -it mybox /opt/webox/bin/mysqladmin password a1B2c3E4
+docker exec -it mybox grep password /var/log/mysql/error.log
 ```
 
 # More Issues

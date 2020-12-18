@@ -1,8 +1,0 @@
-# do daily/weekly/monthly maintenance
-# min	hour	day	month	weekday	command
-
-*/15	*	*	*	*	/sbin/wkit-cron 15min
-0	*	*	*	*	/sbin/wkit-cron hourly
-0	2	*	*	*	/sbin/wkit-cron daily
-0	3	*	*	6	/sbin/wkit-cron weekly
-0	5	1	*	*	/sbin/wkit-cron monthly
