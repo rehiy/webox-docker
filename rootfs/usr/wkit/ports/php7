@@ -23,7 +23,7 @@ app_reload() {
 
 app_prepare() {
 
-    for POOL in `ls /etc/php7/pool.d/`; do
+    for POOL in `ls /etc/php7/php-fpm.d/`; do
         POOL=${POOL%.*}
         mkdir -p /var/www/${POOL}
         mkdir -p /var/log/php7/${POOL}

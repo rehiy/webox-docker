@@ -3,13 +3,14 @@
 
 set -xe
 
-chmod +x /etc/init.d/*
-chmod +x /usr/bin/wkit*
-chmod +x `grep '^#!/bin' -rl /usr/wkit`
+cp -a /deploy/usr /
 
 for NAME in mysql nginx php7 redis; do
     install=/usr/wkit/ports/$NAME-install
     $install && rm -f $install
 done
 
-rm -rf /deploy
+cp -a /deploy/etc /
+cp -a /deploy/var /
+
+rm -r /deploy
