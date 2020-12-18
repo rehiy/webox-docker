@@ -30,6 +30,7 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 ```shell
 docker run --name mybox -d -P \
     -v /srv/htdoc:/var/www/default \
+    -v /srv/mysql:/var/lib/mysql \
     vmlu/webox
 ```
 
@@ -44,7 +45,6 @@ If the domain is `www.anrip.net`, the webroot will be `/srv/htdoc/net.anrip.www/
 ```shell
 docker run --name mybox -d -P \
     -v /srv/etc:/var/config \
-    -v /srv/mysql:/var/lib/mysql \
     -v /srv/htdoc:/var/www/default \
     --env 'WBX_APPS=nginx php' \
     vmlu/webox
