@@ -9,8 +9,8 @@ fi
 
 wbx_single() {
 
-    if [ -x /usr/wkit/ports/$1 ]; then
-        /usr/wkit/ports/$1 $2
+    if [ -x /usr/wkit/serivces/$1 ]; then
+        /usr/wkit/serivces/$1 $2
     else
         echo "[wkit] invalid app: $1"
     fi

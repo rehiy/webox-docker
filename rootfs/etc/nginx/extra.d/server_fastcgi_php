@@ -4,7 +4,7 @@
 
 location ~ \.php$ {
 
-    include extra.dfastcgi_params;
+    include fastcgi_params;
 
     if ($safedir = "") {
         set $safedir $sitedir;

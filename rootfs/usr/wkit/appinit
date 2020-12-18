@@ -1,13 +1,13 @@
 #!/bin/sh
 #
 
-export APP_NAME=xx
+export APP_NAME=app
 
 export APP_USER=root
 export APP_GROUP=root
 
-export APP_BIN_FILE=/usr/bin/xx
-export APP_PID_FILE=/var/run/xx.pid
+export APP_BIN_FILE=/usr/bin/app
+export APP_PID_FILE=/var/run/app.pid
 
 #====================================================================#
 
