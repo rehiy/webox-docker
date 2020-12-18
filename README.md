@@ -44,8 +44,8 @@ If the domain is `www.anrip.net`, the webroot will be `/srv/htdoc/net.anrip.www/
 
 ```shell
 docker run --name mybox -d -P \
-    -v /srv/etc:/var/config \
     -v /srv/htdoc:/var/www/default \
+    -v /srv/etc:/var/config \
     --env 'WBX_APPS=nginx php' \
     vmlu/webox
 ```
@@ -58,7 +58,9 @@ docker exec -it mybox wkit [start|stop|restart|reload]
 
 ## configure the modules you need
 
-please edit the config files in `/srv/etc/*`, then reload the service
+you can place additional config files in `/srv/etc/*`, then reload the service
+
+These files will be copied to / etc and take effect
 
 # Important Notice
 
