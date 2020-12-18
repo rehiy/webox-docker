@@ -3,4 +3,5 @@
 
 apk add --no-cache mariadb mariadb-client
 
-rm -rf /etc/my.conf /etc/my.conf.d
+rm -rf /etc/my.cnf /etc/my.cnf.d
+ln -sf mysql/my.cnf /etc/my.cnf

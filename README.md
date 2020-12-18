@@ -62,10 +62,10 @@ please edit the config files in `/srv/etc/*`, then reload the service
 
 # Important Notice
 
-## show mysql default password
+## don't forget change mysql password
 
 ```shell
-docker exec -it mybox grep password /var/log/mysql/error.log
+docker exec -it mybox mysqladmin -u root password abc345
 ```
 
 # More Issues

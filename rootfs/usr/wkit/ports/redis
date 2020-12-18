@@ -17,7 +17,7 @@ APP_PID_FILE=/var/run/redis/redis.pid
 
 app_start() {
 
-    $APP_BIN_FILE /etc/redis/redis.conf
+    $APP_BIN_FILE /etc/redis.conf
 
 }
 

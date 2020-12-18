@@ -3,4 +3,6 @@
 
 apk add --no-cache redis
 
-rm -rf /etc/redis.conf
+cat >> /etc/redis.conf <<!
+include /etc/redis/redis.conf
+!
