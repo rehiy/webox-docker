@@ -3,6 +3,7 @@
 
 set -xe
 
+chmod +x /etc/init.d/*
 chmod +x /usr/bin/wkit*
 chmod +x `grep '^#!/bin' -rl /usr/wkit`
 
