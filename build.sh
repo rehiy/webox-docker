@@ -7,6 +7,14 @@ fi
 
 find rootfs/ -type f -exec dos2unix {} \;
 
-docker build -t test/webox .
+docker build -t dev/webox .
+sleep 3
 
-# docker run -d --rm test/webox
+docker run --name tmp321 --rm dev/webox &
+sleep 9
+
+docker exec -it tmp321 /bin/sh
+sleep 3
+
+docker rmi -f dev/webox
+docker image prune -f
