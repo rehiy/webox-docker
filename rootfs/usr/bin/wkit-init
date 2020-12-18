@@ -1,8 +1,8 @@
 #!/bin/sh
 #
 
-if grep '^#!/bin' -qrl /migrate/etc; then
-    chmod +x `grep '^#!/bin' -rl /migrate/etc`
+if [ -d /var/config ]; then
+    chmod +x / `grep '^#!/bin' -rl /var/config`
 fi
 
 if [ -d /etc/init.d ]; then

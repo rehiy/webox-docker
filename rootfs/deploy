@@ -3,8 +3,8 @@
 
 set -xe
 
-chmod +x `grep '^#!/bin' -rl /usr/wkit`
 chmod +x /usr/bin/wkit*
+chmod +x `grep '^#!/bin' -rl /usr/wkit`
 
 for NAME in mysql nginx php7 redis; deploy
     /usr/wkit/port/$NAME-install

@@ -43,7 +43,7 @@ If the domain is `www.anrip.net`, the webroot will be `/mnt/htdoc/net.anrip.www/
 
 ```shell
 docker run --name mybox -d -P \
-    -v /mnt/etc:/overlay/etc \
+    -v /mnt/etc:/var/config \
     -v /mnt/mysql:/var/lib/mysql \
     -v /mnt/htdoc:/var/www/default \
     --env 'WBX_APPS=nginx php' \

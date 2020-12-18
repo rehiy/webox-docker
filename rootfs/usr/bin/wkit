@@ -1,8 +1,8 @@
 #!/bin/sh
 #
 
-if [ -d /migrate/etc ]; then
-    cp -a /migrate/etc/* /etc/
+if [ -d /var/config ]; then
+    cp -a /var/config/* /etc/
 fi
 
 /usr/wkit/service "$@"
