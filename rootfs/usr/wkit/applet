@@ -3,8 +3,8 @@
 
 export APP_NAME=xx
 
-export APP_USER=daemon
-export APP_GROUP=daemon
+export APP_USER=root
+export APP_GROUP=root
 
 export APP_BIN_FILE=/usr/bin/xx
 export APP_PID_FILE=/var/run/xx.pid
