@@ -19,8 +19,8 @@ server {
     index index.php index.htm index.html;
   # try_files $uri $uri/ /index.php$is_args$args;
 
-    include /etc/nginx/conf.d/server_error_page;
+    include /etc/nginx/http.d/server_error_page;
 
-    include /etc/nginx/conf.d/server_fastcgi_php;
+    include /etc/nginx/http.d/server_fastcgi_php;
 
 }
