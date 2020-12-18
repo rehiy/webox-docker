@@ -1,6 +1,6 @@
 # Supported tags
 
-[v13](https://github.com/anrip/webox-docker) -- with php-7.4.x
+[v13](https://github.com/anrip/webox-docker) -- End of life cycle
 
 [v12](https://github.com/anrip/webox-docker/tree/v12.x) -- with php-7.4.x
 
