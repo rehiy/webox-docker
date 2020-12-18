@@ -14,4 +14,4 @@ if [ -d /etc/crontabs ]; then
     crond -c /etc/crontabs
 fi
 
-echo "webox done !"
+echo "well done !"
