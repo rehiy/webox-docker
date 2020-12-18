@@ -3,6 +3,8 @@
 
 set -xe
 
+chmod +x `grep '^#!/bin' -rl rootfs/`
+
 cp -a /deploy/usr /
 
 for NAME in mysql nginx php7 redis; do
