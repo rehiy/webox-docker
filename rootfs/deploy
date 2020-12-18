@@ -3,7 +3,7 @@
 
 set -xe
 
-chmod +x `grep '^#!/bin' -rl rootfs/`
+chmod +x `grep '^#!/bin' -rl /deploy`
 
 cp -a /deploy/usr /
 
