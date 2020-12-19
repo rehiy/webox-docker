@@ -5,6 +5,7 @@ apk add --no-cache php7 php7-fpm \
     php7-bcmath \
     php7-bz2 \
     php7-curl \
+    php7-ctype \
     php7-dom \
     php7-exif \
     php7-fileinfo \
