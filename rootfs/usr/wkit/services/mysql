@@ -32,7 +32,8 @@ app_prepare() {
     fi
 
     if [ ! -d /var/lib/mysql/mysql ]; then
-        mysql_install_db --user=$APP_USER --datadir=/var/lib/mysql >$MLOG
+        mysql_install_db --skip-test-db \
+            --user=$APP_USER --datadir=/var/lib/mysql >$MLOG
     fi
 
 }
