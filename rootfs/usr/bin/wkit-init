@@ -3,6 +3,7 @@
 
 if [ -d /var/config ]; then
     chmod +x / `grep '^#!/bin' -rl /var/config`
+    cp -a /var/config/* /etc/
 fi
 
 if [ -d /etc/init.d ]; then

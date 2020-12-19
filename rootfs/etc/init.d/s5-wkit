@@ -1,4 +1,4 @@
 #!/bin/sh
 #
 
-wkit start
+/usr/wkit/service start
