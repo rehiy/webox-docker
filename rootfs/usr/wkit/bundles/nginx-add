@@ -5,7 +5,9 @@ apk add --no-cache nginx \
     nginx-mod-http-image-filter \
     nginx-mod-stream
 
+rm -rf /etc/init.d/nginx
 rm -rf /var/lib/nginx/*
+rm -rf /var/www/localhost
 
 ln -sf /var/run/nginx /var/lib/nginx/run
 ln -sf /var/tmp/nginx /var/lib/nginx/tmp
