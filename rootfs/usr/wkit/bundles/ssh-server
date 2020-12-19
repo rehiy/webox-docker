@@ -1,7 +1,5 @@
-#!/bin/sh
+#!/bin/sh -e
 #
-
-set -xe
 
 if [ ! -x /usr/sbin/sshd ]; then
     apk add --no-cache openssh tzdata
