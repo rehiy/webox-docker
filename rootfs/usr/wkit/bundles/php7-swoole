@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 
+set -xe
+
 apk add --no-cache gcc g++ make
 apk add --no-cache php7-pear php7-dev openssl-dev
 

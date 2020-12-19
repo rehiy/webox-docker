@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 
+set -xe
+
 apk add --no-cache redis
 
 cat >> /etc/redis.conf <<!

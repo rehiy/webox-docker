@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 
+set -xe
+
 if [ ! -x /usr/sbin/sshd ]; then
     apk add --no-cache openssh tzdata
     ssh-keygen -t dsa -P "" -f /etc/ssh/ssh_host_dsa_key
