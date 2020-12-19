@@ -2,7 +2,7 @@
 
 Re sail from alpine !
 
-Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
+Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
 - mariadb 10.4.x
 
@@ -18,7 +18,7 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 # Simple Usage
 
-## the web server is listening on `your-ip:80`
+## The web server is listening on `your-ip:80`
 
 ```shell
 docker run --name MYBOX -d -P \
@@ -27,13 +27,13 @@ docker run --name MYBOX -d -P \
     vmlu/webox
 ```
 
-## put your files to host's webroot
+## Put your files to host's webroot
 
-If the domain is `www.anrip.net`, the webroot will be `/MY/htdoc/net.anrip.www/`
+If the domain is `www.anrip.net`, the webroot will be `/MY/htdoc/net.anrip.www/`.
 
 # Manual Control Services
 
-## set `WBX_APPS`, you can start some modules you need
+## Set `WBX_APPS`, you can start some components you need
 
 ```shell
 docker run --name MYBOX -d -P \
@@ -43,17 +43,17 @@ docker run --name MYBOX -d -P \
     vmlu/webox
 ```
 
-## service management command
+## Service management command
 
 ```shell
 docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
-## configure the modules you need
+## Configure the components you need
 
-you can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect
+You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect.
 
-for example, add some PHP extension modules
+For example, add some PHP extension modules:
 
 ```shell
     echo "#!/bin/sh" > /MY/config/init.d/s3-apk-add
@@ -64,13 +64,13 @@ for example, add some PHP extension modules
 
 # Important Notice
 
-## don't forget to change mysql password
+## Don't forget to change mysql password
 
 ```shell
 docker exec -it MYBOX mysqladmin -u root password abc345
 ```
 
-you may also need to execute the following SQL statements
+You may also need to execute the following SQL statements.
 
 ```sql
 DROP USER 'mysql'@'localhost';
@@ -78,4 +78,4 @@ DROP USER 'mysql'@'localhost';
 
 # More Issues
 
-See https://github.com/anrip/webox-docker/issues for more issues
+See https://github.com/anrip/webox-docker/issues for more issues.
