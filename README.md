@@ -70,6 +70,12 @@ These files will be copied to / etc and take effect
 docker exec -it mybox mysqladmin -u root password abc345
 ```
 
+you may also need to execute the following SQL statements
+
+```sql
+DROP USER 'mysql'@'localhost';
+```
+
 # More Issues
 
 See https://github.com/anrip/webox-docker/issues for more issues
