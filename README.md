@@ -2,7 +2,7 @@
 
 Re sail from alpine !
 
-Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, NodeJS, PHP, Redis. And add some popular plug-ins.
+Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
 - mariadb 10.4.x
 
