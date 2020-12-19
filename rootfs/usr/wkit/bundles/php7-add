@@ -14,22 +14,18 @@ apk add --no-cache php7 php7-fpm \
     php7-gettext \
     php7-iconv \
     php7-json \
-    php7-maxminddb \
     php7-mbstring \
     php7-mysqli \
     php7-mysqlnd \
     php7-opcache \
     php7-openssl \
-    php7-pcntl \
     php7-pecl-imagick \
-    php7-pecl-memcache \
     php7-pecl-redis \
     php7-pdo_mysql \
     php7-pdo_sqlite \
     php7-session \
     php7-shmop \
     php7-simplexml \
-    php7-soap \
     php7-sockets \
     php7-sqlite3 \
     php7-tokenizer \

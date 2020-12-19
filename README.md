@@ -2,7 +2,7 @@
 
 Re sail from alpine !
 
-Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, NodeJS, PHP, Redis. And add some popular plug-ins, such as geoip2, imagick ...
+Webox (`abbreviation for web-box`) is a customized LNMP server, which includes the following modules: MariaDB, Nginx, NodeJS, PHP, Redis. And add some popular plug-ins.
 
 - mariadb 10.4.x
 
@@ -10,15 +10,8 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
   - image-filter
 
-- node 12.18.x
-
-  - npm
-
 - php 7.3.x
 
-  - imagick
-  - maxminddb(geoip2)
-  - memcache
   - redis
 
 - redis 5.0.x
@@ -28,24 +21,24 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 ## the web server is listening on `your-ip:80`
 
 ```shell
-docker run --name mybox -d -P \
-    -v /srv/htdoc:/var/www/default \
-    -v /srv/mysql:/var/lib/mysql \
+docker run --name MYBOX -d -P \
+    -v /MY/htdoc:/var/www/default \
+    -v /MY/mysql:/var/lib/mysql \
     vmlu/webox
 ```
 
 ## put your files to host's webroot
 
-If the domain is `www.anrip.net`, the webroot will be `/srv/htdoc/net.anrip.www/`
+If the domain is `www.anrip.net`, the webroot will be `/MY/htdoc/net.anrip.www/`
 
 # Manual Control Services
 
 ## set `WBX_APPS`, you can start some modules you need
 
 ```shell
-docker run --name mybox -d -P \
-    -v /srv/htdoc:/var/www/default \
-    -v /srv/etc:/var/config \
+docker run --name MYBOX -d -P \
+    -v /MY/htdoc:/var/www/default \
+    -v /MY/config:/var/config \
     --env 'WBX_APPS=nginx php' \
     vmlu/webox
 ```
@@ -53,21 +46,28 @@ docker run --name mybox -d -P \
 ## service management command
 
 ```shell
-docker exec -it mybox wkit [start|stop|restart|reload]
+docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
 ## configure the modules you need
 
-you can place additional config files in `/srv/etc/*`, then reload the service
+you can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect
 
-These files will be copied to / etc and take effect
+for example, add some PHP extension modules
+
+```shell
+    echo "#!/bin/sh" > /MY/config/init.d/s3-apk-add
+    echo "apk add php7-pcntl php7-posix php7-saop" >> /MY/config/init.d/s3-apk-add
+    echo "apk add php7-maxminddb php7-pecl-imagick" >> /MY/config/init.d/s3-apk-add
+    docker restart MYBOX
+```
 
 # Important Notice
 
-## don't forget change mysql password
+## don't forget to change mysql password
 
 ```shell
-docker exec -it mybox mysqladmin -u root password abc345
+docker exec -it MYBOX mysqladmin -u root password abc345
 ```
 
 you may also need to execute the following SQL statements
