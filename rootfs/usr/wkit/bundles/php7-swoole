@@ -4,6 +4,8 @@
 apk add --no-cache --virtual build-deps \
     build-base openssl-dev php7-pear php7-dev
 
+pecl channel-update pecl.php.net
+
 pecl install swoole
 strip /usr/lib/php7/modules/swoole.so
 
