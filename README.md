@@ -16,6 +16,19 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 - redis 6.0.x
 
+# Supported Tags
+
+- [edge](https://github.com/anrip/webox-docker/tree/edge)
+
+- [latest](https://github.com/anrip/webox-docker/tree/master)
+
+- [nginx-php5.6](https://github.com/anrip/webox-docker/tree/nginx-php5.6)
+
+- [nginx-php7.3](https://github.com/anrip/webox-docker/tree/nginx-php7.3)
+
+- [nginx-php7.4](https://github.com/anrip/webox-docker/tree/nginx-php7.4)
+
+
 # Simple Usage
 
 ## The web server is listening on `your-ip:80`
