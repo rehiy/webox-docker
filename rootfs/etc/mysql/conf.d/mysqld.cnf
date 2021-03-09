@@ -1,19 +1,20 @@
 [mysqld]
 
-skip-name-resolve
+port           = 3306
+bind_address   = 0.0.0.0
 
-symbolic-links  = OFF
-
-slow_query_log  = ON
-long_query_time = 30
+skip_external_locking
+skip_name_resolve
 
 #
 # * Logging
 #
 
-log_bin             = /var/log/mysql/bin-log
-relay_log           = /var/log/mysql/relay-log
-
 log_error           = /var/log/mysql/error.log
+
 general_log_file    = /var/log/mysql/mysql.log
+general_log         = OFF
+
 slow_query_log_file = /var/log/mysql/slow.log
+slow_query_log      = OFF
+long_query_time     = 30
