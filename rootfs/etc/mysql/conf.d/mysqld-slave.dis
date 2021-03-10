@@ -15,7 +15,7 @@ replicate_wild_ignore_table = mysql.%
 
 ####################################################################################################
 #
-# stop slave;
-# change master to master_host='172.18.2.7', master_user='copy', master_password='123456';
-# start slave; show slave status;
+# STOP SLAVE;
+# CHANGE MASTER TO MASTER_HOST='10.0.0.11', MASTER_PORT=3306, MASTER_USER='COPY', MASTER_PASSWORD='123456', MASTER_LOG_FILE='BIN-LOG.000001', MASTER_LOG_POS=123;
+# START SLAVE; SHOW SLAVE STATUS;
 #
