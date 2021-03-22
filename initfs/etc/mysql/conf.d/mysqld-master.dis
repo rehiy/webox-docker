@@ -9,7 +9,7 @@ log_bin = /var/log/mysql/bin-log
 
 ####################################################################################################
 #
-# flush tables with read lock;
-# show master status;
-# unlock tables;
+# FLUSH TABLES WITH READ LOCK;
+# SHOW MASTER STATUS;
+# UNLOCK TABLES;
 #
