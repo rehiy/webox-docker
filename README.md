@@ -28,7 +28,6 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 - [nginx-php7.4](https://github.com/anrip/webox-docker/tree/nginx-php7.4)
 
-
 # Simple Usage
 
 ## The web server is listening on `your-ip:80`
@@ -52,6 +51,7 @@ If the domain is `www.anrip.net`, the webroot will be `/MY/htdoc/net.anrip.www/`
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
+    --env 'TIMEZONE=Asia/Shanghai' \
     --env 'WBX_APPS=nginx php7' \
     vmlu/webox
 ```
