@@ -22,11 +22,11 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 - [latest](https://github.com/anrip/webox-docker/tree/master)
 
-- [nginx-php5.6](https://github.com/anrip/webox-docker/tree/nginx-php5.6)
+- [nginx-php7.4](https://github.com/anrip/webox-docker/tree/nginx-php7.4)
 
 - [nginx-php7.3](https://github.com/anrip/webox-docker/tree/nginx-php7.3)
 
-- [nginx-php7.4](https://github.com/anrip/webox-docker/tree/nginx-php7.4)
+- [nginx-php5.6](https://github.com/anrip/webox-docker/tree/nginx-php5.6)
 
 # Simple Usage
 
