@@ -11,4 +11,8 @@ if [ -f /usr/wkit/bundles/$1 ]; then
     exit $?
 fi
 
+if [ -f /etc/wkit-env ]; then
+    . /etc/wkit-env
+fi
+
 /usr/wkit/service "$@"
