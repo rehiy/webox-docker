@@ -6,7 +6,7 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 - mariadb 10.5.x
 
-- nginx 1.18.x
+- nginx 1.20.x
 
   - image-filter
 
