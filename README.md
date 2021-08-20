@@ -8,8 +8,6 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 - nginx 1.20.x
 
-  - image-filter
-
 - php 7.4.x
 
   - redis

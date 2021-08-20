@@ -1,9 +1,7 @@
 #!/bin/sh -e
 #
 
-apk add --no-cache nginx \
-    nginx-mod-http-image-filter \
-    nginx-mod-stream
+apk add --no-cache nginx
 
 rm -rf /etc/nginx/http.d
 rm -rf /var/lib/nginx/*
