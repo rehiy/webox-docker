@@ -1,7 +1,7 @@
 FROM alpine:3.14
 
 LABEL version="14.2.0" \
-      maintainer="mail@anrip.com"
+      maintainer="wang@rehiy.com"
 
 ENV WBX_APPS="mysql nginx php7 redis"
 
