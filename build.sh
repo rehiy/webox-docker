@@ -11,12 +11,13 @@ build() {
         wget https://team.vmlu.com/git/open/webox-docker/archive/$tag.tar.gz
     fi
 
-    rm -rf webox-docker
     tar -xvf $tag.tar.gz
 
     docker build -t vmlu/webox:$name webox-docker
 
     docker push vmlu/webox:$name
+
+    rm -rf webox-docker
 
 }
 
