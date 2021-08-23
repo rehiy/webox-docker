@@ -7,12 +7,12 @@ build() {
 
     name=${2:-$tag}
 
-    rm -rf webox-docker
-
     if [ ! -f $tag.tar.gz ]; then
         wget https://team.vmlu.com/git/open/webox-docker/archive/$tag.tar.gz
-        tar xvf $tag.tar.gz
     fi
+
+    rm -rf webox-docker
+    tar -xvf $tag.tar.gz
 
     docker build -t vmlu/webox:$name webox-docker
 
