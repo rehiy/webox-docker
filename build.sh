@@ -21,7 +21,7 @@ build() {
 
 }
 
-rm *.tar.gz
+rm -f *.tar.gz
 
 build nginx
 
