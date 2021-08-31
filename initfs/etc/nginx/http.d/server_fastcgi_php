@@ -24,6 +24,4 @@ location ~ \.php$ {
     fastcgi_buffers 128 64k;
     fastcgi_busy_buffers_size 128k;
 
-    fastcgi_intercept_errors on;
-
 }
