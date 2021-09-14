@@ -47,7 +47,7 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'TIMEZONE=Asia/Shanghai' \
+    -e 'TZ=Asia/Shanghai' \
     -e 'WBX_APPS=nginx php7' \
     vmlu/webox
 ```
@@ -56,7 +56,7 @@ docker run --name MYBOX -d -P \
 
 - `WBX_APPS`, Set up automatically started services
 
-- `TIMEZONE`, Set time zone
+- `TZ`, Set time zone
 
 ## Service management command
 
