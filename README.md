@@ -16,15 +16,17 @@ Webox (`abbreviation for web-box`) is a customized LNMP server, which includes t
 
 # Supported Tags
 
-- [edge](https://github.com/anrip/webox-docker/tree/edge)
+- [edge](https://github.com/rehiy/webox-docker/tree/edge)
 
-- [latest](https://github.com/anrip/webox-docker/tree/master)
+- [latest](https://github.com/rehiy/webox-docker/tree/master)
 
-- [nginx-php, nginx-php7, nginx-php7.4](https://github.com/anrip/webox-docker/tree/nginx-php7.4)
+- [nginx-php8, nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
 
-- [nginx-php7.3](https://github.com/anrip/webox-docker/tree/nginx-php7.3)
+- [nginx-php, nginx-php7, nginx-php7.4](https://github.com/rehiy/webox-docker/tree/nginx-php7.4)
 
-- [nginx-php5, nginx-php5.6](https://github.com/anrip/webox-docker/tree/nginx-php5.6)
+- [nginx-php7.3](https://github.com/rehiy/webox-docker/tree/nginx-php7.3)
+
+- [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/nginx-php5.6)
 
 # Simple Usage
 
@@ -116,4 +118,4 @@ DROP USER 'mysql'@'localhost';
 
 # More Issues
 
-See https://github.com/anrip/webox-docker/issues for more issues.
+See https://github.com/rehiy/webox-docker/issues for more issues.
