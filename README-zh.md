@@ -1,8 +1,8 @@
-# What is Webox?
+# 什么是 Webox?
 
-Re sail from alpine !
+让我们从 `AlpineLinux` 重新起航 !
 
-*Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
+*Webox* 是 `web-box` 的缩写，意为建站盒子。这是一个自定义的 `LNMP` 集成化容器, 内置了以下常用模块 MariaDB、Nginx、PHP、Redis。
 
 - mariadb 10.5.x
 
@@ -14,7 +14,7 @@ Re sail from alpine !
 
 - redis 6.0.x
 
-# Supported Tags
+# 可用分支
 
 - [edge](https://github.com/rehiy/webox-docker/tree/edge)
 
@@ -28,9 +28,9 @@ Re sail from alpine !
 
 - [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/nginx-php5.6)
 
-# Simple Usage
+# 快速启动
 
-## The nginx is listening on `docker-ip:80`
+## 网站将监听下列端口 `docker-ip:80`
 
 ```shell
 docker run --name MYBOX -d -P \
@@ -39,11 +39,11 @@ docker run --name MYBOX -d -P \
     vmlu/webox
 ```
 
-## Put your files to host's webroot
+## 把网站文件按照规则上传到指定目录
 
-If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.www/`.
+如果网站域名是 `www.example.org`，文件需要上传到目录 `/MY/htdoc/org.example.www/`。
 
-# Manual Control Services
+# 设置自启动组件
 
 ```shell
 docker run --name MYBOX -d -P \
@@ -54,19 +54,19 @@ docker run --name MYBOX -d -P \
     vmlu/webox
 ```
 
-## ENV Variables
+## 环境变量释义
 
-- `WBX_APPS`, Set up automatically started services
+- `WBX_APPS`, 设置需要启动的服务
 
-- `TZ`, Set the timezone
+- `TZ`, 设置容器时区
 
-## Service management command
+## 管理服务
 
 ```shell
 docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
-## Add some PHP extension modules
+## 增加一些php扩展
 
 ```shell
 docker exec -it MYBOX apk add \
@@ -74,27 +74,27 @@ docker exec -it MYBOX apk add \
     php7-maxminddb php7-pecl-imagick
 ```
 
-## Configure the components you need
+## 自定义组件配置
 
-You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
+请把配置文件放到目录 `/MY/config/*` ，这些文件将会覆盖容器内的配置目录 `/etc` ，并在重启容器后生效。
 
-- Configure mariadb
+- 配置 mariadb
 
   - /MY/config/mysql/conf.d/\*
 
-- Configure virtual host
+- 配置 nginx
 
   - /MY/config/nginx/host.d/\*
 
-- Configure php7
+- 配置 php7
 
   - /MY/config/php7/conf.d/\*
 
-- Configure redis
+- 配置 redis
 
   - /MY/config/redis/redis.conf
 
-- Scripts in the following locations will be run when `MYBOX` started:
+- 配置自启动脚本
 
   - /MY/config/rc.local
   - /MY/config/local.d/\*
@@ -102,20 +102,20 @@ You can place additional config files in `/MY/config/*`, these files will be cop
   - /MY/config/local.d/s5-wkit
   - /MY/config/local.d/s6-postwkit
 
-# Important Notice
+# 重要提示
 
-## Don't forget to change mysql password
+## 不要忘记修改数据库密码
 
 ```shell
 docker exec -it MYBOX mysqladmin -u root password abc345
 ```
 
-You may also need to execute the following SQL statements.
+你可能还需要执行下列语句，删除危险账号。
 
 ```sql
 DROP USER 'mysql'@'localhost';
 ```
 
-# More Issues
+# 更多问题
 
-See https://github.com/rehiy/webox-docker/issues for more issues.
+请查阅 https://github.com/rehiy/webox-docker/issues
