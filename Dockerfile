@@ -1,9 +1,9 @@
-FROM alpine:3.15
+FROM alpine:3.16
 
-LABEL version="14.2.1" \
+LABEL version="15.1.0" \
       maintainer="wang@rehiy.com"
 
-ENV WBX_APPS="mysql nginx php7 redis"
+ENV WBX_APPS="nginx php8"
 
 ADD initfs /ifs
 RUN sh /ifs/deploy
