@@ -4,15 +4,15 @@ Re sail from alpine !
 
 *Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
-- mariadb 10.5.x
+- mariadb 10.6.x
 
-- nginx 1.20.x
+- nginx 1.22.x
 
-- php 7.4.x
+- php 8.0.x
 
   - redis
 
-- redis 6.0.x
+- redis 7.0.x
 
 # Supported Tags
 
@@ -49,7 +49,7 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php7' \
+    -e 'WBX_APPS=nginx php8' \
     -e 'TZ=Asia/Shanghai' \
     vmlu/webox
 ```
@@ -70,8 +70,8 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php7-pcntl php7-posix php7-saop \
-    php7-maxminddb php7-pecl-imagick
+    php8-pcntl php8-posix php8-saop \
+    php8-maxminddb php8-pecl-imagick
 ```
 
 ## Configure the components you need
@@ -86,9 +86,9 @@ You can place additional config files in `/MY/config/*`, these files will be cop
 
   - /MY/config/nginx/host.d/\*
 
-- Configure php7
+- Configure php8
 
-  - /MY/config/php7/conf.d/\*
+  - /MY/config/php8/conf.d/\*
 
 - Configure redis
 
