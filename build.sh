@@ -8,14 +8,14 @@ build() {
     name=${2:-$tag}
 
     if [ ! -f $tag.tar.gz ]; then
-        wget https://team.vmlu.com/git/open/webox-docker/archive/$tag.tar.gz
+        wget https://git.ecnjp.com/open/webox-docker/archive/$tag.tar.gz
     fi
 
     tar -xvf $tag.tar.gz
 
-    docker build -t vmlu/webox:$name webox-docker
+    docker build -t rehiy/webox:$name webox-docker
 
-    docker push vmlu/webox:$name
+    docker push rehiy/webox:$name
 
     rm -rf webox-docker
 
@@ -36,6 +36,8 @@ build nginx-php7.4 nginx-php7
 
 build nginx-php8.0
 build nginx-php8.0 nginx-php8
+
+build nginx-php8.1
 
 build edge
 build master latest

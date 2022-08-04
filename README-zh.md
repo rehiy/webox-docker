@@ -22,6 +22,8 @@
 
 - [nginx-php8, nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
 
+- [nginx-php8.1](https://github.com/rehiy/webox-docker/tree/nginx-php8.1)
+
 - [nginx-php, nginx-php7, nginx-php7.4](https://github.com/rehiy/webox-docker/tree/nginx-php7.4)
 
 - [nginx-php7.3](https://github.com/rehiy/webox-docker/tree/nginx-php7.3)
