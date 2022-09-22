@@ -38,7 +38,7 @@ Re sail from alpine !
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
-    vmlu/webox
+    rehiy/webox
 ```
 
 ## Put your files to host's webroot
@@ -53,7 +53,7 @@ docker run --name MYBOX -d -P \
     -v /MY/config:/var/config \
     -e 'WBX_APPS=nginx php8' \
     -e 'TZ=Asia/Shanghai' \
-    vmlu/webox
+    rehiy/webox
 ```
 
 ## ENV Variables

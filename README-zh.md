@@ -38,7 +38,7 @@
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
-    vmlu/webox
+    rehiy/webox
 ```
 
 ## 把网站文件按照规则上传到指定目录
@@ -53,7 +53,7 @@ docker run --name MYBOX -d -P \
     -v /MY/config:/var/config \
     -e 'WBX_APPS=nginx php8' \
     -e 'TZ=Asia/Shanghai' \
-    vmlu/webox
+    rehiy/webox
 ```
 
 ## 环境变量释义
