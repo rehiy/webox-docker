@@ -8,7 +8,7 @@
 
 - nginx 1.22.x
 
-- php 8.0.x
+- php 8.1.x
 
   - redis
 
@@ -20,9 +20,9 @@
 
 - [latest](https://github.com/rehiy/webox-docker/tree/master)
 
-- [nginx-php8, nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
+- [nginx-php8, nginx-php8.1](https://github.com/rehiy/webox-docker/tree/nginx-php8.1)
 
-- [nginx-php8.1](https://github.com/rehiy/webox-docker/tree/nginx-php8.1)
+- [nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
 
 - [nginx-php, nginx-php7, nginx-php7.4](https://github.com/rehiy/webox-docker/tree/nginx-php7.4)
 
@@ -51,7 +51,7 @@ docker run --name MYBOX -d -P \
 docker run --name MYBOX -d -P \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php8' \
+    -e 'WBX_APPS=nginx php81' \
     -e 'TZ=Asia/Shanghai' \
     rehiy/webox
 ```
@@ -68,12 +68,12 @@ docker run --name MYBOX -d -P \
 docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
-## 增加一些php扩展
+## 增加一些 PHP 扩展
 
 ```shell
 docker exec -it MYBOX apk add \
-    php8-pcntl php8-posix php8-saop \
-    php8-maxminddb php8-pecl-imagick
+    php81-pcntl php81-posix php81-saop \
+    php81-maxminddb php81-pecl-imagick
 ```
 
 ## 自定义组件配置
@@ -88,9 +88,9 @@ docker exec -it MYBOX apk add \
 
   - /MY/config/nginx/host.d/\*
 
-- 配置 php8
+- 配置 php81
 
-  - /MY/config/php8/conf.d/\*
+  - /MY/config/php81/conf.d/\*
 
 - 配置 redis
 

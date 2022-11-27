@@ -4,7 +4,7 @@
 cd /tmp
 
 apk add --no-cache --virtual build-deps \
-    build-base curl-dev openssl-dev php8-pear php8-dev
+    build-base curl-dev openssl-dev php81-pear php81-dev
 
 pecl channel-update pecl.php.net
 
@@ -23,11 +23,11 @@ cd swoole && phpize
 make
 make install
 
-strip /usr/lib/php8/modules/swoole.so
+strip /usr/lib/php81/modules/swoole.so
 
 apk del build-deps
 rm -rf /tmp/*
 
 #====================================================================#
 
-echo "extension=swoole.so" > /etc/php8/conf.d/50_swoole.ini
+echo "extension=swoole.so" > /etc/php81/conf.d/50_swoole.ini

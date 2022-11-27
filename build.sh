@@ -35,9 +35,9 @@ build nginx-php7.4 nginx-php
 build nginx-php7.4 nginx-php7
 
 build nginx-php8.0
-build nginx-php8.0 nginx-php8
 
 build nginx-php8.1
+build nginx-php8.1 nginx-php8
 
 build edge
 build master latest
