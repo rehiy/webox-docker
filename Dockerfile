@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.17
 
 LABEL version="15.1.0" \
       maintainer="wang@rehiy.com"
