@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-LABEL version="15.1.0" \
+LABEL version="15.1.1" \
       maintainer="wang@rehiy.com"
 
 ENV WBX_APPS="mysql nginx php81 redis"
