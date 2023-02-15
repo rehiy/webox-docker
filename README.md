@@ -35,7 +35,7 @@ Re sail from alpine !
 ## The nginx is listening on `docker-ip:80`
 
 ```shell
-docker run --name MYBOX -d -P \
+docker run --name MYBOX -d -p 80 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
     rehiy/webox
@@ -48,7 +48,7 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 # Manual Control Services
 
 ```shell
-docker run --name MYBOX -d -P \
+docker run --name MYBOX -d -p 80 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
     -e 'WBX_APPS=nginx php81' \
@@ -120,4 +120,4 @@ DROP USER 'mysql'@'localhost';
 
 # More Issues
 
-See https://github.com/rehiy/webox-docker/issues for more issues.
+See <https://github.com/rehiy/webox-docker/issues> for more issues.

@@ -35,7 +35,7 @@
 ## 网站将监听下列端口 `docker-ip:80`
 
 ```shell
-docker run --name MYBOX -d -P \
+docker run --name MYBOX -d -p 80 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
     rehiy/webox
@@ -48,7 +48,7 @@ docker run --name MYBOX -d -P \
 # 设置自启动组件
 
 ```shell
-docker run --name MYBOX -d -P \
+docker run --name MYBOX -d -p 80 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
     -e 'WBX_APPS=nginx php81' \
@@ -120,4 +120,4 @@ DROP USER 'mysql'@'localhost';
 
 # 更多问题
 
-请查阅 https://github.com/rehiy/webox-docker/issues
+请查阅 <https://github.com/rehiy/webox-docker/issues>
