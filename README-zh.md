@@ -16,9 +16,15 @@
 
 # 可用分支
 
-- [edge](https://github.com/rehiy/webox-docker/tree/edge)
+- [latest](https://github.com/rehiy/webox-docker/tree/master): nginx + php8.1 + mariadb + redis
 
-- [latest](https://github.com/rehiy/webox-docker/tree/master)
+- [edge](https://github.com/rehiy/webox-docker/tree/edge): nginx + php8.2 + mariadb + redis
+
+- [edge-php7](https://github.com/rehiy/webox-docker/tree/edge): nginx + php7.4 + mariadb + redis
+
+- [nginx](https://github.com/rehiy/webox-docker/tree/nginx)
+
+- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/nginx-geoip)
 
 - [nginx-php8.2](https://github.com/rehiy/webox-docker/tree/nginx-php8.2)
 
