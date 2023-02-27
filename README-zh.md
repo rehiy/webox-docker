@@ -43,7 +43,7 @@
 ## 网站将监听下列端口 `docker-ip:80`
 
 ```shell
-docker run --name MYBOX -d -p 80 \
+docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
     rehiy/webox
@@ -56,7 +56,7 @@ docker run --name MYBOX -d -p 80 \
 # 设置自启动组件
 
 ```shell
-docker run --name MYBOX -d -p 80 \
+docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
     -e 'WBX_APPS=nginx php81' \
