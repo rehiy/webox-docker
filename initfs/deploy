@@ -1,23 +1,10 @@
 #!/bin/sh -e
 #
 
-chmod +x `grep -rl '^#!/bin' /ifs`
+wget https://github.com/rehiy/webox-alpine/archive/refs/heads/master.tar.gz
+tar xvf master.tar.gz && rm -f master.tar.gz
 
-# install apps
+cd webox-alpine-master
+sh install wkit-container mysql nginx nginx-php php8.1 redis
 
-cp -a /ifs/usr /
-
-for NAME in $WBX_APPS; do
-    install=/usr/wkit/bundles/$NAME-add
-    $install && rm -f $install
-done
-
-cp -a /ifs/etc /
-cp -a /ifs/var /
-
-# clean system
-
-rm -f `grep openrc -rl /etc/init.d`
-rm -f /var/cache/apk/*.tar.gz
-
-rm -r /ifs
+rm -rf /ifs

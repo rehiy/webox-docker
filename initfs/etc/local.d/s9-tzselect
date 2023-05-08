@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-
-if [ -n "$TZ" ]; then
-    wkit tzselect $TZ
-fi
-
-rm -f $0
