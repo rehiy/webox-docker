@@ -1,13 +1,7 @@
 #!/bin/sh -ex
 #
 
-if [ ! -x /usr/bin/dos2unix ]; then
-    apt install -y dos2unix
-fi
-
-find initfs/ -type f -exec dos2unix {} \;
-
-#====================================================================#
+cd latest
 
 docker build -t dev/webox .
 sleep 3

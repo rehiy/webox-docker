@@ -5,8 +5,8 @@ LABEL version="15.2.0" \
 
 ENV WBX_APPS="mysql nginx php81 redis"
 
-ADD initfs /ifs
-RUN sh /ifs/deploy
+ADD deploy /tmp/deploy
+RUN sh /tmp/deploy
 
 ENTRYPOINT ["/sbin/init"]
 

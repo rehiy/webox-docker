@@ -7,4 +7,5 @@ tar xvf master.tar.gz && rm -f master.tar.gz
 cd webox-alpine-master
 sh install wkit-container mysql nginx nginx-php php8.1 redis
 
-rm -rf /ifs
+cd ~
+rm -rf /tmp/*
