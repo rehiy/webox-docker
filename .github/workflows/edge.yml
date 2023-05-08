@@ -1,4 +1,4 @@
-name: Webox latest Image CI
+name: Webox edge Image CI
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./latest
+          context: ./edge
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm
-          tags: rehiy/webox:latest
+          tags: rehiy/webox:edge

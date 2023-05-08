@@ -1,4 +1,4 @@
-name: Webox latest Image CI
+name: Webox nginx-php5.6 Image CI
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./latest
+          context: ./nginx-php5.6
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm
-          tags: rehiy/webox:latest
+          tags: rehiy/webox:nginx-php5.6,rehiy/webox:nginx-php5

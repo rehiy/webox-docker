@@ -83,10 +83,10 @@ docker exec -it MYBOX apk add \
 - 配置自启动脚本
 
   - /MY/config/rc.local
-  - /MY/config/local.d/\*
-  - /MY/config/local.d/s3-prewkit
-  - /MY/config/local.d/s5-wkit
-  - /MY/config/local.d/s6-postwkit
+  - /MY/config/wkit.d/\*
+  - /MY/config/wkit.d/s3-prewkit
+  - /MY/config/wkit.d/s5-wkit
+  - /MY/config/wkit.d/s6-postwkit
 
 # 重要提示
 

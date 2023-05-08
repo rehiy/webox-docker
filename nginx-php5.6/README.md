@@ -4,15 +4,11 @@ Re sail from alpine !
 
 *Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
-- mariadb 10.6.x
+This is a lightweight branch that contains only the following components:
 
-- nginx 1.22.x
+- nginx 1.11.x
 
-- php 8.1.x
-
-  - redis
-
-- redis 7.0.x
+- php 5.6.x
 
 # Simple Usage
 
@@ -21,7 +17,6 @@ Re sail from alpine !
 ```shell
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
-    -v /MY/mysql:/var/lib/mysql \
     rehiy/webox
 ```
 
@@ -35,7 +30,6 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php81' \
     -e 'TZ=Asia/Shanghai' \
     rehiy/webox
 ```
@@ -56,29 +50,20 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php81-pcntl php81-posix php81-saop \
-    php81-maxminddb php81-pecl-imagick
+    php5-pcntl php5-posix php5-saop
 ```
 
 ## Configure the components you need
 
 You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
 
-- Configure mariadb
-
-  - /MY/config/mysql/conf.d/\*
-
 - Configure virtual host
 
   - /MY/config/nginx/host.d/\*
 
-- Configure php81
+- Configure php5
 
-  - /MY/config/php81/conf.d/\*
-
-- Configure redis
-
-  - /MY/config/redis/redis.conf
+  - /MY/config/php5/conf.d/\*
 
 - Scripts in the following locations will be run when `MYBOX` started:
 
@@ -87,20 +72,6 @@ You can place additional config files in `/MY/config/*`, these files will be cop
   - /MY/config/wkit.d/s3-prewkit
   - /MY/config/wkit.d/s5-wkit
   - /MY/config/wkit.d/s6-postwkit
-
-# Important Notice
-
-## Don't forget to change mysql password
-
-```shell
-docker exec -it MYBOX mysqladmin -u root password abc345
-```
-
-You may also need to execute the following SQL statements.
-
-```sql
-DROP USER 'mysql'@'localhost';
-```
 
 # More Issues
 

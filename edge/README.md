@@ -8,11 +8,35 @@ Re sail from alpine !
 
 - nginx 1.22.x
 
-- php 8.1.x
+- php 8.2.x
 
   - redis
 
 - redis 7.0.x
+
+# Supported Tags
+
+- [latest](https://github.com/rehiy/webox-docker/tree/master): nginx + php8.1 + mariadb + redis
+
+- [edge](https://github.com/rehiy/webox-docker/tree/edge): nginx + php8.2 + mariadb + redis
+
+- [edge-php7](https://github.com/rehiy/webox-docker/tree/edge): nginx + php7.4 + mariadb + redis
+
+- [nginx](https://github.com/rehiy/webox-docker/tree/nginx)
+
+- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/nginx-geoip)
+
+- [nginx-php8.2](https://github.com/rehiy/webox-docker/tree/nginx-php8.2)
+
+- [nginx-php, nginx-php8, nginx-php8.1](https://github.com/rehiy/webox-docker/tree/nginx-php8.1)
+
+- [nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
+
+- [nginx-php7, nginx-php7.4](https://github.com/rehiy/webox-docker/tree/nginx-php7.4)
+
+- [nginx-php7.3](https://github.com/rehiy/webox-docker/tree/nginx-php7.3)
+
+- [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/nginx-php5.6)
 
 # Simple Usage
 
@@ -35,7 +59,7 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php81' \
+    -e 'WBX_APPS=nginx php82' \
     -e 'TZ=Asia/Shanghai' \
     rehiy/webox
 ```
@@ -56,8 +80,8 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php81-pcntl php81-posix php81-saop \
-    php81-maxminddb php81-pecl-imagick
+    php82-pcntl php82-posix php82-saop \
+    php82-maxminddb php82-pecl-imagick
 ```
 
 ## Configure the components you need
@@ -72,9 +96,9 @@ You can place additional config files in `/MY/config/*`, these files will be cop
 
   - /MY/config/nginx/host.d/\*
 
-- Configure php81
+- Configure php82
 
-  - /MY/config/php81/conf.d/\*
+  - /MY/config/php82/conf.d/\*
 
 - Configure redis
 
