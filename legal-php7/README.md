@@ -14,30 +14,6 @@ Re sail from alpine !
 
 - redis 6.0.x
 
-# Supported Tags
-
-- [latest](https://github.com/rehiy/webox-docker/tree/master): nginx + php8.1 + mariadb + redis
-
-- [edge](https://github.com/rehiy/webox-docker/tree/edge): nginx + php8.2 + mariadb + redis
-
-- [edge-php7](https://github.com/rehiy/webox-docker/tree/edge): nginx + php7.4 + mariadb + redis
-
-- [nginx](https://github.com/rehiy/webox-docker/tree/nginx)
-
-- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/nginx-geoip)
-
-- [nginx-php8.2](https://github.com/rehiy/webox-docker/tree/nginx-php8.2)
-
-- [nginx-php, nginx-php8, nginx-php8.1](https://github.com/rehiy/webox-docker/tree/nginx-php8.1)
-
-- [nginx-php8.0](https://github.com/rehiy/webox-docker/tree/nginx-php8.0)
-
-- [nginx-php7, nginx-php7.4](https://github.com/rehiy/webox-docker/tree/nginx-php7.4)
-
-- [nginx-php7.3](https://github.com/rehiy/webox-docker/tree/nginx-php7.3)
-
-- [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/nginx-php5.6)
-
 # Simple Usage
 
 ## The nginx is listening on `docker-ip:80`
