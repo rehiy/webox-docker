@@ -16,7 +16,9 @@
 
 - [legal-php7](https://github.com/rehiy/webox-docker/tree/master/legal-php7): nginx + php7.4 + mariadb + redis
 
-- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx)
+- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx) nginx gateway
+
+- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx)  nginx gateway with geoip2
 
 - [nginx-php8.2](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.2)
 
