@@ -35,14 +35,11 @@ docker run --name MYBOX -d -p 80:80 -p 443:443 \
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php81' \
     -e 'TZ=Asia/Shanghai' \
     rehiy/webox
 ```
 
 ## 环境变量释义
-
-- `WBX_APPS`, 设置需要启动的服务
 
 - `TZ`, 设置容器时区
 
@@ -87,6 +84,14 @@ docker exec -it MYBOX apk add \
   - /MY/config/wkit.d/s3-prewkit
   - /MY/config/wkit.d/s5-wkit
   - /MY/config/wkit.d/s6-postwkit
+
+- 配置计划任务
+
+  - /MY/config/periodic/15min/xxx
+  - /MY/config/periodic/daily/xxx
+  - /MY/config/periodic/hourly/xxx
+  - /MY/config/periodic/monthly/xxx
+  - /MY/config/periodic/weekly/xxx
 
 # 重要提示
 

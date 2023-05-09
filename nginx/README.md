@@ -34,8 +34,6 @@ docker run --name MYBOX -d -p 80:80 -p 443:443 \
 
 ## ENV Variables
 
-- `WBX_APPS`, Set up automatically started services
-
 - `TZ`, Set the timezone
 
 ## Service management command
@@ -65,6 +63,14 @@ You can place additional config files in `/MY/config/*`, these files will be cop
   - /MY/config/wkit.d/s3-prewkit
   - /MY/config/wkit.d/s5-wkit
   - /MY/config/wkit.d/s6-postwkit
+
+- Configure scheduled tasks
+
+  - /MY/config/periodic/15min/xxx
+  - /MY/config/periodic/daily/xxx
+  - /MY/config/periodic/hourly/xxx
+  - /MY/config/periodic/monthly/xxx
+  - /MY/config/periodic/weekly/xxx
 
 # More Issues
 

@@ -35,14 +35,11 @@ If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.w
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'WBX_APPS=nginx php7' \
     -e 'TZ=Asia/Shanghai' \
     rehiy/webox
 ```
 
 ## ENV Variables
-
-- `WBX_APPS`, Set up automatically started services
 
 - `TZ`, Set the timezone
 
@@ -87,6 +84,14 @@ You can place additional config files in `/MY/config/*`, these files will be cop
   - /MY/config/wkit.d/s3-prewkit
   - /MY/config/wkit.d/s5-wkit
   - /MY/config/wkit.d/s6-postwkit
+
+- Configure scheduled tasks
+
+  - /MY/config/periodic/15min/xxx
+  - /MY/config/periodic/daily/xxx
+  - /MY/config/periodic/hourly/xxx
+  - /MY/config/periodic/monthly/xxx
+  - /MY/config/periodic/weekly/xxx
 
 # Important Notice
 
