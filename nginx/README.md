@@ -42,12 +42,6 @@ docker run --name MYBOX -d -p 80:80 -p 443:443 \
 docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
-## Enable nginx-geoip feature
-
-```shell
-docker exec -it MYBOX wkit nginx-geoip-install
-```
-
 ## Configure the components you need
 
 You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
