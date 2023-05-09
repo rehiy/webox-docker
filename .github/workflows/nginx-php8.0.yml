@@ -2,9 +2,9 @@ name: Webox nginx-php8.0 Image CI
 
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+    paths:
+      - 'all/**'
+      - 'nginx-php8.0/**'
 
 jobs:
   build:

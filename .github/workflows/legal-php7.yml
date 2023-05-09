@@ -2,9 +2,9 @@ name: Webox legal-php7 Image CI
 
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+    paths:
+      - 'all/**'
+      - 'legal-php7/**'
 
 jobs:
   build:

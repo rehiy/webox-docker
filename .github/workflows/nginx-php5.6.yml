@@ -2,9 +2,9 @@ name: Webox nginx-php5.6 Image CI
 
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+    paths:
+      - 'all/**'
+      - 'nginx-php5.6/**'
 
 jobs:
   build:

@@ -2,9 +2,9 @@ name: Webox nginx Image CI
 
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+    paths:
+      - 'all/**'
+      - 'nginx/**'
 
 jobs:
   build:
