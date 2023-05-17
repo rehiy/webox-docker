@@ -22,7 +22,7 @@ Re sail from alpine !
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/mysql:/var/lib/mysql \
-    rehiy/webox
+    rehiy/webox:legal-php7
 ```
 
 ## Put your files to host's webroot
@@ -36,7 +36,7 @@ docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
     -e 'TZ=Asia/Shanghai' \
-    rehiy/webox
+    rehiy/webox:legal-php7
 ```
 
 ## ENV Variables

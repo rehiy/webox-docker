@@ -32,6 +32,8 @@ Due to different components pre installed on different branches, please select t
 
 - [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/master/nginx-php5.6)
 
+- [slim](https://github.com/rehiy/webox-docker/tree/master/slim) crond
+
 ## More Issues
 
 See <https://github.com/rehiy/webox-docker/issues> for more issues.
