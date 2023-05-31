@@ -1,11 +1,13 @@
 #!/bin/sh -e
 #
 
+cd /tmp
+
 wget https://github.com/rehiy/webox-alpine/archive/refs/heads/master.tar.gz
 tar xvf master.tar.gz && rm -f master.tar.gz
 
 cd webox-alpine-master
 sh install wkit-container crond nginx nginx-php php8.0
 
-cd ~
+cd /tmp
 rm -rf /tmp/*
