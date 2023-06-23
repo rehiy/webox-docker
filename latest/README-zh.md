@@ -4,11 +4,11 @@
 
 *Webox* 是 `web-box` 的缩写，意为建站盒子。这是一个自定义的 `LNMP` 集成化容器, 内置了以下常用模块 MariaDB、Nginx、PHP、Redis。
 
-- mariadb 10.6.x
+- mariadb 10.11.x
 
-- nginx 1.22.x
+- nginx 1.24.x
 
-- php 8.1.x
+- php 8.2.x
 
   - redis
 
@@ -53,8 +53,8 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php81-pcntl php81-posix php81-saop \
-    php81-maxminddb php81-pecl-imagick
+    php82-pcntl php82-posix php82-saop \
+    php82-maxminddb php82-pecl-imagick
 ```
 
 ## 自定义组件配置
@@ -69,9 +69,9 @@ docker exec -it MYBOX apk add \
 
   - /MY/config/nginx/host.d/\*
 
-- 配置 php81
+- 配置 php82
 
-  - /MY/config/php81/conf.d/\*
+  - /MY/config/php82/conf.d/\*
 
 - 配置 redis
 

@@ -1,14 +1,14 @@
-# What is Webox?
+# 什么是 Webox?
 
-Re sail from alpine !
+让我们从 `AlpineLinux` 重新起航 !
 
-*Webox* is the abbreviation for `web-box`, which means building a website box. This is a custom `LNMP` integrated container that comes pre installed with some commonly used modules such as MariaDB, Nginx, PHP, and Redis.
+*Webox* 是 `web-box` 的缩写，意为建站盒子。这是一个自定义的 `LNMP` 集成化容器, 内置了以下常用模块 MariaDB、Nginx、PHP、Redis。
 
-## Instructions for use
+## 使用说明
 
-Due to different components pre installed on different branches, please select the branch and review the detailed instructions
+由于不同分支上预装的组件不同，请选择分支并查看详细说明
 
-## Supported Tags
+## 支持的分支
 
 - [edge](https://github.com/rehiy/webox-docker/tree/master/edge): nginx + php8.2 + mariadb + redis
 
@@ -34,6 +34,6 @@ Due to different components pre installed on different branches, please select t
 
 - [slim](https://github.com/rehiy/webox-docker/tree/master/slim) crond
 
-## More Issues
+## 更多问题
 
-See <https://github.com/rehiy/webox-docker/issues> for more issues.
+请查阅 <https://github.com/rehiy/webox-docker/issues>
