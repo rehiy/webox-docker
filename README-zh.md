@@ -1,5 +1,7 @@
 # 什么是 Webox?
 
+[Enghlist](./README.md)
+
 让我们从 `AlpineLinux` 重新起航 !
 
 *Webox* 是 `web-box` 的缩写，意为建站盒子。这是一个自定义的 `LNMP` 集成化容器, 内置了以下常用模块 MariaDB、Nginx、PHP、Redis。

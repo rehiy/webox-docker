@@ -1,5 +1,7 @@
 # What is Webox?
 
+[简体中文](./README-zh.md)
+
 Re sail from alpine !
 
 *Webox* is the abbreviation for `web-box`, which means building a website box. This is a custom `LNMP` integrated container that comes pre installed with some commonly used modules such as MariaDB, Nginx, PHP, and Redis.
