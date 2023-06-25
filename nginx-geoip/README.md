@@ -6,7 +6,7 @@ Re sail from alpine !
 
 This is a lightweight branch that contains only the following components:
 
-- nginx 1.22.x
+- nginx 1.24.x
 
 # Simple Usage
 
