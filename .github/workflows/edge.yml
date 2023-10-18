@@ -5,6 +5,8 @@ on:
     paths:
       - 'all/**'
       - 'edge/**'
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
   build:
