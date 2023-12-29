@@ -4,15 +4,11 @@ Re sail from alpine !
 
 *Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
-- mariadb 10.11.x
+This is a lightweight branch that contains only the following components:
 
 - nginx 1.24.x
 
 - php 8.3.x
-
-  - redis
-
-- redis 7.0.x
 
 # Simple Usage
 
@@ -21,8 +17,7 @@ Re sail from alpine !
 ```shell
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
-    -v /MY/mysql:/var/lib/mysql \
-    rehiy/webox
+    rehiy/webox:nginx-php8.3
 ```
 
 ## Put your files to host's webroot
@@ -36,7 +31,7 @@ docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
     -e 'TZ=Asia/Shanghai' \
-    rehiy/webox
+    rehiy/webox:nginx-php8.3
 ```
 
 ## ENV Variables
@@ -61,10 +56,6 @@ docker exec -it MYBOX apk add \
 
 You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
 
-- Configure mariadb
-
-  - /MY/config/mysql/conf.d/\*
-
 - Configure virtual host
 
   - /MY/config/nginx/host.d/\*
@@ -72,10 +63,6 @@ You can place additional config files in `/MY/config/*`, these files will be cop
 - Configure php83
 
   - /MY/config/php83/conf.d/\*
-
-- Configure redis
-
-  - /MY/config/redis/redis.conf
 
 - Scripts in the following locations will be run when `MYBOX` started:
 
@@ -92,20 +79,6 @@ You can place additional config files in `/MY/config/*`, these files will be cop
   - /MY/config/periodic/hourly/xxx
   - /MY/config/periodic/monthly/xxx
   - /MY/config/periodic/weekly/xxx
-
-# Important Notice
-
-## Don't forget to change mysql password
-
-```shell
-docker exec -it MYBOX mysqladmin -u root password abc345
-```
-
-You may also need to execute the following SQL statements.
-
-```sql
-DROP USER 'mysql'@'localhost';
-```
 
 # More Issues
 

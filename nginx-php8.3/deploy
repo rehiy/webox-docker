@@ -7,7 +7,7 @@ wget https://github.com/rehiy/webox-alpine/archive/refs/heads/master.tar.gz
 tar xvf master.tar.gz && rm -f master.tar.gz
 
 cd webox-alpine-master
-sh install wkit-container crond mysql nginx nginx-gw nginx-php php8.3 redis
+sh install wkit-container crond nginx nginx-php php8.3
 
 cd /tmp
 rm -rf /tmp/*

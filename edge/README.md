@@ -8,7 +8,7 @@ Re sail from alpine !
 
 - nginx 1.24.x
 
-- php 8.2.x
+- php 8.3.x
 
   - redis
 
@@ -53,8 +53,8 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php82-pcntl php82-posix php82-saop \
-    php82-maxminddb php82-pecl-imagick
+    php83-pcntl php83-posix php83-saop \
+    php83-maxminddb php83-pecl-imagick
 ```
 
 ## Configure the components you need
@@ -69,9 +69,9 @@ You can place additional config files in `/MY/config/*`, these files will be cop
 
   - /MY/config/nginx/host.d/\*
 
-- Configure php82
+- Configure php83
 
-  - /MY/config/php82/conf.d/\*
+  - /MY/config/php83/conf.d/\*
 
 - Configure redis
 

@@ -8,7 +8,7 @@
 
 - nginx 1.24.x
 
-- php 8.2.x
+- php 8.3.x
 
   - redis
 
@@ -53,8 +53,8 @@ docker exec -it MYBOX wkit [start|stop|restart|reload]
 
 ```shell
 docker exec -it MYBOX apk add \
-    php82-pcntl php82-posix php82-saop \
-    php82-maxminddb php82-pecl-imagick
+    php83-pcntl php83-posix php83-saop \
+    php83-maxminddb php83-pecl-imagick
 ```
 
 ## 自定义组件配置
@@ -69,9 +69,9 @@ docker exec -it MYBOX apk add \
 
   - /MY/config/nginx/host.d/\*
 
-- 配置 php82
+- 配置 php83
 
-  - /MY/config/php82/conf.d/\*
+  - /MY/config/php83/conf.d/\*
 
 - 配置 redis
 
