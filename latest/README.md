@@ -6,7 +6,7 @@ Re sail from alpine !
 
 - mariadb 10.11.x
 
-- nginx 1.24.x
+- nginx 1.26.x
 
 - php 8.3.x
 
