@@ -18,10 +18,6 @@
 
 - [legal-php7](https://github.com/rehiy/webox-docker/tree/master/legal-php7): nginx + php7.4 + mariadb + redis
 
-- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx) nginx gateway
-
-- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx)  nginx gateway with geoip2
-
 - [nginx-php, nginx-php8, nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
 
 - [nginx-php8.3](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.3)
@@ -37,6 +33,10 @@
 - [nginx-php7.3](https://github.com/rehiy/webox-docker/tree/master/nginx-php7.3)
 
 - [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/master/nginx-php5.6)
+
+- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx) gateway only
+
+- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx) gateway with geoip2
 
 - [slim](https://github.com/rehiy/webox-docker/tree/master/slim) crond
 
