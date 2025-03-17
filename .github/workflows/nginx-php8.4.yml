@@ -1,10 +1,10 @@
-name: Webox nginx-php8.3 Image CI
+name: Webox nginx-php8.4 Image CI
 
 on:
   push:
     paths:
       - 'all/**'
-      - 'nginx-php8.3/**'
+      - 'nginx-php8.4/**'
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./nginx-php8.3
+          context: ./nginx-php8.4
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm
-          tags: rehiy/webox:nginx-php8.3
+          tags: rehiy/webox:nginx-php8.4,rehiy/webox:nginx-php8,rehiy/webox:nginx-php

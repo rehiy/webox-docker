@@ -22,7 +22,9 @@
 
 - [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx)  nginx gateway with geoip2
 
-- [nginx-php, nginx-php8, nginx-php8.3](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.3)
+- [nginx-php, nginx-php8, nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
+
+- [nginx-php8.3](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.3)
   
 - [nginx-php8.2](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.2)
 
