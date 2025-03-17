@@ -12,9 +12,9 @@
 
 ## 支持的分支
 
-- [edge](https://github.com/rehiy/webox-docker/tree/master/edge): nginx + php8.3 + mariadb + redis
+- [edge](https://github.com/rehiy/webox-docker/tree/master/edge): nginx + php8.4 + mariadb + redis
 
-- [latest](https://github.com/rehiy/webox-docker/tree/master/latest): nginx + php8.3 + mariadb + redis
+- [latest](https://github.com/rehiy/webox-docker/tree/master/latest): nginx + php8.4 + mariadb + redis
 
 - [legal-php7](https://github.com/rehiy/webox-docker/tree/master/legal-php7): nginx + php7.4 + mariadb + redis
 
