@@ -34,11 +34,11 @@ Due to different components pre installed on different branches, please select t
 
 - [nginx-php5, nginx-php5.6](https://github.com/rehiy/webox-docker/tree/master/nginx-php5.6)
 
-- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx) gateway only
+- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx): gateway with geoip2
 
-- [nginx-geoip](https://github.com/rehiy/webox-docker/tree/master/nginx) gateway with geoip2
+- [nginx](https://github.com/rehiy/webox-docker/tree/master/nginx): gateway only
 
-- [slim](https://github.com/rehiy/webox-docker/tree/master/slim) crond
+- [slim](https://github.com/rehiy/webox-docker/tree/master/slim): crond
 
 ## More Issues
 
