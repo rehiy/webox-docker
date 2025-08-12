@@ -4,15 +4,15 @@
 
 *Webox* 是 `web-box` 的缩写，意为建站盒子。这是一个自定义的 `LNMP` 集成化容器, 内置了以下常用模块 MariaDB、Nginx、PHP、Redis。
 
-- mariadb 10.11.x
+- mariadb 11.4.x
 
-- nginx 1.26.x
+- nginx 1.28.x
 
-- php 8.3.x
+- php 8.4.x
 
   - redis
 
-- redis 7.0.x
+- redis 8.0.x
 
 # 快速启动
 

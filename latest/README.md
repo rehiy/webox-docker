@@ -4,15 +4,15 @@ Re sail from alpine !
 
 *Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
-- mariadb 10.11.x
+- mariadb 11.4.x
 
-- nginx 1.26.x
+- nginx 1.28.x
 
-- php 8.3.x
+- php 8.4.x
 
   - redis
 
-- redis 7.0.x
+- redis 8.0.x
 
 # Simple Usage
 
