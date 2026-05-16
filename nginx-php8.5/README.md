@@ -1,36 +1,85 @@
-# nginx-php8.5
+# What is Webox?
 
-nginx + php8.5 运行环境
+Re sail from alpine !
 
-## 软件版本
+*Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
 
-- nginx 1.20+
-- php8.5 (fpm)
-- wkit (init/system)
+This is a lightweight branch that contains only the following components:
 
-## 默认站点
+- nginx 1.28.x
 
-- 根目录 `/var/www/default`
-- 配置文件 `/etc/nginx/http.d/default.conf`
+- php 8.5.x
 
-## 快速启动
+# Simple Usage
 
-```bash
-docker run -d --name nginx-php \
-  -p 80:80 -p 443:443 \
-  -v /my-code:/var/www/default \
-  rehiy/nginx-php8.5
+## The nginx is listening on `docker-ip:80`
+
+```shell
+docker run --name MYBOX -d -p 80:80 -p 443:443 \
+    -v /MY/htdoc:/var/www/default \
+    rehiy/webox:nginx-php8.5
 ```
 
-## 扩展安装
+## Put your files to host's webroot
 
-```bash
-# 进入容器
-docker exec -it nginx-php sh
+If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.www/`.
 
-# 安装更多 PHP 扩展
-apk add php85-xxx
+# Manual Control Services
 
-# 重启 php-fpm
-wkit php85 restart
+```shell
+docker run --name MYBOX -d -p 80:80 -p 443:443 \
+    -v /MY/htdoc:/var/www/default \
+    -v /MY/config:/var/config \
+    -e 'TZ=Asia/Shanghai' \
+    rehiy/webox:nginx-php8.5
 ```
+
+## ENV Variables
+
+- `TZ`, Set the timezone
+
+## Service management command
+
+```shell
+docker exec -it MYBOX wkit [start|stop|restart|reload]
+```
+
+## Add some PHP extension modules
+
+```shell
+docker exec -it MYBOX apk add \
+    php84-pcntl php84-posix php84-saop \
+    php84-maxminddb php84-pecl-imagick
+```
+
+## Configure the components you need
+
+You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
+
+- Configure virtual host
+
+  - /MY/config/nginx/host.d/\*
+
+- Configure php84
+
+  - /MY/config/php84/conf.d/\*
+
+- Scripts in the following locations will be run when `MYBOX` started:
+
+  - /MY/config/rc.local
+  - /MY/config/wkit.d/\*
+  - /MY/config/wkit.d/s3-prewkit
+  - /MY/config/wkit.d/s5-wkit
+  - /MY/config/wkit.d/s6-postwkit
+
+- Configure scheduled tasks
+
+  - /MY/config/periodic/15min/xxx
+  - /MY/config/periodic/daily/xxx
+  - /MY/config/periodic/hourly/xxx
+  - /MY/config/periodic/monthly/xxx
+  - /MY/config/periodic/weekly/xxx
+
+# More Issues
+
+See <https://github.com/rehiy/webox-docker/issues> for more issues.

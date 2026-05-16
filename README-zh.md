@@ -18,7 +18,7 @@
 
 - [legal-php7](https://github.com/rehiy/webox-docker/tree/master/legal-php7): nginx + php7.4 + mariadb + redis
 
-- [nginx-php, nginx-php8, nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
+- [nginx-php, nginx-php8, nginx-php8.5](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.5)
 
 - [nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
 

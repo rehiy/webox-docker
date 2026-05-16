@@ -12,13 +12,15 @@ Due to different components pre installed on different branches, please select t
 
 ## Supported Tags
 
-- [edge](https://github.com/rehiy/webox-docker/tree/master/edge): nginx + php8.4 + mariadb + redis
+- [edge](https://github.com/rehiy/webox-docker/tree/master/edge): nginx + php8.5 + mariadb + redis
 
-- [latest](https://github.com/rehiy/webox-docker/tree/master/latest): nginx + php8.4 + mariadb + redis
+- [latest](https://github.com/rehiy/webox-docker/tree/master/latest): nginx + php8.5 + mariadb + redis
 
 - [legal-php7](https://github.com/rehiy/webox-docker/tree/master/legal-php7): nginx + php7.4 + mariadb + redis
 
-- [nginx-php, nginx-php8, nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
+- [nginx-php, nginx-php8, nginx-php8.5](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.5)
+
+- [nginx-php8.4](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.4)
 
 - [nginx-php8.3](https://github.com/rehiy/webox-docker/tree/master/nginx-php8.3)
   
