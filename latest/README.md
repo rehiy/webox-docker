@@ -8,11 +8,11 @@ Re sail from alpine !
 
 - nginx 1.28.x
 
-- php 8.4.x
+- php 8.5.x
 
   - redis
 
-- redis 8.0.x
+- redis 8.4.x
 
 # Simple Usage
 
