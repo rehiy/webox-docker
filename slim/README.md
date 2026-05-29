@@ -1,50 +1,58 @@
-# What is Webox?
+# Webox — slim
 
-Re sail from alpine !
+仅 crond 定时任务容器，不含 Web 服务。
 
-*Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
+## 组件
 
-This is a lightweight branch that contains only the crond.
+| 组件 | 说明 |
+|---|---|
+| crond | 定时任务 |
 
-# Simple Usage
+## 快速开始
 
-```shell
+```bash
 docker run --name MYBOX -d \
     -v /MY/config:/var/config \
-    -e 'TZ=Asia/Shanghai' \
+    -e TZ=Asia/Shanghai \
     rehiy/webox:slim
 ```
 
-## ENV Variables
+## 环境变量
 
-- `TZ`, Set the timezone
+| 变量 | 说明 |
+|---|---|
+| `TZ` | 时区 |
 
-## Configure the components you need
+### 配置文件
 
-You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
+将配置文件放入 `/MY/config/*`，容器启动时复制到 `/etc/`：
 
-- Configure virtual host
+| 组件 | 路径 |
+|---|---|
+| Nginx 虚拟主机 | `/MY/config/nginx/host.d/*` |
 
-  - /MY/config/nginx/host.d/\*
+### 启动脚本
 
-- Scripts in the following locations will be run when `MYBOX` started:
+| 路径 | 时机 |
+|---|---|
+| `/MY/config/rc.local` | 基础启动 |
+| `/MY/config/wkit.d/*` | wkit 服务管理 |
+| `/MY/config/wkit.d/s3-prewkit` | 前置初始化 |
+| `/MY/config/wkit.d/s5-wkit` | wkit 核心 |
+| `/MY/config/wkit.d/s6-postwkit` | 后置初始化 |
 
-  - /MY/config/rc.local
-  - /MY/config/wkit.d/\*
-  - /MY/config/wkit.d/s3-prewkit
-  - /MY/config/wkit.d/s5-wkit
-  - /MY/config/wkit.d/s6-postwkit
+### 定时任务
 
-- Configure scheduled tasks
+| 路径 | 频率 |
+|---|---|
+| `/MY/config/periodic/5min/*` | 每 5 分钟 |
+| `/MY/config/periodic/15min/*` | 每 15 分钟 |
+| `/MY/config/periodic/30min/*` | 每 30 分钟 |
+| `/MY/config/periodic/hourly/*` | 每小时 |
+| `/MY/config/periodic/daily/*` | 每天 |
+| `/MY/config/periodic/monthly/*` | 每月 |
+| `/MY/config/periodic/weekly/*` | 每周 |
 
-  - /MY/config/periodic/5min/xxx
-  - /MY/config/periodic/15min/xxx
-  - /MY/config/periodic/30min/xxx
-  - /MY/config/periodic/daily/xxx
-  - /MY/config/periodic/hourly/xxx
-  - /MY/config/periodic/monthly/xxx
-  - /MY/config/periodic/weekly/xxx
+## 更多
 
-# More Issues
-
-See <https://github.com/rehiy/webox-docker/issues> for more issues.
+参见 <https://github.com/rehiy/webox-docker/issues>

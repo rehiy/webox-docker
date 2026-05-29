@@ -1,71 +1,75 @@
-# What is Webox?
+# Webox — nginx-geoip
 
-Re sail from alpine !
+Nginx + GeoIP2 模块容器，支持基于地理位置的请求路由。
 
-*Webox* (`abbreviation for web-box`) is a customized LNMP server, which includes the following components: MariaDB, Nginx, PHP, Redis. And add some popular plug-ins.
+## 组件版本
 
-This is a lightweight branch that contains only the following components:
+| 组件 | 版本 |
+|---|---|
+| Nginx | 1.24.x |
 
-- nginx 1.24.x
+## 快速开始
 
-# Simple Usage
-
-## The nginx is listening on `docker-ip:80`
-
-```shell
+```bash
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     rehiy/webox:nginx-geoip
 ```
 
-## Put your files to host's webroot
+## 配置
 
-If the domain is `www.example.org`, the webroot will be `/MY/htdoc/org.example.www/`.
-
-# Manual Control Services
-
-```shell
+```bash
 docker run --name MYBOX -d -p 80:80 -p 443:443 \
     -v /MY/htdoc:/var/www/default \
     -v /MY/config:/var/config \
-    -e 'TZ=Asia/Shanghai' \
+    -e TZ=Asia/Shanghai \
     rehiy/webox:nginx-geoip
 ```
 
-## ENV Variables
+### 环境变量
 
-- `TZ`, Set the timezone
+| 变量 | 说明 |
+|---|---|
+| `TZ` | 时区 |
 
-## Service management command
+### 配置文件
 
-```shell
+将配置文件放入 `/MY/config/*`，容器启动时复制到 `/etc/`：
+
+| 组件 | 路径 |
+|---|---|
+| Nginx 虚拟主机 | `/MY/config/nginx/host.d/*` |
+
+### 启动脚本
+
+| 路径 | 时机 |
+|---|---|
+| `/MY/config/rc.local` | 基础启动 |
+| `/MY/config/wkit.d/*` | wkit 服务管理 |
+| `/MY/config/wkit.d/s3-prewkit` | 前置初始化 |
+| `/MY/config/wkit.d/s5-wkit` | wkit 核心 |
+| `/MY/config/wkit.d/s6-postwkit` | 后置初始化 |
+
+### 定时任务
+
+| 路径 | 频率 |
+|---|---|
+| `/MY/config/periodic/15min/*` | 每 15 分钟 |
+| `/MY/config/periodic/daily/*` | 每天 |
+| `/MY/config/periodic/hourly/*` | 每小时 |
+| `/MY/config/periodic/monthly/*` | 每月 |
+| `/MY/config/periodic/weekly/*` | 每周 |
+
+## 服务管理
+
+```bash
 docker exec -it MYBOX wkit [start|stop|restart|reload]
 ```
 
-## Configure the components you need
+## 网站目录
 
-You can place additional config files in `/MY/config/*`, these files will be copied to `{MYBOX}/etc` and take effect on next restart.
+域名 `www.example.org` 对应 `/MY/htdoc/org.example.www/`。
 
-- Configure virtual host
+## 更多
 
-  - /MY/config/nginx/host.d/\*
-
-- Scripts in the following locations will be run when `MYBOX` started:
-
-  - /MY/config/rc.local
-  - /MY/config/wkit.d/\*
-  - /MY/config/wkit.d/s3-prewkit
-  - /MY/config/wkit.d/s5-wkit
-  - /MY/config/wkit.d/s6-postwkit
-
-- Configure scheduled tasks
-
-  - /MY/config/periodic/15min/xxx
-  - /MY/config/periodic/daily/xxx
-  - /MY/config/periodic/hourly/xxx
-  - /MY/config/periodic/monthly/xxx
-  - /MY/config/periodic/weekly/xxx
-
-# More Issues
-
-See <https://github.com/rehiy/webox-docker/issues> for more issues.
+参见 <https://github.com/rehiy/webox-docker/issues>
