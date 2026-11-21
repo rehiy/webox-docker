@@ -1,11 +1,11 @@
-name: Validate updated images
+name: Validate all images
 
 on:
   pull_request:
     paths:
-      - 'latest/**'
-      - 'nginx-php8.4/**'
-      - 'nginx-php8.5/**'
+      - '**/Dockerfile'
+      - '**/deploy'
+      - 'all/**'
       - '.github/workflows/**'
   workflow_dispatch:
 
@@ -18,7 +18,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [latest, nginx-php8.4, nginx-php8.5]
+        image:
+          - edge
+          - latest
+          - legal-php7
+          - nginx
+          - nginx-geoip
+          - nginx-php5.6
+          - nginx-php7.3
+          - nginx-php7.4
+          - nginx-php8.0
+          - nginx-php8.1
+          - nginx-php8.2
+          - nginx-php8.3
+          - nginx-php8.4
+          - nginx-php8.5
+          - slim
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: docker/setup-qemu-action@v4.4.0

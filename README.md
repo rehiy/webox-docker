@@ -10,7 +10,7 @@ Webox (`web-box`) — 基于 Alpine Linux 的 LNMP 集成容器，内置 MariaDB
 |---|---|---|
 | `edge` | nginx + php8.5 + mariadb + redis（随 edge 仓库更新） | `alpine:edge` |
 | `latest` | nginx 1.30 + php8.5 + mariadb 11.8 + redis 8.8 | `alpine:3.24` |
-| `legal-php7` | nginx 1.20 + php7.4 + mariadb 10.5 + redis 6.0 | — |
+| `legal-php7` | nginx 1.20 + php7.4 + mariadb 10.6 + redis 6.2 | — |
 
 ## 轻量标签
 
@@ -18,16 +18,22 @@ Webox (`web-box`) — 基于 Alpine Linux 的 LNMP 集成容器，内置 MariaDB
 |---|---|
 | `nginx-php8.5` | nginx 1.30 + php8.5 |
 | `nginx-php8.4` | nginx 1.30 + php8.4 |
-| `nginx-php8.3` | nginx 1.26 + php8.3 |
-| `nginx-php8.2` | nginx 1.26 + php8.2 |
+| `nginx-php8.3` | nginx 1.30 + php8.3 |
+| `nginx-php8.2` | nginx 1.28 + php8.2 |
 | `nginx-php8.1` | nginx 1.24 + php8.1 |
 | `nginx-php8.0` | nginx 1.22 + php8.0 |
 | `nginx-php7.4` | nginx 1.20 + php7.4 |
 | `nginx-php7.3` | nginx 1.18 + php7.3 |
-| `nginx-php5.6` | nginx 1.11 + php5.6 |
-| `nginx-geoip` | nginx 1.24 + GeoIP2 模块 |
-| `nginx` | nginx 1.24 仅网关 |
+| `nginx-php5.6` | nginx 1.14 + php5.6 |
+| `nginx-geoip` | nginx（随 edge 仓库更新）+ GeoIP2 模块 |
+| `nginx` | nginx（随 edge 仓库更新）仅网关 |
 | `slim` | crond 定时任务 |
+
+## 版本维护
+
+PHP 8.1 及以下标签仅用于历史兼容，PHP 和对应的旧 Alpine 分支均已结束常规维护。PHP 8.2 的官方安全支持于 2026-12-31 结束。当前主线使用 PHP 8.5。
+
+完整的组件版本、镜像发布时间与新增标签建议见 [版本检查](docs/version-audit.md)。表中的组件取自对应 Alpine 仓库；Docker Hub 实际发布状态需单独核对。
 
 ## 快速开始
 
