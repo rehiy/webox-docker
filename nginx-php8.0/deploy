@@ -1,6 +1,8 @@
 #!/bin/sh -e
 #
 
+set -e
+
 cd /tmp
 
 wget https://github.com/rehiy/webox-alpine/archive/refs/heads/master.tar.gz
