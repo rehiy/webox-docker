@@ -6,10 +6,10 @@
 
 | 组件 | 版本 |
 |---|---|
-| MariaDB | 10.5.x |
+| MariaDB | 10.6.x |
 | Nginx | 1.20.x |
 | PHP | 7.4.x |
-| Redis | 6.0.x |
+| Redis | 6.2.x |
 
 ## 快速开始
 
