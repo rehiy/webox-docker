@@ -2,12 +2,6 @@ name: Webox latest Image CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - '.github/workflows/latest.yml'
-      - 'all/**'
-      - 'latest/**'
   schedule:
     - cron: '0 0 * * 0'
 
