@@ -41,3 +41,21 @@ jobs:
           pull: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: rehiy/webox:${{ matrix.image }}
+      - name: Check out component smoke tests
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: rehiy/webox-alpine
+          path: component-source
+      - name: Verify published image
+        env:
+          IMAGE_TAG: ${{ matrix.image }}
+        run: |
+          docker run --rm --pull always \
+            -v "$PWD/component-source/tests:/webox-tests:ro" \
+            --entrypoint /bin/sh "rehiy/webox:$IMAGE_TAG" -ec '
+              nginx -v
+              php85 -v
+              mariadb --version
+              redis-server --version
+              sh /webox-tests/smoke.sh full
+            '
