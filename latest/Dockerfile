@@ -1,6 +1,6 @@
-FROM alpine:3.23
+FROM alpine:3.24
 
-LABEL version="15.5.0" \
+LABEL version="15.6.0" \
       maintainer="wang@rehiy.com"
 
 ADD deploy /tmp/deploy

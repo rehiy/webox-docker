@@ -1,0 +1,31 @@
+name: Validate updated images
+
+on:
+  pull_request:
+    paths:
+      - 'latest/**'
+      - 'nginx-php8.4/**'
+      - 'nginx-php8.5/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [latest, nginx-php8.4, nginx-php8.5]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: docker/setup-qemu-action@v4.4.0
+      - uses: docker/setup-buildx-action@v4.4.1
+      - name: Build without publishing
+        uses: docker/build-push-action@v7.4.0
+        with:
+          context: ./${{ matrix.image }}
+          push: false
+          platforms: linux/amd64,linux/arm64,linux/arm

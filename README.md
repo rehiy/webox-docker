@@ -8,16 +8,16 @@ Webox (`web-box`) — 基于 Alpine Linux 的 LNMP 集成容器，内置 MariaDB
 
 | 标签 | 组件 | 基础镜像 |
 |---|---|---|
-| `edge` | nginx 1.28 + php8.5 + mariadb 11.4 + redis 8.4 | `alpine:edge` |
-| `latest` | nginx 1.28 + php8.5 + mariadb 11.4 + redis 8.4 | `alpine:3.23` |
+| `edge` | nginx + php8.5 + mariadb + redis（随 edge 仓库更新） | `alpine:edge` |
+| `latest` | nginx 1.30 + php8.5 + mariadb 11.8 + redis 8.8 | `alpine:3.24` |
 | `legal-php7` | nginx 1.20 + php7.4 + mariadb 10.5 + redis 6.0 | — |
 
 ## 轻量标签
 
 | 标签 | 组件 |
 |---|---|
-| `nginx-php8.5` | nginx 1.28 + php8.5 |
-| `nginx-php8.4` | nginx 1.28 + php8.4 |
+| `nginx-php8.5` | nginx 1.30 + php8.5 |
+| `nginx-php8.4` | nginx 1.30 + php8.4 |
 | `nginx-php8.3` | nginx 1.26 + php8.3 |
 | `nginx-php8.2` | nginx 1.26 + php8.2 |
 | `nginx-php8.1` | nginx 1.24 + php8.1 |

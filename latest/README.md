@@ -1,15 +1,19 @@
 # Webox — latest
 
-基于 `alpine:3.23` 的完整 LNMP 容器，包含 MariaDB、Nginx、PHP-FPM、Redis。
+基于 `alpine:3.24` 的完整 LNMP 容器，包含 MariaDB、Nginx、PHP-FPM、Redis。
 
 ## 组件版本
 
 | 组件 | 版本 |
 |---|---|
-| MariaDB | 11.4.x |
-| Nginx | 1.28.x |
+| MariaDB | 11.8.x |
+| Nginx | 1.30.x |
 | PHP | 8.5.x |
-| Redis | 8.4.x |
+| Redis | 8.8.x |
+
+## 数据升级
+
+从旧版 `latest` 升级涉及 MariaDB 11.4 → 11.8、Redis 8.4 → 8.8。先备份数据并在副本上验证恢复；启动新容器后按 MariaDB 官方升级流程运行 `mariadb-upgrade`。不要将已升级的数据目录直接用于旧镜像。
 
 ## 快速开始
 
